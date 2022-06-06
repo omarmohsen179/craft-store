@@ -1,0 +1,9 @@
+
+@media screen and (min-width: 768px) {
+.nav-account-data{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    
+}
+}

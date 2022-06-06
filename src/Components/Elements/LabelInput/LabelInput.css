@@ -1,0 +1,12 @@
+.form-label-input {
+  padding: 20px 0px;
+  font-family: "Lato", Arial, Tahoma, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.form-control::placeholder {
+  /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: rgb(214, 214, 214);
+  opacity: 1; /* Firefox */
+}

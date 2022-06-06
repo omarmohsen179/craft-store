@@ -1,0 +1,8 @@
+.dx-datagrid-content .dx-datagrid-table .dx-row > td,
+.dx-datagrid-content .dx-datagrid-table .dx-row > tr > td {
+	vertical-align: middle;
+}
+
+.tableCell {
+	/* font-size: 20px; */
+}

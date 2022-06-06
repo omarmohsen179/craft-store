@@ -1,0 +1,12 @@
+.product-form-btn {
+  margin-left: auto;
+  border: 1px solid #d7dbe0;
+  background-color: transparent;
+  border-radius: 5px;
+  width: 34px;
+  height: 34px;
+  font-size: 15px;
+}
+.product-form-btn:hover {
+  background-color: #d1d5db;
+}

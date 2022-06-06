@@ -1,0 +1,13 @@
+.image-cover-style {
+  display: flex;
+  background-size: cover;
+  background-position: center right;
+  background-repeat: no-repeat;
+  display: flow-root;
+}
+.image-layer {
+  min-width: inherit;
+  min-height: inherit;
+  background-color: rgb(40 87 163 / 35%);
+  display: inherit;
+}

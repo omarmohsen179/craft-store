@@ -1,0 +1,19 @@
+.border-item {
+  border: 1px solid #ddd;
+  margin: 3px;
+  cursor: pointer;
+  border-radius: 5px;
+  width: 115px;
+  height: 80px;
+  background-color: white;
+  padding: 5px;
+  width: 120px;
+  transition: all 0.3s;
+}
+.border-item:hover {
+  padding: 0px;
+  background-color: transparent;
+}
+.main-category-container {
+  background-color: #e8e8e8;
+}

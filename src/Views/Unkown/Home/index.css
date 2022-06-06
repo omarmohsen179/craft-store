@@ -1,0 +1,99 @@
+.heroBlock {
+  background-size: cover;
+}
+.hor-slide .owl-prev,
+.hor-slide .owl-next {
+  color: #7e7e7e !important;
+  position: absolute;
+  top: 40%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px !important;
+  font-weight: 100 !important;
+  background-color: white !important;
+  border: 1px solid #7e7e7e !important;
+}
+.heroBlock .owl-prev,
+.heroBlock .owl-next {
+  color: #fffffffa !important;
+  position: absolute;
+  top: 41%;
+  width: 40px;
+  height: 40px;
+  font-size: 24px !important;
+  font-weight: 100 !important;
+  background-color: #000000a6 !important;
+  border: 1px solid #000000 !important;
+}
+.owl-prev,
+.owl-next {
+  transition: opacity 0.3s;
+  -webkit-transition: opacity 0.3s;
+  opacity: 0;
+}
+.owl-theme:hover .owl-prev,
+.owl-theme:hover .owl-next {
+  opacity: 1;
+}
+.owl-theme .owl-nav .disabled {
+  opacity: 0;
+  cursor: default;
+}
+.owl-theme {
+  max-width: 1320px !important;
+  margin: auto;
+}
+.nav-button {
+  align-self: flex-end;
+}
+.owl-prev {
+  left: 0;
+}
+
+.owl-next {
+  right: 0;
+}
+.section-title:after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  border-top: 1px solid #afafaf;
+  left: 0;
+  top: 50%;
+  z-index: 1;
+}
+.section-title {
+  clear: both;
+  position: relative;
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 40px;
+  font-size: 30px;
+  max-width: 1320px;
+  margin: auto;
+}
+.section-title span {
+  position: relative;
+  color: #afafaf;
+  background-color: #fff;
+  z-index: 2;
+}
+.max-width {
+  max-width: 1320px;
+  margin: auto;
+}
+#return-top-button {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  background-color: red;
+  color: white;
+  cursor: pointer;
+  padding: 8px 15px;
+  border-radius: 49%;
+}

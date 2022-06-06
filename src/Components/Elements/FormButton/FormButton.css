@@ -1,0 +1,26 @@
+.form-button-element {
+  border: 2px solid white;
+  padding: 9px 58px;
+  background-color: transparent;
+  color: white;
+  border-radius: 5px;
+  font-family: "Lato", Arial, Tahoma, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  width: 100%;
+  text-transform: uppercase;
+}
+.form-button-element:hover {
+  color: #607699;
+  background-color: white;
+  border: 2px solid transparent;
+  -webkit-transition: background-color 0.5s ease-out;
+  -moz-transition: background-color 0.5s ease-out;
+  -o-transition: background-color 0.5s ease-out;
+  transition: background-color 0.5s ease-out;
+}
+@media screen and (max-width: 1000px) {
+  .form-button-element {
+    padding: 2px 38px;
+  }
+}

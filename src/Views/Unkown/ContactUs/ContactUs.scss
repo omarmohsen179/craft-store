@@ -1,0 +1,160 @@
+:root {
+  --primary-color: #010712;
+  --secondary-color: #818386;
+  --bg-color: #fcfdfd;
+  --button-color: #3b3636;
+  --h1-color: #3f444c;
+}
+
+// [data-theme="dark"] {
+//   --primary-color: #fcfdfd;
+//   --secondary-color: #818386;
+//   --bg-color: #010712;
+//   --button-color: #818386;
+//   --h1-color: #fcfdfd;
+// }
+
+// * {
+//   margin: 0;
+//   box-sizing: border-box;
+//   transition: all 0.3s ease-in-out;
+// }
+.main-cont {
+  border-radius: 5px;
+  .contact-container {
+    display: flex;
+    width: 100%;
+    height: 67vh;
+    // background: var(--bg-color);
+  }
+
+  .left-col {
+    width: 45vw;
+    height: 100%;
+    background-image: url("https://images.pexels.com/photos/2520829/pexels-photo-2520829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    // background-image: url("https://images.pexels.com/photos/275033/pexels-photo-275033.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+  }
+
+  .right-col {
+    background: var(--bg-color);
+    width: 50vw;
+    height: 100%;
+    padding: 5rem 3.5rem;
+  }
+
+  h1,
+  label,
+  .description {
+    font-family: "Jost", sans-serif;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+  }
+
+  h1 {
+    color: var(--h1-color);
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    letter-spacing: 0.5rem;
+    font-weight: 300;
+  }
+
+  p {
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+    letter-spacing: 0.01rem;
+    width: 40vw;
+    margin: 0.25rem 0;
+  }
+
+  label,
+  .description {
+    color: var(--secondary-color);
+    text-transform: uppercase;
+    font-size: 0.625rem;
+  }
+
+  form {
+    width: 100%;
+    position: relative;
+    margin-top: 2rem;
+    padding: 1rem 0;
+  }
+
+  input,
+  textarea,
+  label {
+    width: 40vw;
+    display: block;
+  }
+
+  p,
+  placeholder,
+  input,
+  textarea {
+    font-family: "Helvetica Neue", sans-serif;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: var(--primary-color);
+  }
+
+  input,
+  textarea {
+    color: var(--primary-color);
+    font-weight: 500;
+    background: var(--bg-color);
+    border: none;
+    border-bottom: 1px solid var(--secondary-color);
+    padding: 0.5rem 0;
+    margin-bottom: 1rem;
+    outline: none;
+  }
+
+  textarea {
+    resize: none;
+  }
+
+  input:hover,
+  textarea:hover {
+    opacity: 0.5;
+  }
+
+  .description {
+    margin-left: 1.25rem;
+  }
+
+  #error,
+  #success-msg {
+    width: 40vw;
+    margin: 0.125rem 0;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-family: "Jost";
+    color: var(--secondary-color);
+  }
+
+  #success-msg {
+    transition-delay: 3s;
+  }
+
+  @media only screen and (max-width: 950px) {
+    h1 {
+      font-size: 1.75rem;
+    }
+    p {
+      font-size: 0.7rem;
+    }
+    input,
+    textarea {
+      font-size: 0.65rem;
+    }
+    .description {
+      font-size: 0.3rem;
+      margin-left: 0.4rem;
+    }
+  }
+}

@@ -1,0 +1,149 @@
+.shopping-cart {
+  max-width: 750px;
+  height: auto;
+  margin: 5em auto;
+  background: #fff;
+  box-shadow: 2px 2px 3px 4px rgb(0 0 0 / 10%);
+  border-radius: 0.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+/* item styling */
+.title {
+  height: 3.75em;
+  border-bottom: 1px solid #e1e8ee;
+  padding: 1.25em 1.75em;
+  color: #5e6977;
+  font-size: 1.125em;
+  font-weight: 400;
+}
+.item {
+  padding: 1.25em 1.75em;
+
+  display: flex;
+}
+.item:nth-child(3) {
+  border-top: 1px solid #e1e8ee;
+  border-bottom: 1px solid #e1e8ee;
+}
+
+.delete-btn,
+.like-btn {
+  display: inline-block;
+  cursor: pointer;
+}
+.delete-btn {
+  width: 18px;
+  height: 18px;
+  background: url("https://designmodo.com/demo/shopping-cart/delete-icn.svg")
+    no-repeat center;
+}
+.like-btn {
+  background: url("https://designmodo.com/demo/shopping-cart/twitter-heart.png");
+  width: 18px;
+  height: 18px;
+  background-size: 2900%;
+  background-repeat: no-repeat;
+}
+
+.is-active {
+  animation-name: animate;
+  animation-duration: 0.8s;
+  animation-iteration-count: 1;
+  animation-timing-function: steps(28);
+  animation-fill-mode: forwards;
+}
+@keyframes animate {
+  0% {
+    background-position: left;
+  }
+  50% {
+    background-position: right;
+  }
+  100% {
+    background-position: right;
+  }
+}
+
+.description {
+  padding-top: 10px;
+  margin-right: 60px;
+  width: 115px;
+}
+.description span {
+  display: block;
+  font-size: 1em;
+  color: #43484d;
+  font-weight: 400;
+}
+.description span:first-child {
+  margin-bottom: 5px;
+}
+.description span:last-child {
+  font-weight: 300;
+  margin-top: 8px;
+  color: #86939e;
+}
+
+.quantity {
+  padding-top: 20px;
+  margin-right: 60px;
+}
+.quantity input {
+  -webkit-appearance: none;
+  border: none;
+  text-align: center;
+  width: 32px;
+  font-size: 1em;
+  color: #43484d;
+  font-weight: 300;
+}
+
+.minus-btn img {
+  margin-bottom: 3px;
+}
+.plus-btn img {
+  margin-top: 2px;
+}
+
+.total-price {
+  width: 83px;
+  padding-top: 27px;
+  text-align: center;
+  font-size: 1em;
+  color: #43484d;
+  font-weight: 300;
+}
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+/* media queries */
+@media (max-width: 800px) {
+  .shopping-cart {
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+  }
+  .item {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .image img {
+    width: 50%;
+  }
+  .image,
+  .quantity,
+  .description {
+    width: 100%;
+    text-align: center;
+    margin: 6px 0;
+  }
+}
+.totals-item {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,166 @@
+:root {
+  --primary-color: #010712;
+  --secondary-color: #818386;
+  --bg-color: #fcfdfd;
+  --button-color: #3b3636;
+  --h1-color: #3f444c;
+}
+
+.main-cont {
+  border-radius: 5px;
+}
+
+.main-cont .contact-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  height: 67vh;
+  background: var(--bg-color);
+}
+
+.main-cont .left-col {
+  width: 45vw;
+  height: 100%;
+  background-image: url("https://images.pexels.com/photos/2520829/pexels-photo-2520829.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 5px;
+}
+
+.main-cont .right-col {
+  background: var(--bg-color);
+  width: 50vw;
+  height: 100%;
+  padding: 5rem 3.5rem;
+}
+
+.main-cont h1,
+.main-cont label,
+.main-cont .description {
+  font-family: "Jost", sans-serif;
+  font-weight: 400;
+  letter-spacing: 0.1rem;
+}
+
+.main-cont h1 {
+  color: var(--h1-color);
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  letter-spacing: 0.5rem;
+  font-weight: 300;
+}
+
+.main-cont p {
+  color: var(--secondary-color);
+  font-size: 0.9rem;
+  letter-spacing: 0.01rem;
+  width: 40vw;
+  margin: 0.25rem 0;
+}
+
+.main-cont label,
+.main-cont .description {
+  color: var(--secondary-color);
+  text-transform: uppercase;
+  font-size: 0.625rem;
+}
+
+.main-cont form {
+  width: 100%;
+  position: relative;
+  margin-top: 2rem;
+  padding: 1rem 0;
+}
+
+.main-cont input,
+.main-cont textarea,
+.main-cont label {
+  width: 40vw;
+  display: block;
+}
+
+.main-cont p,
+.main-cont placeholder,
+.main-cont input,
+.main-cont textarea {
+  font-family: "Helvetica Neue", sans-serif;
+}
+
+.main-cont input::-webkit-input-placeholder,
+.main-cont textarea::-webkit-input-placeholder {
+  color: var(--primary-color);
+}
+
+.main-cont input:-ms-input-placeholder,
+.main-cont textarea:-ms-input-placeholder {
+  color: var(--primary-color);
+}
+
+.main-cont input::-ms-input-placeholder,
+.main-cont textarea::-ms-input-placeholder {
+  color: var(--primary-color);
+}
+
+.main-cont input::placeholder,
+.main-cont textarea::placeholder {
+  color: var(--primary-color);
+}
+
+.main-cont input,
+.main-cont textarea {
+  color: var(--primary-color);
+  font-weight: 500;
+  background: var(--bg-color);
+  border: none;
+  border-bottom: 1px solid var(--secondary-color);
+  padding: 0.5rem 0;
+  margin-bottom: 1rem;
+  outline: none;
+}
+
+.main-cont textarea {
+  resize: none;
+}
+
+.main-cont input:hover,
+.main-cont textarea:hover {
+  opacity: 0.5;
+}
+
+.main-cont .description {
+  margin-left: 1.25rem;
+}
+
+.main-cont #error,
+.main-cont #success-msg {
+  width: 40vw;
+  margin: 0.125rem 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  font-family: "Jost";
+  color: var(--secondary-color);
+}
+
+.main-cont #success-msg {
+  -webkit-transition-delay: 3s;
+          transition-delay: 3s;
+}
+
+@media only screen and (max-width: 950px) {
+  .main-cont h1 {
+    font-size: 1.75rem;
+  }
+  .main-cont p {
+    font-size: 0.7rem;
+  }
+  .main-cont input,
+  .main-cont textarea {
+    font-size: 0.65rem;
+  }
+  .main-cont .description {
+    font-size: 0.3rem;
+    margin-left: 0.4rem;
+  }
+}
+/*# sourceMappingURL=ContactUs.css.map */
