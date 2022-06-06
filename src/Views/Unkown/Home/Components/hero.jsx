@@ -10,19 +10,19 @@ const AppHero = ({ t, i18n = {} }) => {
   const data = [
     {
       ImagePath:
-        "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/wysiwyg/banner-web.png",
+        "https://craft-store.ly/wp-content/uploads/2022/04/Artboard-1-8.png",
       Title: "here",
       Description: "here1",
     },
     {
       ImagePath:
-        "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/wysiwyg/Banners-Home/_-_-1.png",
+        "	https://craft-store.ly/wp-content/uploads/2022/04/Artboard-1-copy-4-8.png",
       Title: "here1",
       Description: "here1",
     },
     {
       ImagePath:
-        "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/wysiwyg/Banners-Home/Addrus-banner-for-ptech-website.PNG",
+        "	https://craft-store.ly/wp-content/uploads/2022/04/Artboard-1-copy-2-8.png",
       Title: "here1",
       Description: "here",
     },
@@ -46,10 +46,10 @@ const AppHero = ({ t, i18n = {} }) => {
           //stageclassName={"container owl-stage-outerx"}
 
           items={1}
-          autoplay={true}
+          // autoplay={true}
           className="owl-theme"
           loop
-          margin={20}
+          margin={90}
           nav
           navText={[
             "<i class='fas fa-angle-left'></i>",
@@ -57,7 +57,7 @@ const AppHero = ({ t, i18n = {} }) => {
           ]}
         >
           {data.map((ele, index) => (
-            <div key={index} style={{ maxHeight: "500px" }}>
+            <div key={index} style={{ maxHeight: "70vh", width: "100%" }}>
               <Image src={ele.ImagePath} />
             </div>
           ))}

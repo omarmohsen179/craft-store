@@ -40,8 +40,9 @@
   cursor: default;
 }
 .owl-theme {
-  max-width: 1320px !important;
-  margin: auto;
+  /* max-width: 1320px !important; */
+  width: 100%;
+  /* margin: auto; */
 }
 .nav-button {
   align-self: flex-end;

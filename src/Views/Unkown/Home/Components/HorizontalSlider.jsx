@@ -46,7 +46,7 @@ function HorizontalSlider() {
   ];
   const { t, i18n } = useTranslation();
   return (
-    <div className="hor-slide">
+    <div className="hor-slide max-width">
       <div>
         <TitleHeader title={t("New")} details={"Item"} shaded={"Trendy"} />
       </div>

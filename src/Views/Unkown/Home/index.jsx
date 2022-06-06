@@ -8,7 +8,8 @@ function Home() {
   return (
     <div>
       <AppHero />
-      <Post />
+
+      {/* <Post /> */}
       <HorizontalSlider />
       <CategoryList
         title="Categories"

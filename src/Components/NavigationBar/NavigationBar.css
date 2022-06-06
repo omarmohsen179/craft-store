@@ -134,7 +134,8 @@
   min-width: 100vw;
 }
 .active-page {
-  color: #5ba8dc;
+  color: #5a92f1;
+  /* color: #131f35; */
 }
 .logo-image {
   width: 200px;
@@ -215,6 +216,7 @@
 }
 .Horizontal-list {
   height: 20px;
+  margin-top: 20px;
 }
 
 @media screen and (min-width: 1400px) {
@@ -237,6 +239,8 @@
 #navbar {
   transition: all 0.5s ease;
   z-index: 10;
+  background-color: #131f35;
+  margin-bottom: 24px;
 }
 
 .down-nav {
@@ -290,10 +294,12 @@
   font-size: 14px;
   font-weight: bold;
   transition: color 0.5s ease;
+  color: black;
 }
 
 .text-color-hover:hover {
-  color: #5ba8dc;
+  /* color: #5ba8dc; */
+  color: #5a92f1;
   cursor: pointer;
 }
 @media screen and (min-width: 62em) {

@@ -220,7 +220,10 @@ function NavigationBar() {
                 <div className="hide-mobile ">
                   <img
                     onClick={() => history.push("/")}
-                    src={logo}
+                    // src={logo}
+                    src={
+                      "https://craft-store.ly/wp-content/uploads/2021/12/white-logo-1.png"
+                    }
                     className="logo-image"
                     alt="logo"
                   />
@@ -273,6 +276,7 @@ function NavigationBar() {
               display: "flex",
               justifyContent: "flex-end",
               alignSelf: "center",
+              color: "white",
             }}
           >
             <b className="hide-mobile">

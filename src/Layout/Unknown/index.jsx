@@ -29,9 +29,16 @@ function Unknown({ match }) {
       var navbarin = document.getElementById("nav-up-container-id");
       var mybutton = document.getElementById("return-top-button");
       var content = document.getElementsByClassName("dropdown-content");
+      var listElements = document.getElementsByClassName(
+        "Horizontal-list-elements"
+      );
       var sticky = navbar?.offsetTop;
       if (window.pageYOffset > sticky + 50) {
         navbar.classList.add("sticky");
+
+        for (var i = 0; i < listElements.length; i++) {
+          listElements[i].style.color = "white";
+        }
         for (var i = 0; i < content.length; i++) {
           content[i].classList.add("down-nav");
         }
@@ -39,6 +46,9 @@ function Unknown({ match }) {
         navbarin.classList.remove("nav-up-container");
       } else {
         navbar.classList.remove("sticky");
+        for (var i = 0; i < listElements.length; i++) {
+          listElements[i].style.color = "black";
+        }
         mybutton.style.display = "none";
         for (var i = 0; i < content.length; i++) {
           content[i].classList.remove("down-nav");
@@ -51,9 +61,7 @@ function Unknown({ match }) {
     <div>
       <ScrollTop />
 
-      <div className="header">
-        <LangueNavBar />
-      </div>
+      <div className="header">{/* <LangueNavBar /> */}</div>
       <div id="navbar">
         <NavigationBar />
       </div>

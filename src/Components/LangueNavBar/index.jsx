@@ -8,7 +8,8 @@ function LangueNavBar() {
       className="hide-mobile"
       style={{
         height: 38,
-        backgroundColor: "#5ba8dc",
+        // backgroundColor: "#5ba8dc",
+        backgroundColor: "#131f35",
         color: "white",
         padding: "8px 0",
         direction: i18n.language === "en" ? "ltr" : "rtl",
