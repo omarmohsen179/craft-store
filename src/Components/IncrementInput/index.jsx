@@ -4,9 +4,8 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "./index.css";
 import { theme } from "../../styles/constant";
-function IncrementInput({ name, setvalues, value, handleChange }) {
+function IncrementInput({ name, setValues, value, handleChange }) {
   const { t, i18n } = useTranslation();
-  useEffect(() => {}, []);
 
   return (
     <div className="product-count">
@@ -14,7 +13,7 @@ function IncrementInput({ name, setvalues, value, handleChange }) {
         <div
           className="qtyminus noselect"
           style={{ backgroundColor: theme }}
-          onClick={() => setvalues(value - 1)}
+          onClick={() => setValues(value - 1)}
         >
           -
         </div>
@@ -24,10 +23,10 @@ function IncrementInput({ name, setvalues, value, handleChange }) {
           value={value}
           onChange={handleChange}
           className="qty"
-          style={{ border: "1px solid " + theme }}
+          style={{ border: "1px solid " + theme, textAlign: "center" }}
         />
         <div
-          onClick={() => setvalues(value + 1)}
+          onClick={() => setValues(value + 1)}
           style={{ backgroundColor: theme }}
           className="qtyplus noselect"
         >

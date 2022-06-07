@@ -98,3 +98,43 @@
   padding: 8px 15px;
   border-radius: 49%;
 }
+
+/* ********** Categories ********** */
+
+.categories-cont {
+  width: 83%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+
+  #card {
+    background-color: white;
+    width: 300px;
+    height: 198px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 10px;
+    cursor: pointer;
+    &:hover {
+      opacity: 80%;
+    }
+
+    img {
+      width: 40%;
+      transition: 0.2s ease-in-out;
+      &:hover {
+        transform: scale(0.9);
+      }
+    }
+    label {
+      margin-top: 5px;
+      font-size: 20px;
+      font-family: "Almarai", sans-serif;
+    }
+  }
+}

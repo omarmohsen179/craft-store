@@ -302,7 +302,7 @@ function NavigationBar() {
                   onClick={() => history.push("/cart")}
                   className=" padding-icons-class  text-color-hover fa-solid fa-cart-arrow-down"
                 ></i>
-                <span className="badge" style={{ backgroundColor: theme }}>
+                <span className="badge" style={{ backgroundColor: "red" }}>
                   3
                 </span>
               </a>
@@ -311,7 +311,7 @@ function NavigationBar() {
                   onClick={() => history.push("/dashboard")}
                   className=" padding-icons-class  text-color-hover fas fa-circle-user"
                 ></i>
-                <span className="badge" style={{ backgroundColor: theme }}>
+                <span className="badge" style={{ backgroundColor: "red" }}>
                   3
                 </span>
               </a>

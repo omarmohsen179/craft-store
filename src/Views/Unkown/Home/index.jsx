@@ -1,9 +1,10 @@
 import React from "react";
 import CategoryList from "../../../Components/CategoriesList";
+import CategoriesSection from "./Components/CatgoriesSection";
 import AppHero from "./Components/hero";
 import HorizontalSlider from "./Components/HorizontalSlider";
 import Post from "./Components/post";
-import "./index.css";
+import "./index.scss";
 function Home() {
   return (
     <div>
@@ -11,10 +12,11 @@ function Home() {
 
       {/* <Post /> */}
       <HorizontalSlider />
-      <CategoryList
+      <CategoriesSection />
+      {/* <CategoryList
         title="Categories"
         style={{ padding: "10%", margin: "111px 0" }}
-      />
+      /> */}
     </div>
   );
 }

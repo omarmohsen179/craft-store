@@ -134,7 +134,7 @@
   min-width: 100vw;
 }
 .active-page {
-  color: #5a92f1;
+  color: red;
   /* color: #131f35; */
 }
 .logo-image {
@@ -295,6 +295,9 @@
   font-weight: bold;
   transition: color 0.5s ease;
   color: black;
+}
+.Horizontal-list-elements:focus {
+  color: #5a92f1;
 }
 
 .text-color-hover:hover {
@@ -509,4 +512,11 @@
 .close-search-input:hover {
   -ms-transform: rotate(20deg); /* IE 9 */
   transform: rotate(20deg);
+}
+
+.black-color {
+  color: black;
+}
+.white-color {
+  color: white;
 }

@@ -29,6 +29,9 @@ function Unknown({ match }) {
       var navbarin = document.getElementById("nav-up-container-id");
       var mybutton = document.getElementById("return-top-button");
       var content = document.getElementsByClassName("dropdown-content");
+      // var listElements = document.getElementsByClassName(
+      //   "Horizontal-list  remove-dot"
+      // );
       var listElements = document.getElementsByClassName(
         "Horizontal-list-elements"
       );
@@ -37,7 +40,8 @@ function Unknown({ match }) {
         navbar.classList.add("sticky");
 
         for (var i = 0; i < listElements.length; i++) {
-          listElements[i].style.color = "white";
+          listElements[i].classList.add("white-color");
+          listElements[i].classList.remove("black-color");
         }
         for (var i = 0; i < content.length; i++) {
           content[i].classList.add("down-nav");
@@ -47,7 +51,8 @@ function Unknown({ match }) {
       } else {
         navbar.classList.remove("sticky");
         for (var i = 0; i < listElements.length; i++) {
-          listElements[i].style.color = "black";
+          listElements[i].classList.add("black-color");
+          listElements[i].classList.remove("white-color");
         }
         mybutton.style.display = "none";
         for (var i = 0; i < content.length; i++) {
