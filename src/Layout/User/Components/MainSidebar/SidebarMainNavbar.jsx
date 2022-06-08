@@ -29,7 +29,9 @@ const SidebarMainNavbar = () => {
               className="d-inline-block align-top mr-1"
               style={{ maxWidth: "150px" }}
               onClick={() => history.push("/home")}
-              src={require("../../../../Assets/logomain.png")}
+              src={
+                "https://craft-store.ly/wp-content/uploads/2021/12/white-logo-1.png"
+              }
               alt="Shards Dashboard"
             />
           </div>
