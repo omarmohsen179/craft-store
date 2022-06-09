@@ -14,13 +14,13 @@ function Footer2() {
       route: "/",
     },
 
-    {
-      icon: "fas fa-newspaper",
-      name: "Blogs ",
-      route: "/blogs",
-    },
+    // {
+    //   icon: "fas fa-newspaper",
+    //   name: "Blogs ",
+    //   route: "/blogs",
+    // },
 
-    { icon: "fas fa-address-card", name: "About", route: "/gallery" },
+    { icon: "fas fa-address-card", name: "Contact Us", route: "/contact-us" },
   ]);
   let social = useRef([
     { type: "facebook" },
@@ -81,13 +81,16 @@ function Footer2() {
                 text ever since the 1500s
               </p>
               <p>
-                <i className="fa fa-location-arrow"></i> 9878/25 sec 9 rohini 35{" "}
+                <i style={{ color: "red" }} className="fas fa-location-dot"></i>{" "}
+                Misrata , Libya – The third road{" "}
               </p>
               <p>
-                <i className="fa fa-phone"></i> +91-9999878398{" "}
+                <i style={{ color: "red" }} className="fa fa-phone"></i> Line 1:
+                (+218) 91 5787875{" "}
               </p>
               <p>
-                <i className="fa fa fa-envelope"></i> info@example.com{" "}
+                <i style={{ color: "red" }} className="fa fa fa-envelope"></i>{" "}
+                info@craft-store.ly{" "}
               </p>
             </div>
 
@@ -153,7 +156,10 @@ function Footer2() {
               </li>
             ))}
           </ul>
-          <p className="text-center">Copyright @2017 </p>
+          <p className="text-center">
+            © <span style={{ color: "red" }}>Craft-store</span> – All Rights
+            Reserved 2021
+          </p>
 
           <ul className="social_footer_ul">
             <li>

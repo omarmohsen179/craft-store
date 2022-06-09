@@ -15,7 +15,7 @@ const ButtonComponent = ({
     <button
       type={type}
       onClick={onClick}
-      style={{ backgroundColor: theme }}
+      style={{ backgroundColor: theme, borderRadius: 5 }}
       className="site-button-component"
       disabled={disable || loading}
     >

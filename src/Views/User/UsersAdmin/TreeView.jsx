@@ -12,21 +12,25 @@ import TreeList, {
 } from "devextreme-react/tree-list";
 import { Popup } from "devextreme-react/popup";
 import ListForm from "./ListForm";
+import ButtonComponent from "../../../Components/ButtonComponent";
 
 const expandedRowKeys = [1];
 
-function TreeView({ data, FormComponent }) {
+function TreeView({
+  categoryData,
+  productsData,
+  allowAdding = true,
+  allowUpdating = true,
+  allowDeleting = true,
+}) {
   const [clicked, setClicked] = useState(false);
-  const [dataRow, setDataRow] = useState(null);
 
-  const handleChange = useCallback((e) => {
-    setDataRow(e.row.data);
-    setClicked(true);
-  }, []);
+  function handleSubmit() {}
+
   return (
     <TreeList
       id="employees"
-      dataSource={data}
+      dataSource={categoryData}
       rootValue={-1}
       defaultExpandedRowKeys={expandedRowKeys}
       showRowLines={true}
@@ -35,15 +39,17 @@ function TreeView({ data, FormComponent }) {
       keyExpr="ID"
       parentIdExpr="Head_ID"
     >
+      <SearchPanel visible={true} />
+
       <Editing
         mode="row"
-        allowAdding={true}
-        allowUpdating={true}
-        allowDeleting={true}
+        allowAdding={allowAdding}
+        allowUpdating={allowUpdating}
+        allowDeleting={allowDeleting}
         useIcons
       />
       <Column dataField="Title" caption="Categories" />
-      <Column type="buttons" width={110}>
+      <Column type="buttons" width={120}>
         <Button name="add" />
         <Button name="edit" />
         <Button name="delete" />
@@ -52,7 +58,7 @@ function TreeView({ data, FormComponent }) {
           icon="edit"
           visible={true}
           disabled={false}
-          onClick={(e) => handleChange(e)}
+          onClick={() => setClicked(true)}
         />
       </Column>
 
@@ -61,8 +67,25 @@ function TreeView({ data, FormComponent }) {
           title="Select Products"
           visible={clicked}
           onHiding={() => setClicked(false)}
+          width={"50%"}
         >
-          <ListForm />
+          <ListForm productsData={productsData} />
+          <div
+            style={{
+              width: "95%",
+              position: "absolute",
+              left: "0",
+              right: "0",
+              bottom: "5%",
+              margin: "0 auto",
+            }}
+          >
+            <ButtonComponent
+              onClick={handleSubmit}
+              type="submit"
+              title={"Submit"}
+            />
+          </div>
         </Popup>
       )}
     </TreeList>

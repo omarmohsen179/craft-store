@@ -1,41 +1,73 @@
-import React, { useState } from "react";
-import SelectBox from "devextreme-react/select-box";
-import List from "devextreme-react/list";
+import React, { useEffect, useState } from "react";
 
-import ArrayStore from "devextreme/data/array_store";
+import { request } from "../../../Service/CallAPI";
+import ButtonComponent from "../../../Components/ButtonComponent";
+
+import DataGrid, {
+  Column,
+  Selection,
+  FilterRow,
+  Paging,
+  SearchPanel,
+} from "devextreme-react/data-grid";
+import { SelectBox } from "devextreme-react/select-box";
+import themes from "devextreme/ui/themes";
 
 function ListForm() {
-  const dataSource = new ArrayStore({
-    key: "id",
-    data: [
-      { id: 1, text: "Prepare 2016 Financial" },
-      { id: 2, text: "Prepare 2016 Marketing Plan" },
-      { id: 3, text: "Update Personnel Files" },
-      {
-        id: 4,
-        text: "Review Health Insurance Options Under the Affordable Care Act",
+  const [dataSource, setDataSource] = useState([]);
+
+  const [selectedItems, setSelectedItems] = useState([]);
+  console.log(selectedItems);
+
+  const ITEMS = async (e) => {
+    return await request({
+      method: "post",
+      url: "/SearchAboutItems",
+      data: {
+        ItemNumber: "1",
+        ItemName: "",
+        SearchName: "",
+        clas: "",
+        qunt: 0,
+        state: 0,
+        sno_id: 0,
+        msdar: "",
+        addres: "",
+        code_no: "",
+        m_no: 0,
+        emp_id: 0,
+        typ_id: 0,
+        skip: 0,
+        take: 20,
+        FilterQuery: "",
       },
-      { id: 5, text: "New Brochures" },
-      { id: 6, text: "2016 Brochure Designs" },
-      { id: 7, text: "Brochure Design Review" },
-      { id: 8, text: "Website Re-Design Plan" },
-      { id: 9, text: "Rollout of New Website and Marketing Brochures" },
-      { id: 10, text: "Create 2012 Sales Report" },
-    ],
-  });
+    });
+  };
+  useEffect(() => {
+    ITEMS()
+      .then((res) => setDataSource(res.data))
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
-    <div className="widget-container">
-      <List
-        dataSource={dataSource}
-        height={400}
-        showSelectionControls={true}
-        selectionMode={"all"}
-        selectAllMode={"page"}
-        // selectedItemKeys={this.state.selectedItemKeys}
-        // onOptionChanged={this.onSelectedItemKeysChange}
-      ></List>
-    </div>
+    <DataGrid
+      dataSource={dataSource}
+      keyExpr="id"
+      showBorders={true}
+      onSelectionChanged={(e) => setSelectedItems(e.selectedRowsData)}
+      height={"85%"}
+      pager={false}
+      scrolling
+    >
+      <Selection
+        mode="multiple"
+        selectAllMode={"allPages"}
+        showCheckBoxesMode={"always"}
+      />
+      <SearchPanel visible={true} />
+
+      <Column dataField="e_name" caption="Name" />
+    </DataGrid>
   );
 }
 

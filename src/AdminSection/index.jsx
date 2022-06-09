@@ -8,7 +8,7 @@ import REQUEST from "../Service/Request";
 import ControlsTable from "../Views/User/Products/Products/Copmponents/ControlsTable/ControlsTable";
 
 export default function AdminSection({
-  data,
+  data = [],
   component: Component,
   colAttributes = [],
   controller,
@@ -26,15 +26,15 @@ export default function AdminSection({
   useEffect(() => {
     if (data) {
       data.map((item) => {
-        if (item["Image"] && !item["Image"].includes(ApiBaseUrl)) {
-          item["Image"] = `${ApiBaseUrl}${item["Image"]}`;
+        if (item["image_path"] && !item["image_path"].includes(ApiBaseUrl)) {
+          item["image_path"] = `${ApiBaseUrl}${item["image_path"]}`;
         }
         return item;
       });
       setRecords([...data]);
     }
   }, [data]);
-
+  console.log(records);
   // Internal Updates
   const updateRowHandle = useCallback((e) => {
     setItemToUpdate(e.data);
@@ -97,12 +97,8 @@ export default function AdminSection({
         }
       }
       formData = new FormData();
-
+      console.log(data);
       formData.append("image", data.image);
-      formData.append(
-        "data",
-        JSON.stringify({ title: "tit", text: "ddd", data: [1, 2, 3, 4] })
-      );
       let config = {
         // method: status === "ADD" ? "POST" : "PUT",
         method: status === "ADD" ? "POST" : "POST",

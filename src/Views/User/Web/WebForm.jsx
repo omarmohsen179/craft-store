@@ -7,10 +7,8 @@ import { ApiBaseUrl } from "../../../Service/config";
 const CategoryForm = ({ onSubmit, onCancel, data }) => {
   const { t } = useTranslation();
   const [imageValue, setImageValue] = useState({
-    images: "",
+    image: "",
   });
-
-  const [images, setImages] = useState(imageValue);
 
   // const isNotValid = useMemo(() => {
   //   let keysToCheck = ["Title"];
@@ -34,18 +32,18 @@ const CategoryForm = ({ onSubmit, onCancel, data }) => {
   // submit form
 
   const addHandle = useCallback(() => {
-    onSubmit(images);
-  }, [images, onSubmit]);
+    onSubmit(imageValue);
+  }, [imageValue, onSubmit]);
 
   let handleGetImages = (event) => {
     let files = event.target.files;
-    setImages({ ...images, images: files[0] });
+    setImageValue({ ...imageValue, image: files[0] });
   };
 
   let handleRemoveImage = useCallback(() => {
-    setImages((prev) => ({
+    setImageValue((prev) => ({
       ...prev,
-      images: "",
+      image: "",
     }));
   }, []);
   return (
@@ -59,11 +57,11 @@ const CategoryForm = ({ onSubmit, onCancel, data }) => {
             handleGetImages={handleGetImages}
             handleRemoveImage={handleRemoveImage}
             imagesFiles={
-              images.images
+              imageValue.image
                 ? [
-                    typeof images.images == "string"
-                      ? ApiBaseUrl + images.images
-                      : images.images,
+                    typeof imageValue.image == "string"
+                      ? ApiBaseUrl + imageValue.image
+                      : imageValue.image,
                   ]
                 : []
             }
@@ -80,7 +78,7 @@ const CategoryForm = ({ onSubmit, onCancel, data }) => {
             images.images
               ? [
                   typeof images.images == "string"
-                    ? ApiBaseUrl + category.images
+                    ? ApiBaseUrl1 + category.images
                     : category.images,
                 ]
               : []
