@@ -21,9 +21,10 @@
 
 .sub-button {
   color: white;
-  background-color: #5ba8dc;
+  background-color: #131f35;
   border-radius: 24px;
   padding: 0 35px;
+  text-align: center;
 
   margin: 5px;
   height: 45px;

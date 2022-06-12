@@ -8,7 +8,7 @@ import SelectInput from "../../../Components/SelectInput";
 import TitleHeader from "../../../Components/TitleHeader";
 import { theme } from "../../../styles/constant";
 
-import "./index.css";
+import "./index.scss";
 function Product() {
   const { t, i18n } = useTranslation();
   let history = useHistory();

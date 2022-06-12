@@ -1,0 +1,267 @@
+.check-out-cont {
+  .shop.checkout {
+    padding: 0;
+    background: #fff;
+    padding-top: 20px;
+    padding-bottom: 50px;
+  }
+  .shop.checkout .checkout-form {
+    margin-top: 30px;
+  }
+  .shop.checkout .checkout-form h2 {
+    font-size: 25px;
+    color: #333;
+    font-weight: 700;
+    line-height: 27px;
+  }
+  .shop.checkout .checkout-form p {
+    font-size: 16px;
+    color: #333;
+    font-weight: 400;
+    margin-top: 12px;
+    margin-bottom: 30px;
+  }
+  .shop.checkout .form {
+  }
+  .shop.checkout .form .form-group {
+    margin-bottom: 25px;
+  }
+  .shop.checkout .form .form-group label {
+    color: #333;
+    position: relative;
+  }
+  .shop.checkout .form .form-group label span {
+    color: #ff2c18;
+    display: inline-block;
+    position: absolute;
+    right: -12px;
+    top: 4px;
+    font-size: 16px;
+  }
+  .shop.checkout .form .form-group input {
+    width: 100%;
+    height: 45px;
+    line-height: 50px;
+    padding: 0 20px;
+    border-radius: 3px;
+    border-radius: 0px;
+    color: #333 !important;
+    border: none;
+    background: #f6f7fb;
+    border: 1px solid #e4e7ea;
+    // border-radius: 5px;
+  }
+  .shop.checkout .form .form-group input:hover {
+  }
+  .shop.checkout .nice-select {
+    width: 100%;
+    height: 45px;
+    line-height: 50px;
+    margin-bottom: 25px;
+    background: #f6f7fb;
+    border-radius: 0px;
+    border: none;
+  }
+  .shop.checkout .nice-select .list {
+    width: 100%;
+    height: 300px;
+    overflow: scroll;
+  }
+  .shop.checkout .nice-select .list li {
+  }
+  .shop.checkout .nice-select .list li.option {
+    color: #333;
+  }
+  .shop.checkout .nice-select .list li.option:hover {
+    background: #f6f7fb;
+    color: #333;
+  }
+  .shop.checkout .form .address input {
+    margin-bottom: 15px;
+  }
+  .shop.checkout .form .address input:last-child {
+    margin: 0;
+  }
+  .shop.checkout .form .create-account {
+    margin: 0;
+  }
+  .shop.checkout .form .create-account input {
+    width: auto;
+    display: inline-block;
+    height: auto;
+    border-radius: 100%;
+    margin-right: 3px;
+  }
+  .shop.checkout .form .create-account label {
+    display: inline-block;
+    margin: 0;
+  }
+  .shop.checkout .order-details {
+    margin-top: 30px;
+    background: #fff;
+    padding: 15px 0 30px 0;
+    border: 1px solid #eee;
+  }
+  .shop.checkout .single-widget {
+    margin-bottom: 30px;
+  }
+  .shop.checkout .single-widget:last-child {
+    margin: 0;
+  }
+  .shop.checkout .single-widget h2 {
+    position: relative;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 10px 30px;
+    line-height: 24px;
+    text-transform: uppercase;
+    color: #333;
+    padding-bottom: 5px;
+  }
+  .shop.checkout .single-widget h2:before {
+    position: absolute;
+    content: "";
+    left: 30px;
+    bottom: 0;
+    height: 2px;
+    width: 50px;
+    background: red;
+  }
+  .shop.checkout .single-widget .content ul {
+    margin-top: 30px;
+  }
+  .shop.checkout .single-widget .content ul li {
+    display: block;
+    padding: 0px 30px;
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+    margin-bottom: 12px;
+  }
+  .shop.checkout .single-widget .content ul li span {
+    display: inline-block;
+    float: right;
+  }
+  .shop.checkout .single-widget .content ul li.last {
+    padding-top: 12px;
+    border-top: 1px solid #d1d1d1;
+    // border-top: 1px solid #ebebeb;
+    display: block;
+    font-size: 15px;
+    font-weight: 400;
+    color: #333;
+  }
+  .shop.checkout .single-widget .checkbox {
+    text-align: left;
+    margin: 0;
+    padding: 0px 30px;
+    margin-top: 30px;
+  }
+  .shop.checkout .single-widget .checkbox label {
+    color: #555555;
+    position: relative;
+    font-size: 14px;
+    padding-left: 20px;
+    margin-top: -5px;
+    font-weight: 400;
+    display: block;
+    margin-bottom: 15px;
+  }
+  .shop.checkout .single-widget .checkbox label:last-child {
+    margin-bottom: 0;
+  }
+  .shop.checkout .single-widget .checkbox label:hover {
+    cursor: pointer;
+  }
+  .shop.checkout .single-widget .checkbox label input {
+    display: none;
+  }
+  .shop.checkout .single-widget .checkbox label::before {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 7px;
+    width: 12px;
+    height: 12px;
+    line-height: 16px;
+    border: 1px solid #666;
+    border-radius: 100%;
+  }
+  .shop.checkout .single-widget .checkbox label::after {
+    position: absolute;
+    content: "";
+    left: 0;
+    top: 7px;
+    width: 12px;
+    height: 12px;
+    line-height: 16px;
+    border-radius: 100%;
+    display: block;
+    background: #666;
+    transform: scale(0);
+    -webkit-transition: all 0.4s ease;
+    -moz-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+  }
+  .shop.checkout .single-widget .checkbox label.checked::after {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+  }
+  .shop.checkout .single-widget.payement {
+    padding: 0px 38px;
+    text-align: center;
+    margin-top: 30px;
+  }
+  .shop.checkout .single-widget.get-button {
+    text-align: center;
+    padding: 0px 35px;
+  }
+  .shop.checkout .single-widget.get-button .btn {
+    height: 46px;
+    width: 100%;
+    line-height: 19px;
+    text-align: center;
+    border-radius: 0;
+    text-transform: uppercase;
+    color: #fff;
+  }
+  .shop-services.section {
+    padding: 80px 0 0px 0;
+    background: #fff;
+  }
+  .shop-services.home {
+    padding: 60px 0;
+    background: #f6f7fb;
+  }
+  .shop-services .single-service {
+    position: relative;
+    padding-left: 65px;
+  }
+  .shop-services .single-service i {
+    height: 50px;
+    width: 50px;
+    line-height: 50px;
+    text-align: center;
+    color: #333;
+    background: transparent;
+    border-radius: 100%;
+    display: block;
+    font-size: 32px;
+    position: absolute;
+    left: 0;
+    top: 0;
+  }
+  .shop-services .single-service h4 {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    line-height: 22px;
+    color: #333;
+  }
+  .shop-services .single-service p {
+    color: #898989;
+    line-height: 28px;
+    font-size: 14px;
+  }
+}

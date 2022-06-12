@@ -14,6 +14,10 @@ export default function AdminSection({
   controller,
   productId,
   allowEdit = "false",
+  allowReordering = false,
+  onDragChange,
+  onReorder,
+  showDragIcons,
 }) {
   let history = useHistory();
 
@@ -193,6 +197,10 @@ export default function AdminSection({
         onAddButtonClicked={() => setStatus("ADD")}
         onRowClick={allowEdit === "true" && updateRowHandle}
         onRowRemoving={deleteItem}
+        allowReordering={allowReordering}
+        onReorder={onReorder}
+        onDragChange={onDragChange}
+        showDragIcons={showDragIcons}
       />
       {showForm && (
         <Component

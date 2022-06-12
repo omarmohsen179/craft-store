@@ -13,6 +13,7 @@ import TreeList, {
 import { Popup } from "devextreme-react/popup";
 import ListForm from "./ListForm";
 import ButtonComponent from "../../../Components/ButtonComponent";
+import { RowDragging } from "devextreme-react/data-grid";
 
 const expandedRowKeys = [1];
 
@@ -20,8 +21,11 @@ function TreeView({
   categoryData,
   productsData,
   allowAdding = true,
+  allowReordering = false,
   allowUpdating = true,
   allowDeleting = true,
+  onReorder,
+  onDragChange,
 }) {
   const [clicked, setClicked] = useState(false);
 
@@ -40,7 +44,13 @@ function TreeView({
       parentIdExpr="Head_ID"
     >
       <SearchPanel visible={true} />
-
+      <RowDragging
+        onDragChange={onDragChange}
+        onReorder={onReorder}
+        allowReordering={allowReordering}
+        showDragIcons={true}
+        allowDropInsideItem={true}
+      />
       <Editing
         mode="row"
         allowAdding={allowAdding}
@@ -67,7 +77,7 @@ function TreeView({
           title="Select Products"
           visible={clicked}
           onHiding={() => setClicked(false)}
-          width={"50%"}
+          width={"80%"}
         >
           <ListForm productsData={productsData} />
           <div

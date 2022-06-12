@@ -297,12 +297,11 @@
   color: black;
 }
 .Horizontal-list-elements:focus {
-  color: #5a92f1;
+  /* color: blue; */
 }
 
 .text-color-hover:hover {
-  /* color: #5ba8dc; */
-  color: #5a92f1;
+  color: none;
   cursor: pointer;
 }
 @media screen and (min-width: 62em) {

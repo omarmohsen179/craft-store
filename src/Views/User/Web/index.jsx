@@ -7,11 +7,20 @@ import WebForm from "./WebForm";
 
 import CrudTable from "../../../Components/CrudTable/CrudTable";
 import { ApiBaseUrl } from "../../../Service/config";
+import DataGrid, {
+  Column,
+  RowDragging,
+  Scrolling,
+  Lookup,
+  Sorting,
+} from "devextreme-react/data-grid";
+import ButtonComponent from "../../../Components/ButtonComponent";
 
 function Web() {
   const { t } = useTranslation();
 
-  const [sliderImages, setSliderImages] = useState([]);
+  const [sliderImages, setSliderImages] = useState();
+  console.log(sliderImages);
 
   const sliderImagesColAttributes = useMemo(() => {
     return [
@@ -42,6 +51,20 @@ function Web() {
     });
   }, []);
 
+  function onReorder(e) {
+    const visibleRows = e.component.getVisibleRows();
+    const sortedData = [...sliderImages];
+    const toIndex = sortedData.indexOf(visibleRows[e.toIndex].data);
+    const fromIndex = sortedData.indexOf(e.itemData);
+
+    sortedData.splice(fromIndex, 1);
+    sortedData.splice(toIndex, 0, e.itemData);
+
+    setSliderImages(sortedData);
+  }
+
+  const [editing, setEditing] = useState(true);
+
   return (
     <div className="content" style={{ padding: 20 }}>
       <Card className="card-user">
@@ -51,38 +74,22 @@ function Web() {
         <CardBody>
           <AdminSection
             allowEdit="false"
+            // Drag and Drop
+            allowReordering={true}
+            showDragIcons={true}
+            onReorder={(e) => {
+              onReorder(e);
+              setEditing(false);
+            }}
+            //////////////////
             data={sliderImages}
             component={WebForm}
             colAttributes={sliderImagesColAttributes}
             controller={ApiBaseUrl + "/api/home_slider"}
           />
-
-          {/* <CrudTable
-            data={sliderImages}
-            setData={setSliderImages}
-            // onRowRemoving={(event) => (event.cancel = true)}
-            colAttributes={sliderImagesColAttributes}
-            FormComponent={WebForm}
-          /> */}
-
-          {/* <ControlsTable
-            dataSource={sliderImages}
-            colAttributes={sliderImagesColAttributes}
-          /> */}
-
-          {/* <DataGrid
-            id="gridContainer"
-            dataSource={sliderImages}
-            // keyExpr="ID"
-            showBorders={true}
-          >
-            <Column
-              dataField="Picture"
-              width={"100%"}
-              allowSorting={false}
-              cellRender={cellRender}
-            />
-          </DataGrid> */}
+          <div style={{ marginTop: 40 }}>
+            <ButtonComponent loading={editing} title={"Submit"} />
+          </div>
         </CardBody>
       </Card>
     </div>

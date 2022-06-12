@@ -221,9 +221,7 @@ function NavigationBar() {
                   <img
                     onClick={() => history.push("/")}
                     // src={logo}
-                    src={
-                      "https://craft-store.ly/wp-content/uploads/2021/12/white-logo-1.png"
-                    }
+                    src="https://craft-store.ly/wp-content/uploads/2021/12/white-logo-1.png"
                     className="logo-image"
                     alt="logo"
                   />
@@ -239,7 +237,7 @@ function NavigationBar() {
               <img
                 alt="logo"
                 onClick={() => history.push("/")}
-                src={logo}
+                src="https://craft-store.ly/wp-content/uploads/2021/12/white-logo-1.png"
                 className="logo-image"
               />
             </div>
@@ -314,6 +312,12 @@ function NavigationBar() {
                 <span className="badge" style={{ backgroundColor: "red" }}>
                   3
                 </span>
+              </a>
+              <a className="notification">
+                <i
+                  onClick={() => history.push("/whish-list")}
+                  className=" padding-icons-class  text-color-hover fas fa-heart"
+                ></i>
               </a>
             </div>
           </div>

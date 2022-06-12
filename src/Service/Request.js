@@ -6,7 +6,7 @@ import { ApiBaseUrl } from "./config";
  */
 
 export const client = axios.create({
-  baseURL: ApiBaseUrl + "api/",
+  baseURL: ApiBaseUrl + "/api/",
 });
 
 /**

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   Column,
@@ -9,6 +9,7 @@ import {
   Scrolling,
   Editing,
   ColumnChooser,
+  RowDragging,
 } from "devextreme-react/data-grid";
 import "./Table.css";
 import "jspdf-autotable";
@@ -26,6 +27,7 @@ const ControlsTable = ({
   allowUpdate = false,
   allowDelete = true,
   columnChooser = false,
+  allowReordering = false,
   onAddButtonClicked,
   onRowRemoving,
   onRowClick,
@@ -33,10 +35,15 @@ const ControlsTable = ({
   onRowDoubleClick,
   onRowInserting,
   onSaving,
+  onReorder,
+  onDragChange,
+  showDragIcons = true,
 }) => {
   function cellRender(data) {
     return <img style={{ width: "20%" }} src={data.value} alt="" />;
   }
+
+  const [tasks, setTasks] = useState({});
 
   return (
     <>
@@ -62,6 +69,13 @@ const ControlsTable = ({
         onRowClick={onRowClick}
         onSaving={onSaving}
       >
+        <RowDragging
+          onDragChange={onDragChange}
+          onReorder={onReorder}
+          allowReordering={allowReordering}
+          showDragIcons={showDragIcons}
+          allowDropInsideItem={true}
+        />
         <ColumnChooser enabled={columnChooser} />
         <FilterRow visible={filterRow} />
         <HeaderFilter visible={headerFilter} />

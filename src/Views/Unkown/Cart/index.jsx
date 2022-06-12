@@ -1,6 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
 import { useTranslation } from "react-i18next";
+import { useHistory } from "react-router-dom";
+
 import ButtonComponent from "../../../Components/ButtonComponent";
 import IncrementInput from "../../../Components/IncrementInput";
 import "./index.scss";
@@ -61,6 +63,8 @@ function Cart(props) {
   let tax = 0;
   let count = 0;
   data.map((el) => count++);
+
+  let history = useHistory();
 
   return (
     <>
@@ -165,7 +169,11 @@ function Cart(props) {
                           <button class="btn btn-outline-secondary">
                             <i class="fa fa-refresh"></i> Update cart
                           </button>
-                          <button type="submit" class="btn btn-primary">
+                          <button
+                            onClick={() => history.push("/check-out")}
+                            type="submit"
+                            class="btn btn-primary"
+                          >
                             Proceed to checkout{" "}
                             <i class="fa fa-chevron-right"></i>
                           </button>

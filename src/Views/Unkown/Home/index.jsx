@@ -3,14 +3,16 @@ import CategoryList from "../../../Components/CategoriesList";
 import CategoriesSection from "./Components/CatgoriesSection";
 import AppHero from "./Components/hero";
 import HorizontalSlider from "./Components/HorizontalSlider";
+import MarqueeSlider from "./Components/MarqueeSlider";
 import Post from "./Components/post";
 import "./index.scss";
 function Home() {
   return (
-    <div>
+    <div className="home-cont">
       <AppHero />
 
       {/* <Post /> */}
+      <MarqueeSlider />
       <HorizontalSlider />
       <CategoriesSection />
       {/* <CategoryList

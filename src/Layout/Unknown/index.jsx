@@ -20,6 +20,8 @@ import CreateAccount from "../../Views/Auth/CreateAccount";
 import ResetPassword from "../../Views/Auth/ResetPassword";
 import EmailConfirmation from "../../Views/Auth/Confirm";
 import ContactUs from "../../Views/Unkown/ContactUs";
+import CheckOut from "../../Views/Unkown/Cart/CheckOut/CheckOut";
+import WhishList from "../../Views/Unkown/Cart/WhishList/WhishList";
 
 function Unknown({ match }) {
   useEffect(() => (window.onscroll = onScroll), []);
@@ -94,6 +96,8 @@ function Unknown({ match }) {
           <Route path={`${match.url}item`} component={Product} />
           <Route path={`${match.url}blogs`} component={Blogs} />
           <Route path={`${match.url}cart`} component={Cart} />
+          <Route path={`${match.url}check-out`} component={CheckOut} />
+          <Route path={`${match.url}whish-list`} component={WhishList} />
           <Route
             path={`${match.url}create-account`}
             component={CreateAccount}

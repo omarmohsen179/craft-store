@@ -39,7 +39,7 @@ function Footer2() {
       style={{
         backgroundImage:
           "url(" +
-          "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/wysiwyg/Banners-Home/_-_-1.png" +
+          "https://images.unsplash.com/photo-1496115898806-2b023a9dcb6b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTl8fG5pa2V8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" +
           ")",
         zIndex: "1",
         color: text,
