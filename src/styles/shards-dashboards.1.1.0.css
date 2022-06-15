@@ -5490,7 +5490,7 @@ i.material-icons {
   top: 0;
   position: fixed;
   height: calc(100vh);
-  background: #fff;
+  background: #131f35;
   z-index: 1070;
   will-change: transform;
   transition: transform 200ms ease-in-out;
@@ -5555,7 +5555,7 @@ i.material-icons {
 .main-sidebar .nav .nav-item .nav-link {
   border-bottom: 1px solid #e1e5eb;
   font-weight: 400;
-  color: #3d5170;
+  color: white;
   padding: 0.9375rem 1.5625rem;
 }
 .main-sidebar .nav .nav-item .nav-link i {

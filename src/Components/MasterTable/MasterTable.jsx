@@ -37,6 +37,7 @@ import {
   Texts,
   Button,
   Export,
+  Selection,
 } from "devextreme-react/data-grid";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -102,6 +103,8 @@ function MasterTable({
   apiKey,
   allowSelectAllMode = true,
   onFilterValuesChange,
+  showCheckBoxesMode = "none",
+  cellRender,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -211,6 +214,11 @@ function MasterTable({
         remoteOperations={remoteOperations}
         sorting={remoteOperations ? false : true}
       >
+        <Selection
+          mode="multiple"
+          // selectAllMode={"allPages"}
+          showCheckBoxesMode={showCheckBoxesMode}
+        />
         <ColumnChooser enabled={columnChooser} />
         <FilterRow visible={filterRow} />
         <HeaderFilter visible={headerFilter} />
@@ -267,6 +275,7 @@ function MasterTable({
                 onFilterValuesChange={onFilterValuesChange}
                 allowFiltering={col.HideFilter ? false : true}
                 calculateCellValue={col.calculateCellValueHandle}
+                cellRender={cellRender}
                 // width={
                 //     col.widthRatio
                 //         ? `${col.widthRatio}px`

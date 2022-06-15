@@ -11,6 +11,8 @@ import {
   auth_loggedin,
   userLogin,
 } from "../../../Store/AuthReducer";
+import SocialMediaAuth from "../../../Components/SocialMediaAuth/SocialMediaAuth";
+
 function Login() {
   const { t, i18n } = useTranslation();
   const defualtvalues = useRef({
@@ -45,6 +47,7 @@ function Login() {
       })
     );
   };
+
   return (
     <LoginTemplate
       fist={{ rout: "/forget-password", text: "Forgot password?" }}
@@ -93,6 +96,7 @@ function Login() {
             loading={loading}
           />
         </form>
+        <SocialMediaAuth />
       </div>
     </LoginTemplate>
   );

@@ -13,15 +13,15 @@ const SidebarMainNavbar = () => {
   }
   const history = useHistory();
   return (
-    <div className="main-navbar">
+    <div style={{ borderBottom: "1px solid white" }} className="main-navbar">
       <Navbar
-        className="align-items-stretch bg-white flex-md-nowrap border-bottom p-0"
+        className="align-items-stretch flex-md-nowrap border-bottom p-0"
         type="light"
       >
         <NavbarBrand
           className="w-100 mr-0"
           href="#"
-          style={{ lineHeight: "25px" }}
+          style={{ lineHeight: "25px", backgroundColor: "#131f35" }}
         >
           <div className="d-table m-auto">
             <img
@@ -38,6 +38,7 @@ const SidebarMainNavbar = () => {
         </NavbarBrand>
         {/* eslint-disable-next-line */}
         <a
+          style={{ backgroundColor: "white" }}
           className="toggle-sidebar d-sm-inline d-md-none d-lg-none"
           onClick={handleClick}
         >

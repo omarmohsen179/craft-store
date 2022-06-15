@@ -1,15 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Image from "../Image";
 import "./index.css";
-function ProductCard({ ele, style = {} }) {
+function ProductCard({ ele, style = {}, whish = false }) {
   let history = useHistory();
+
+  const [clicked, setClicked] = useState(true);
+  function removeFromWhishList() {
+    setClicked(!clicked);
+  }
+
   return (
-    <div
-      onClick={() => history.push("/item?I=1")}
-      style={style}
-      className="post-card card"
-    >
+    <div style={style} className="post-card card">
       <div
         style={{
           height: "300px",
@@ -17,22 +19,32 @@ function ProductCard({ ele, style = {} }) {
           justifyContent: "center",
           width: "100%",
         }}
+        onClick={() => history.push("/item?I=1")}
       >
         <Image src={ele.image} />
       </div>
       <div className="post-card-option">
         <div className="product-icons">
-          <i className=" fa-solid fa-solid fa-heart"></i>
+          <i
+            style={{ color: whish && clicked && "red" }}
+            onClick={removeFromWhishList}
+            className=" fas fa-heart"
+          ></i>
         </div>
-        <div className="product-icons">
+        {/* <div className="product-icons">
           <i className="fa-solid fa-arrows-rotate"></i>
-        </div>
+        </div> */}
         <div className="product-icons">
           <i className="fa-solid fa-cart-arrow-down"></i>
         </div>
       </div>
       <div className="product-details">
-        <p className="product-title text-color-hover">{ele.title}</p>
+        <p
+          onClick={() => history.push("/item?I=1")}
+          className="product-title text-color-hover"
+        >
+          {ele.title}
+        </p>
 
         <div>
           <span className="fa fa-star checked"></span>

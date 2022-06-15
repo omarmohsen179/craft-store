@@ -218,7 +218,11 @@
       padding: 0 !important;
       margin: 0 !important;
     }
-
+    .my_img {
+      max-width: 100%;
+      min-width: 100%;
+      margin: auto;
+    }
     .piclist li {
       min-width: 80px;
     }
@@ -723,5 +727,19 @@
 
   .sq_box span.wishlist i:hover {
     color: #fd7f34;
+  }
+}
+
+@media (max-width: 580px) {
+  .my_img {
+    max-width: 100%;
+    min-width: 100%;
+    margin: auto;
+  }
+  .images-list {
+    width: 20px;
+  }
+  .piclist {
+    width: 50%;
   }
 }

@@ -5,18 +5,19 @@ import { BiImageAdd } from "react-icons/bi";
 import { useTranslation } from "react-i18next";
 
 const UploadImageButton = ({
-  isMultiple,
+  isMultiple = true,
   handleGetImages,
   handleRemoveImage,
   handleRemoveAllImages,
   imagesFiles,
   required = false,
+  height = "20px",
 }) => {
   const { t, i18n } = useTranslation();
   const fileInput = useRef();
 
   return (
-    <div className="col-12 ">
+    <div className="col-12 " style={{ height: height }}>
       <div
         className="inputField"
         style={{
@@ -47,7 +48,11 @@ const UploadImageButton = ({
           </button>
 
           {imagesFiles.length > 0 ? (
-            <span className="clearAllOption" onClick={handleRemoveAllImages}>
+            <span
+              style={{ cursor: "pointer" }}
+              className="clearAllOption"
+              onClick={handleRemoveAllImages}
+            >
               {isMultiple ? t("Clear All?") : ""}
             </span>
           ) : (

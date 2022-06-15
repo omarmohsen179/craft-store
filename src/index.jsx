@@ -8,6 +8,7 @@ import "./index.css";
 import reportWebVitals from "./reportWebVitals";
 import { LanguageProvider } from "./Service/LanguageContext";
 import configureStore from "./Store/ConfigureStore";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 
 const container = document.getElementById("root");
 const root = createRoot(container);
@@ -15,7 +16,9 @@ root.render(
   <Provider store={configureStore()}>
     <HashRouter>
       <LanguageProvider>
-        <App />
+        <GoogleOAuthProvider clientId="1065784582815-2fgc88hkgbbnvvoejgpfi95haks23tos.apps.googleusercontent.com">
+          <App />
+        </GoogleOAuthProvider>
       </LanguageProvider>
     </HashRouter>
   </Provider>

@@ -9,6 +9,7 @@ import { useTranslation } from "react-i18next";
 import CategoryList from "../CategoriesList";
 import { theme } from "../../styles/constant";
 import SearchFormPopup from "./Components/SearchFormPopup";
+import CategoriesSection from "../../Views/Unkown/Home/Components/CatgoriesSection";
 function NavigationBar() {
   const location = useLocation();
   let history = useHistory();
@@ -20,22 +21,28 @@ function NavigationBar() {
       route: "/",
     },
 
-    {
-      icon: "fas fa-newspaper",
-      name: "Blogs",
-      route: "/blogs",
-    },
+    // {
+    //   icon: "fas fa-newspaper",
+    //   name: "Blogs",
+    //   route: "/blogs",
+    // },
     {
       icon: "fas fa-code-branch",
       name: "Categories",
       route: "/#cat",
       dropdown: () => (
-        <CategoryList
+        // <CategoryList
+        //   style={{
+        //     width: "100%",
+        //     height: "100%",
+        //     padding: "20px",
+        //     backgroundColor: "white",
+        //   }}
+        // />
+        <CategoriesSection
           style={{
-            width: "100%",
-            height: "100%",
-            padding: "20px",
-            backgroundColor: "white",
+            // card style
+            width: "12%",
           }}
         />
       ),
@@ -103,7 +110,7 @@ function NavigationBar() {
     });
   }, [window]);
   const getRoutes = useCallback(() => {
-    console.log(location.pathname);
+    // console.log(location.pathname);
     return pages.current.filter((ele) => location.pathname === ele.route)[0];
   }, [location.pathname]);
   useEffect(() => {
@@ -217,7 +224,7 @@ function NavigationBar() {
                   ></i>
                 </div>
 
-                <div className="hide-mobile ">
+                <div className="hide-mobile">
                   <img
                     onClick={() => history.push("/")}
                     // src={logo}
@@ -233,7 +240,10 @@ function NavigationBar() {
             className="col-4"
             style={{ alignItems: "center", alignSelf: "center" }}
           >
-            <div className="hide-web" style={{ justifyContent: "center" }}>
+            <div
+              className="hide-web hide-img" // hide-img: hide site logo on mobile < 400px
+              style={{ justifyContent: "center" }}
+            >
               <img
                 alt="logo"
                 onClick={() => history.push("/")}
@@ -327,7 +337,7 @@ function NavigationBar() {
           <ul
             style={{
               float: i18n.language === "en" ? "left" : "right",
-              width: "36%",
+              width: "30%",
             }}
             className="Horizontal-list  remove-dot"
           >

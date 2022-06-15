@@ -1,7 +1,8 @@
 import React from "react";
 import TitleHeader from "../../../../Components/TitleHeader";
+import CategoryCard from "./CategoryCard";
 
-function CategoriesSection({ image }) {
+function CategoriesSection({ image, style }) {
   const data = [
     {
       image: "	https://craft-store.ly/wp-content/uploads/2021/09/006-drone.png",
@@ -39,12 +40,7 @@ function CategoriesSection({ image }) {
     <div style={{ marginTop: 10 }}>
       <TitleHeader title="Categories" />
       <div className="categories-cont">
-        {data.map((el) => (
-          <div id="card">
-            <img src={el.image} alt="pic"></img>
-            <label>{el.title}</label>
-          </div>
-        ))}
+        <CategoryCard style={style} data={data} />
       </div>
     </div>
   );

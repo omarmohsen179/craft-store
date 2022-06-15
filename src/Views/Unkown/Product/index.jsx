@@ -87,7 +87,7 @@ function Product() {
               ))}
             </div>
 
-            <div className="display-selected-image col-lg-10  col-md-12  col-sm-12  ">
+            <div className="display-selected-image col-lg-10  col-md-12  col-sm-12  res-img">
               <img
                 className={"my_img "}
                 src={

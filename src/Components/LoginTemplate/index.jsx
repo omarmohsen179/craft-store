@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-
 import "./style.css";
+
 function LoginTemplate({
   fist = { rout: "", text: "" },
   second = { rout: "", text: "" },
@@ -11,6 +11,7 @@ function LoginTemplate({
 }) {
   const { t, i18n } = useTranslation();
   let history = useHistory();
+
   return (
     <div
       className="login-container"

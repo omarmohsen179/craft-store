@@ -519,3 +519,9 @@
 .white-color {
   color: white;
 }
+
+@media screen and (max-width: 405px) {
+  .hide-img {
+    display: none;
+  }
+}

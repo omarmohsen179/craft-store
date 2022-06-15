@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import TreeList, {
   RemoteOperations,
@@ -14,6 +14,11 @@ import { Popup } from "devextreme-react/popup";
 import ListForm from "./ListForm";
 import ButtonComponent from "../../../Components/ButtonComponent";
 import { RowDragging } from "devextreme-react/data-grid";
+import { request } from "../../../Service/CallAPI";
+import { ApiBaseUrl } from "../../../Service/config";
+import REQUEST from "../../../Service/Request";
+import { selectedItems } from "./Api";
+import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
 
 const expandedRowKeys = [1];
 
@@ -26,22 +31,53 @@ function TreeView({
   allowDeleting = true,
   onReorder,
   onDragChange,
+  // handleSave,
+  ColAttributes = [],
+  onRowInserting,
+  handleDelete,
+  handleEdit,
 }) {
   const [clicked, setClicked] = useState(false);
+  const [categoryId, setCategoryId] = useState("");
+  const [selectedItemsFinal, setSelectedItemsFinal] = useState([]);
 
-  function handleSubmit() {}
+  function handleSubmit() {
+    selectedItems(categoryId, selectedItemsFinal).then((res) =>
+      console.log(res)
+    );
+  }
+
+  const [images, setimages] = useState([]);
+  let handleGetImages = (event) => {
+    let files = event.target.files;
+    setimages((prevState) => {
+      return [...prevState, ...files];
+    });
+  };
+
+  let handleRemoveImage = (element) => {
+    setimages((prevState) => prevState.filter((ele) => ele !== element));
+  };
+
+  let handleRemoveAllImages = () => {
+    setimages([]);
+  };
 
   return (
     <TreeList
-      id="employees"
       dataSource={categoryData}
       rootValue={-1}
       defaultExpandedRowKeys={expandedRowKeys}
       showRowLines={true}
       showBorders={true}
       columnAutoWidth={true}
-      keyExpr="ID"
-      parentIdExpr="Head_ID"
+      keyExpr="Id"
+      parentIdExpr="parent"
+      // onSaving={handleSave}
+      onRowInserting={onRowInserting}
+      onRowClick={(e) => console.log(e)}
+      onRowRemoving={(e) => handleDelete(e.data.Id)}
+      onRowUpdating={(e) => handleEdit(e)}
     >
       <SearchPanel visible={true} />
       <RowDragging
@@ -50,6 +86,7 @@ function TreeView({
         allowReordering={allowReordering}
         showDragIcons={true}
         allowDropInsideItem={true}
+        // onAdd={handleSave}
       />
       <Editing
         mode="row"
@@ -58,17 +95,23 @@ function TreeView({
         allowDeleting={allowDeleting}
         useIcons
       />
-      <Column dataField="Title" caption="Categories" />
+      {ColAttributes?.map((ele) => (
+        <Column dataField={ele.field} caption={ele.caption} />
+      ))}
+
       <Column type="buttons" width={120}>
         <Button name="add" />
         <Button name="edit" />
         <Button name="delete" />
         <Button
-          hint="Clone"
-          icon="edit"
+          hint="Add Products"
+          icon="checklist"
           visible={true}
           disabled={false}
-          onClick={() => setClicked(true)}
+          onClick={(e) => {
+            setCategoryId(e.row.data.Id);
+            setClicked(true);
+          }}
         />
       </Column>
 
@@ -79,7 +122,12 @@ function TreeView({
           onHiding={() => setClicked(false)}
           width={"80%"}
         >
-          <ListForm productsData={productsData} />
+          <ListForm
+            selectedItemsFinal={selectedItemsFinal}
+            setSelectedItemsFinal={setSelectedItemsFinal}
+            productsData={productsData}
+          />
+
           <div
             style={{
               width: "95%",

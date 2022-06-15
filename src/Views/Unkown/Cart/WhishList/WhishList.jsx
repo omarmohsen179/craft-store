@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import ProductCard from "../../../../Components/ProductCard";
 import "./WhishList.scss";
 
@@ -42,6 +42,12 @@ function WhishList() {
       price: 1234,
     },
   ];
+
+  // const [clicked, setClicked] = useState(true);
+  // function removeFromWhishList() {
+  //   setClicked(!clicked);
+  // }
+
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Whish List</h1>
@@ -51,7 +57,12 @@ function WhishList() {
             className="col-lg-3 col-md-6 col-sm-12 pt-md-4 pt-3"
             style={{ minWidth: "300px" }}
           >
-            <ProductCard ele={ele} />
+            <ProductCard
+              ele={ele}
+              whish={true}
+              // clicked={clicked}
+              // removeFromWhishList={removeFromWhishList}
+            />
           </div>
         ))}
       </div>

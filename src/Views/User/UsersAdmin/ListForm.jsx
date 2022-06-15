@@ -7,65 +7,68 @@ import DataGrid, {
   Column,
   Selection,
   SearchPanel,
+  Button,
 } from "devextreme-react/data-grid";
 
 import LoadingAnimation from "../../../Components/LoadingAnimation/LoadingAnimation";
+import { ITEMS } from "./Api";
+import AppHero from "../../Unkown/Home/Components/hero";
+import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
+import { ApiBaseUrl } from "../../../Service/config";
+import MasterTable from "../../../Components/MasterTable/MasterTable";
 
-function ListForm() {
+function ListForm({ selectedItemsFinal, setSelectedItemsFinal }) {
   const [dataSource, setDataSource] = useState();
 
   const [selectedItems, setSelectedItems] = useState([]);
   console.log(selectedItems);
-
-  const ITEMS = async (e) => {
-    return await request({
-      method: "post",
-      url: "/SearchAboutItems",
-      data: {
-        ItemNumber: "1",
-        ItemName: "",
-        SearchName: "",
-        clas: "",
-        qunt: 0,
-        state: 0,
-        sno_id: 0,
-        msdar: "",
-        addres: "",
-        code_no: "",
-        m_no: 0,
-        emp_id: 0,
-        typ_id: 0,
-        skip: 0,
-        take: 20,
-        FilterQuery: "",
-      },
+  console.log(selectedItemsFinal);
+  let handleGetImages = (event) => {
+    let files = event.target.files;
+    setimages((prevState) => {
+      return [...prevState, ...files];
     });
   };
+
+  const [images, setimages] = useState([]);
+  let handleRemoveImage = (element) => {
+    setimages((prevState) => prevState.filter((ele) => ele !== element));
+  };
+
+  let handleRemoveAllImages = () => {
+    setimages([]);
+  };
   useEffect(() => {
+    setSelectedItemsFinal(selectedItems.map((el) => el.id));
+  }, [selectedItems]);
+
+  useEffect(() => {
+    // Get items
     ITEMS()
       .then((res) => setDataSource(res.data))
       .catch((err) => console.log(err));
   }, []);
 
-  return dataSource ? (
-    <DataGrid
-      dataSource={dataSource}
-      keyExpr="id"
-      showBorders={true}
-      onSelectionChanged={(e) => setSelectedItems(e.selectedRowsData)}
-      height={"85%"}
-      pager={false}
-      scrolling
-    >
-      <Selection
-        mode="multiple"
-        selectAllMode={"allPages"}
-        showCheckBoxesMode={"always"}
-      />
-      <SearchPanel visible={true} />
+  function cellRender(data) {
+    return <AppHero />;
+  }
 
-      <Column dataField="e_name" caption="Name" />
-    </DataGrid>
+  return dataSource ? (
+    <MasterTable
+      dataSource={dataSource}
+      colAttributes={[
+        {
+          field: "name",
+          caption: "Name",
+          alignment: "center",
+        },
+        {
+          field: "name_en",
+          caption: "Name (EN)",
+          alignment: "center",
+        },
+      ]}
+    ></MasterTable>
   ) : (
     <LoadingAnimation />
   );
