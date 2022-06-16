@@ -3,6 +3,7 @@ import { AiFillCloseCircle } from "react-icons/ai";
 import { BiImageAdd } from "react-icons/bi";
 
 import { useTranslation } from "react-i18next";
+import ButtonComponent from "../ButtonComponent";
 
 const UploadImageButton = ({
   isMultiple = true,
@@ -11,7 +12,8 @@ const UploadImageButton = ({
   handleRemoveAllImages,
   imagesFiles,
   required = false,
-  height = "20px",
+  height = "auto",
+  showImages = true,
 }) => {
   const { t, i18n } = useTranslation();
   const fileInput = useRef();
@@ -60,7 +62,7 @@ const UploadImageButton = ({
           )}
         </div>
 
-        {imagesFiles.length > 0 && (
+        {showImages && imagesFiles.length > 0 && (
           <div
             style={{
               display: "flex",

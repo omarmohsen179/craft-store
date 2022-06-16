@@ -3,7 +3,7 @@ import { Card, CardBody, CardHeader } from "shards-react";
 import CrudTable from "../../../Components/CrudTable/CrudTable";
 import { useTranslation } from "react-i18next";
 
-import TreeTable from "./TreeTable";
+// import TreeTable from "./TreeTable";
 import TreeView from "./TreeView";
 import ButtonComponent from "../../../Components/ButtonComponent";
 import { ApiBaseUrl } from "../../../Service/config";

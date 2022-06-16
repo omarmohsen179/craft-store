@@ -38,6 +38,7 @@ import {
   Button,
   Export,
   Selection,
+  SearchPanel,
 } from "devextreme-react/data-grid";
 import { jsPDF } from "jspdf";
 import "jspdf-autotable";
@@ -105,6 +106,8 @@ function MasterTable({
   onFilterValuesChange,
   showCheckBoxesMode = "none",
   cellRender,
+  searchPanel = true,
+  children,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -199,10 +202,10 @@ function MasterTable({
         columnAutoWidth={true}
         allowColumnResizing={true}
         wordWrapEnabled={true}
-        selection={{
-          mode: selectionMode,
-          allowSelectAll: allowSelectAllMode,
-        }}
+        // selection={{
+        //   mode: selectionMode,
+        //   allowSelectAll: allowSelectAllMode,
+        // }}
         onSelectionChanged={onSelectionChanged}
         onRowRemoving={onRowRemoving}
         onRowRemoved={onRowRemoved}
@@ -214,11 +217,9 @@ function MasterTable({
         remoteOperations={remoteOperations}
         sorting={remoteOperations ? false : true}
       >
-        <Selection
-          mode="multiple"
-          // selectAllMode={"allPages"}
-          showCheckBoxesMode={showCheckBoxesMode}
-        />
+        <Selection mode="multiple" showCheckBoxesMode={showCheckBoxesMode} />
+
+        <SearchPanel visible={searchPanel} />
         <ColumnChooser enabled={columnChooser} />
         <FilterRow visible={filterRow} />
         <HeaderFilter visible={headerFilter} />
@@ -242,7 +243,7 @@ function MasterTable({
             confirmDeleteMessage={t(deleteMessage)}
           />
         </Editing>
-        <Scrolling mode="virtual" rowRenderingMode="virtual" />
+        {/* <Scrolling mode="virtual" rowRenderingMode="virtual" /> */}
         <Paging enabled={true} />
         <Paging defaultPageSize={pageSize} />
         <Pager
@@ -275,7 +276,8 @@ function MasterTable({
                 onFilterValuesChange={onFilterValuesChange}
                 allowFiltering={col.HideFilter ? false : true}
                 calculateCellValue={col.calculateCellValueHandle}
-                cellRender={cellRender}
+                cellRender={col.cellRender}
+                width={col.width}
                 // width={
                 //     col.widthRatio
                 //         ? `${col.widthRatio}px`
@@ -284,6 +286,8 @@ function MasterTable({
               />
             );
           })}
+
+        {children}
         <Export enabled={allowExcel} allowExportSelectedData={true} />
 
         <Summary recalculateWhileEditing={true}>

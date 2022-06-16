@@ -19,6 +19,7 @@ import { ApiBaseUrl } from "../../../Service/config";
 import REQUEST from "../../../Service/Request";
 import { selectedItems } from "./Api";
 import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
+import "./style.css";
 
 const expandedRowKeys = [1];
 
@@ -125,7 +126,7 @@ function TreeView({
           <ListForm
             selectedItemsFinal={selectedItemsFinal}
             setSelectedItemsFinal={setSelectedItemsFinal}
-            productsData={productsData}
+            // productsData={productsData}
           />
 
           <div

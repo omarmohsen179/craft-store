@@ -16,6 +16,7 @@ import AppHero from "../../Unkown/Home/Components/hero";
 import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
 import { ApiBaseUrl } from "../../../Service/config";
 import MasterTable from "../../../Components/MasterTable/MasterTable";
+import TableSlider from "./components/TableSlider";
 
 function ListForm({ selectedItemsFinal, setSelectedItemsFinal }) {
   const [dataSource, setDataSource] = useState();
@@ -50,25 +51,58 @@ function ListForm({ selectedItemsFinal, setSelectedItemsFinal }) {
   }, []);
 
   function cellRender(data) {
-    return <AppHero />;
+    return <TableSlider />;
   }
+
+  const colAttributes = [
+    {
+      field: "item_name",
+      caption: "Name",
+      // alignment: "center",
+    },
+    {
+      field: "e_name",
+      caption: "Name (EN)",
+      // alignment: "center",
+    },
+
+    {
+      field: "image",
+      caption: "Images",
+      cellRender: cellRender,
+      width: 400,
+      alignment: "center",
+    },
+  ];
 
   return dataSource ? (
     <MasterTable
       dataSource={dataSource}
-      colAttributes={[
-        {
-          field: "name",
-          caption: "Name",
-          alignment: "center",
-        },
-        {
-          field: "name_en",
-          caption: "Name (EN)",
-          alignment: "center",
-        },
-      ]}
-    ></MasterTable>
+      colAttributes={colAttributes}
+      height={"80%"}
+      columnChooser={false}
+      showCheckBoxesMode={"always"}
+      onSelectionChanged={(e) => setSelectedItems(e.selectedRowsData)}
+    >
+      <Column width={200} type="buttons" caption="Upload Images">
+        <Button>
+          <UploadImageButton
+            isMultiple={true}
+            handleGetImages={(e) => handleGetImages(e)}
+            handleRemoveImage={handleRemoveImage}
+            handleRemoveAllImages={handleRemoveAllImages}
+            showImages={false}
+            imagesFiles={
+              images
+                ? images.map((da) => {
+                    return typeof da === "string" ? ApiBaseUrl + da : da;
+                  })
+                : []
+            }
+          />
+        </Button>
+      </Column>
+    </MasterTable>
   ) : (
     <LoadingAnimation />
   );
