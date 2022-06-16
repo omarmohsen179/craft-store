@@ -11,33 +11,56 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 
 import LoadingAnimation from "../../../Components/LoadingAnimation/LoadingAnimation";
-import { ITEMS } from "./Api";
+import { ITEMS, uploadImageList } from "./Api";
 import AppHero from "../../Unkown/Home/Components/hero";
 import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
 import { ApiBaseUrl } from "../../../Service/config";
 import MasterTable from "../../../Components/MasterTable/MasterTable";
 import TableSlider from "./components/TableSlider";
+import REQUEST from "../../../Service/Request";
 
-function ListForm({ selectedItemsFinal, setSelectedItemsFinal }) {
+function ListForm({
+  selectedItemsFinal,
+  setSelectedItemsFinal,
+  alreadySelectedItems,
+}) {
   const [dataSource, setDataSource] = useState();
 
   const [selectedItems, setSelectedItems] = useState([]);
   console.log(selectedItems);
   console.log(selectedItemsFinal);
-  let handleGetImages = (event) => {
-    let files = event.target.files;
-    setimages((prevState) => {
+
+  console.log("already", alreadySelectedItems);
+
+  const [images, setImages] = useState([]);
+
+  let handleGetImages = (e, ex) => {
+    console.log(e);
+    console.log(ex);
+
+    let files = e.target.files;
+    const id = ex.data.data.id;
+    const data = [...files];
+    setImages((prevState) => {
       return [...prevState, ...files];
     });
+
+    let formData = new FormData();
+    if (data && data.length > 0) {
+      for (var i = 0; i < data.length; i++) {
+        formData.append("files", data[i]);
+      }
+    }
+
+    uploadImageList(formData, id).then((res) => console.log(res));
   };
 
-  const [images, setimages] = useState([]);
-  let handleRemoveImage = (element) => {
-    setimages((prevState) => prevState.filter((ele) => ele !== element));
-  };
+  // let handleRemoveImage = (element) => {
+  //   setImages((prevState) => prevState.filter((ele) => ele !== element));
+  // };
 
   let handleRemoveAllImages = () => {
-    setimages([]);
+    setImages([]);
   };
   useEffect(() => {
     setSelectedItemsFinal(selectedItems.map((el) => el.id));
@@ -45,9 +68,7 @@ function ListForm({ selectedItemsFinal, setSelectedItemsFinal }) {
 
   useEffect(() => {
     // Get items
-    ITEMS()
-      .then((res) => setDataSource(res.data))
-      .catch((err) => console.log(err));
+    ITEMS().then((res) => setDataSource(res.data));
   }, []);
 
   function cellRender(data) {
@@ -83,24 +104,29 @@ function ListForm({ selectedItemsFinal, setSelectedItemsFinal }) {
       columnChooser={false}
       showCheckBoxesMode={"always"}
       onSelectionChanged={(e) => setSelectedItems(e.selectedRowsData)}
+      // onSelectionChanged={(e) => console.log(e)}
+      keyExpr="id"
+      selectedRowKeys={alreadySelectedItems}
     >
       <Column width={200} type="buttons" caption="Upload Images">
-        <Button>
-          <UploadImageButton
-            isMultiple={true}
-            handleGetImages={(e) => handleGetImages(e)}
-            handleRemoveImage={handleRemoveImage}
-            handleRemoveAllImages={handleRemoveAllImages}
-            showImages={false}
-            imagesFiles={
-              images
-                ? images.map((da) => {
-                    return typeof da === "string" ? ApiBaseUrl + da : da;
-                  })
-                : []
-            }
-          />
-        </Button>
+        <Button
+          component={(ex) => (
+            <UploadImageButton
+              isMultiple={true}
+              handleGetImages={(e) => handleGetImages(e, ex)}
+              // handleRemoveImage={handleRemoveImage}
+              handleRemoveAllImages={handleRemoveAllImages}
+              showImages={false}
+              imagesFiles={
+                images
+                  ? images.map((da) => {
+                      return typeof da === "string" ? ApiBaseUrl + da : da;
+                    })
+                  : []
+              }
+            />
+          )}
+        ></Button>
       </Column>
     </MasterTable>
   ) : (

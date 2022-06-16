@@ -37,7 +37,7 @@ export const ITEMS = async (e) => {
       take: 20,
       FilterQuery: "",
     },
-  });
+  }).catch((err) => console.log(err));
 };
 export const GetCategories = async (e) => {
   return await REQUEST({
@@ -81,5 +81,12 @@ export const selectedItems = async (categoryId, selectedItemsFinal) => {
     method: "PUT",
     url: `category/items/${categoryId}`,
     data: selectedItemsFinal,
+  }).catch((err) => console.log(err));
+};
+export const uploadImageList = async (formData, id) => {
+  return await REQUEST({
+    method: "POST",
+    url: `item_images/${id}`,
+    data: formData,
   }).catch((err) => console.log(err));
 };

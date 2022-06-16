@@ -177,8 +177,8 @@ function UsersAdmin() {
 
   // const { t } = useTranslation();
 
+  // Get Categories //
   useEffect(() => {
-    // Get Categories
     GetCategories().then((response) => {
       setCategoryData([...response]);
     });

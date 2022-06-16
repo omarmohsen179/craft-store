@@ -329,6 +329,12 @@ function NavigationBar() {
                   className=" padding-icons-class  text-color-hover fas fa-heart"
                 ></i>
               </a>
+              <a className="notification">
+                <i
+                  onClick={() => history.push("/orders")}
+                  className=" padding-icons-class  text-color-hover fas fa-cart-flatbed"
+                ></i>
+              </a>
             </div>
           </div>
         </div>

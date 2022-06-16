@@ -41,6 +41,8 @@ function TreeView({
   const [clicked, setClicked] = useState(false);
   const [categoryId, setCategoryId] = useState("");
   const [selectedItemsFinal, setSelectedItemsFinal] = useState([]);
+  const [alreadySelectedItems, setAlreadySelectedItems] = useState([]);
+  console.log(alreadySelectedItems);
 
   function handleSubmit() {
     selectedItems(categoryId, selectedItemsFinal).then((res) =>
@@ -112,6 +114,8 @@ function TreeView({
           onClick={(e) => {
             setCategoryId(e.row.data.Id);
             setClicked(true);
+            setAlreadySelectedItems(e.row.data.items);
+            console.log(e);
           }}
         />
       </Column>
@@ -126,6 +130,7 @@ function TreeView({
           <ListForm
             selectedItemsFinal={selectedItemsFinal}
             setSelectedItemsFinal={setSelectedItemsFinal}
+            alreadySelectedItems={alreadySelectedItems}
             // productsData={productsData}
           />
 

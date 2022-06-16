@@ -108,6 +108,8 @@ function MasterTable({
   cellRender,
   searchPanel = true,
   children,
+  keyExpr,
+  selectedRowKeys,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -216,6 +218,8 @@ function MasterTable({
         onSaving={onSaving}
         remoteOperations={remoteOperations}
         sorting={remoteOperations ? false : true}
+        keyExpr={keyExpr}
+        selectedRowKeys={selectedRowKeys}
       >
         <Selection mode="multiple" showCheckBoxesMode={showCheckBoxesMode} />
 
