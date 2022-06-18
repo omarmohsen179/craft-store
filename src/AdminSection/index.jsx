@@ -101,7 +101,6 @@ export default function AdminSection({
         }
       }
       formData = new FormData();
-      console.log(data);
       formData.append("image", data.image);
       let config = {
         // method: status === "ADD" ? "POST" : "PUT",
@@ -114,10 +113,13 @@ export default function AdminSection({
       REQUEST(config)
         .then((response) => {
           if (response.Image && !response.Image.includes(ApiBaseUrl)) {
-            response.Image = `${ApiBaseUrl}${response.Image}`;
+            response.image_path = `${ApiBaseUrl}${response.Image}`;
           }
-          if (response["Image"] && !response["Image"].includes(ApiBaseUrl)) {
-            response["Image"] = `${ApiBaseUrl}${response["Image"]}`;
+          if (
+            response["image_path"] &&
+            !response["image_path"].includes(ApiBaseUrl)
+          ) {
+            response["image_path"] = `${ApiBaseUrl}${response["Image"]}`;
           }
 
           if (status === "ADD") {
