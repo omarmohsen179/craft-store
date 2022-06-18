@@ -1,64 +1,135 @@
-import React, { useEffect } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import ButtonComponent from "../../../Components/ButtonComponent";
+import SquaredInput from "../../../Components/SquaredInput";
 // import UpperPage from "../../../Components/UpperPage";
 import ContactUsForm from "./Components/ContactUsForm";
 import ContactUslist from "./Components/ContactUslist";
 import Intro from "./Components/Intro";
 import "./ContactUs.scss";
 function ContactUs() {
+  const defaultValues = useRef({
+    FirstName: "",
+    LastName: "",
+    Email: "",
+    Message: "",
+  });
+  const [values, setValues] = useState(defaultValues.current);
+  console.log(values);
+  const handleChange = useCallback((e) => {
+    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
+
   return (
-    <div
-      style={{
-        padding: "50px",
-        // backgroundColor: "aqua",
-        boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-        margin: "50px 20px",
-        marginTop: "150px",
-      }}
-      className="main-cont"
-    >
-      {/* <UpperPage Title={"Contact Us"} /> */}
-      {/* <Intro />
-      <ContactUslist />
-      <ContactUsForm /> */}
-
-      <div class="contact-container">
-        <div class="left-col"></div>
-        <div class="right-col">
-          <h1>Contact us</h1>
-          <p>
-            Planning to visit Indonesia soon? Get insider tips on where to go,
-            things to do and find best deals for your next adventure.
-          </p>
-
-          <form id="contact-form" method="post">
-            <label for="name">Full name</label>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Your Full Name"
-              required
-            />
-            <label for="email">Email Address</label>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="Your Email Address"
-              required
-            />
-            <label for="message">Message</label>
-            <textarea
-              rows="6"
-              placeholder="Your Message"
-              id="message"
-              name="message"
-              required
-            ></textarea>
-            {/* <!--<a href="javascript:void(0)">--><button type="submit" id="submit" name="submit">Send</button><!--</a>--> */}
-          </form>
-          <div id="error"></div>
-          <div id="success-msg"></div>
+    <div className="contact-us-cont">
+      <div class="container contact">
+        <div class="row">
+          <div
+            style={{
+              boxShadow:
+                " rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
+            }}
+            div
+            class="col-md-3"
+          >
+            <div class="contact-info">
+              <img
+                src="https://image.ibb.co/kUASdV/contact-image.png"
+                alt="pic"
+              />
+              <h2>Contact Us</h2>
+              <h4>We would love to hear from you !</h4>
+            </div>
+          </div>
+          <div
+            style={{
+              boxShadow:
+                " rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
+            }}
+            class="col-md-9"
+          >
+            <div class="contact-form">
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="fname">
+                  First Name:
+                </label>
+                <div class="col-sm-10">
+                  {/* <input
+                    type="text"
+                    class="form-control"
+                    id="fname"
+                    placeholder="Enter First Name"
+                    name="fname"
+                  /> */}
+                  <SquaredInput
+                    // label={"E-mail"}
+                    handleChange={handleChange}
+                    placeholder={"First Name"}
+                    name="FirstName"
+                    required
+                    value={values["FirstName"]}
+                    // errorMessage={error.Email}
+                    // onBlur={CheckEmail}
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="lname">
+                  Last Name:
+                </label>
+                <div class="col-sm-10">
+                  <SquaredInput
+                    // label={"E-mail"}
+                    handleChange={handleChange}
+                    placeholder={"Last Name"}
+                    name="LastName"
+                    required
+                    value={values["LastName"]}
+                    // errorMessage={error.Email}
+                    // onBlur={CheckEmail}
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="email">
+                  E-Mail:
+                </label>
+                <div class="col-sm-10">
+                  <SquaredInput
+                    // label={"E-mail"}
+                    handleChange={handleChange}
+                    placeholder={"E-Mail"}
+                    name="Email"
+                    required
+                    value={values["Email"]}
+                    // errorMessage={error.Email}
+                    // onBlur={CheckEmail}
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-sm-2" for="comment">
+                  Message:
+                </label>
+                <div class="col-sm-10">
+                  <textarea
+                    onChange={handleChange}
+                    name="Message"
+                    class="country-input"
+                    rows="5"
+                    id="comment"
+                  ></textarea>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                  {/* <button type="submit" class="btn btn-default">
+                    Submit
+                  </button> */}
+                  <ButtonComponent title="Submit" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

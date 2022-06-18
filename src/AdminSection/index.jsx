@@ -22,10 +22,11 @@ export default function AdminSection({
   setvalues,
   handleChange,
   values,
+  defaultValues,
 }) {
   let history = useHistory();
 
-  const [status, setStatus] = useState("IDLE");
+  const [status, setStatus] = useState("_status");
 
   const [itemToUpdate, setItemToUpdate] = useState();
 
@@ -45,8 +46,9 @@ export default function AdminSection({
   console.log(records);
   // Internal Updates
   const updateRowHandle = useCallback((e) => {
-    setItemToUpdate(e.data);
+    // setItemToUpdate(e.data);
     setStatus("UPDATE");
+    setvalues(e.data);
   }, []);
 
   const showForm = useMemo(() => {
@@ -83,24 +85,20 @@ export default function AdminSection({
   );
 
   const saveForm = useCallback(
-    (data, images = []) => {
-      console.log("data", data);
-      data.ProductId = productId;
-
-      if (
-        typeof data.Image === "string" &&
-        data.image_path &&
-        data.image_path.includes(ApiBaseUrl)
-      ) {
-        data.image_path = data.Image.replace(ApiBaseUrl, "");
+    (data) => {
+      console.log(status);
+      let formData = new FormData();
+      if (data.image_path.toString().includes(ApiBaseUrl)) {
+        //formData.append("image_path", null);
+      } else {
+        formData.append("image_path", data.image_path);
+        delete data.image_path;
       }
 
-      let formData = new FormData();
-      formData.append("image_path", data.image);
       formData.append("data", JSON.stringify(data));
       let config = {
-        // method: status === "ADD" ? "POST" : "PUT",
-        method: status === "ADD" ? "POST" : "POST",
+        method: status === "ADD" ? "POST" : "PUT",
+        // method: status === "ADD" ? "POST" : "POST",
         url: controller,
         data: formData,
         //data: data,
@@ -108,14 +106,17 @@ export default function AdminSection({
 
       REQUEST(config)
         .then((response) => {
-          if (response.Image && !response.Image.includes(ApiBaseUrl)) {
-            response.Image = `${ApiBaseUrl}${response.Image}`;
+          if (
+            response.image_path &&
+            !response.image_path?.includes(ApiBaseUrl)
+          ) {
+            response.image_path = `${ApiBaseUrl}${response.image_path}`;
           }
           if (
             response["image_path"] &&
             !response["image_path"].includes(ApiBaseUrl)
           ) {
-            response["image_path"] = `${ApiBaseUrl}${response["Image"]}`;
+            response["image_path"] = `${ApiBaseUrl}${response["image_path"]}`;
           }
 
           if (status === "ADD") {
@@ -174,7 +175,10 @@ export default function AdminSection({
         disabled={showForm}
         colAttributes={colAttributes}
         dataSource={records}
-        onAddButtonClicked={() => setStatus("ADD")}
+        onAddButtonClicked={() => {
+          setStatus("ADD");
+          setvalues(defaultValues);
+        }}
         onRowClick={allowEdit === "true" && updateRowHandle}
         onRowRemoving={deleteItem}
         allowReordering={allowReordering}
@@ -184,7 +188,7 @@ export default function AdminSection({
       />
       {showForm && (
         <Component
-          data={itemToUpdate}
+          itemToUpdate={itemToUpdate}
           productId={productId}
           onSubmit={saveForm}
           onCancel={cancelForm}

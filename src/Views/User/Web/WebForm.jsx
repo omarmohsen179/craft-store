@@ -11,7 +11,14 @@ import SquaredInput from "../../../Components/SquaredInput";
 import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
 import { ApiBaseUrl } from "../../../Service/config";
 
-const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
+const CategoryForm = ({
+  onSubmit,
+  onCancel,
+  setvalues,
+  addInput,
+  values,
+  itemToUpdate,
+}) => {
   const { t } = useTranslation();
 
   // const isNotValid = useMemo(() => {
@@ -36,8 +43,9 @@ const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
   // submit form
 
   const addHandle = useCallback(() => {
+    console.log("itemToUpdate", itemToUpdate);
     onSubmit(values);
-  }, [onSubmit, values]);
+  }, [onSubmit, values, itemToUpdate]);
 
   let handleGetImages = (event) => {
     let files = event.target.files;
@@ -50,10 +58,6 @@ const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
     }));
   }, []);
 
-  // const defaultValues = useRef({
-  //   Link: "",
-  // });
-  // const [values, setValues] = useState(defaultValues.current);
   const handleChange = useCallback((e) => {
     setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
@@ -84,8 +88,8 @@ const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
               <SquaredInput
                 // label={"Add Link"}
                 handleChange={handleChange}
-                name="Link"
-                value={values["Link"]}
+                name="link"
+                value={values["link"]}
                 // required
               />
             </>

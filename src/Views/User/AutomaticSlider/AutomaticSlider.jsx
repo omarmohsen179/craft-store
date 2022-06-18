@@ -16,28 +16,10 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import ButtonComponent from "../../../Components/ButtonComponent";
 
-function HomeSlider() {
+function AutomaticSlider() {
   const { t } = useTranslation();
 
-  const [sliderImages, setSliderImages] = useState([
-    {
-      Id: "1",
-      image_path:
-        "https://craft-store.azurewebsites.net/static/1fc0d6100ba0492dbde1aa2c1ae2004e.png",
-      link: "google.com",
-    },
-    {
-      Id: "2",
-      image_path: "	https://craft-store.ly/wp-content/uploads/2021/11/sigma.png",
-      link: "google.com",
-    },
-    {
-      Id: "3",
-      image_path: "	https://craft-store.ly/wp-content/uploads/2021/09/sony.png",
-      link: "google.com",
-    },
-  ]);
-  //   console.log(sliderImages);
+  const [sliderImages, setSliderImages] = useState();
 
   const sliderImagesColAttributes = useMemo(() => {
     return [
@@ -56,17 +38,17 @@ function HomeSlider() {
     ];
   }, [t]);
 
-  //   useEffect(() => {
-  //     // get slider images
-  //     let config = {
-  //       method: "GET",
-  //       url: `${ApiBaseUrl}/api/home_slider`,
-  //     };
+  useEffect(() => {
+    // get slider images
+    let config = {
+      method: "GET",
+      url: `${ApiBaseUrl}/api/automatic_slider`,
+    };
 
-  //     REQUEST(config).then((response) => {
-  //       setSliderImages([...response]);
-  //     });
-  //   }, []);
+    REQUEST(config).then((response) => {
+      setSliderImages([...response]);
+    });
+  }, []);
 
   function onReorder(e) {
     const visibleRows = e.component.getVisibleRows();
@@ -100,7 +82,7 @@ function HomeSlider() {
         </CardHeader>
         <CardBody>
           <AdminSection
-            allowEdit="false"
+            allowEdit="true"
             // Drag and Drop
             allowReordering={true}
             showDragIcons={true}
@@ -116,9 +98,10 @@ function HomeSlider() {
             handleChange={handleChange}
             values={values}
             setvalues={setValues}
+            defaultValues={defaultValues.current}
             ///////////////////
             colAttributes={sliderImagesColAttributes}
-            // controller={ApiBaseUrl + "/api/home_slider"}
+            controller={ApiBaseUrl + "/api/automatic_slider"}
           />
           <div style={{ marginTop: 40 }}>
             <ButtonComponent disable={editing} title={"Submit"} />
@@ -129,4 +112,4 @@ function HomeSlider() {
   );
 }
 
-export default HomeSlider;
+export default AutomaticSlider;

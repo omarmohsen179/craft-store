@@ -27,8 +27,8 @@ function ListForm({
   const [dataSource, setDataSource] = useState();
 
   const [selectedItems, setSelectedItems] = useState([]);
-  console.log(selectedItems);
-  console.log(selectedItemsFinal);
+  console.log("selected items", selectedItems);
+  console.log("selected items final", selectedItemsFinal);
 
   console.log("already", alreadySelectedItems);
 

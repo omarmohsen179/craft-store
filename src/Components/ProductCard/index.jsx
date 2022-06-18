@@ -21,7 +21,7 @@ function ProductCard({ ele, style = {}, whish = false }) {
         }}
         onClick={() => history.push("/item?I=1")}
       >
-        <Image src={ele.image} />
+        <Image src={ele.pic} />
       </div>
       <div className="post-card-option">
         <div className="product-icons">
@@ -43,7 +43,7 @@ function ProductCard({ ele, style = {}, whish = false }) {
           onClick={() => history.push("/item?I=1")}
           className="product-title text-color-hover"
         >
-          {ele.title}
+          {ele.e_name}
         </p>
 
         <div>
