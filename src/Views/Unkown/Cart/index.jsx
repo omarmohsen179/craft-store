@@ -62,7 +62,7 @@ function Cart(props) {
   let shipping = 10;
   let tax = 0;
   let count = 0;
-  data.map((el) => count++);
+  data?.map((el) => count++);
 
   let history = useHistory();
 
@@ -108,7 +108,7 @@ function Cart(props) {
                             </tr>
                           </thead>
                           <tbody>
-                            {data.map((el) => (
+                            {data?.map((el) => (
                               <tr>
                                 <td>
                                   <a href="#">

@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import AdminSection from "../../../AdminSection";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import REQUEST from "../../../Service/Request";
-import WebForm from "./WebForm";
+import WebForm from "../Web/WebForm";
 
 import CrudTable from "../../../Components/CrudTable/CrudTable";
 import { ApiBaseUrl } from "../../../Service/config";
@@ -16,11 +16,28 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import ButtonComponent from "../../../Components/ButtonComponent";
 
-function Web() {
+function HomeSlider() {
   const { t } = useTranslation();
 
-  const [sliderImages, setSliderImages] = useState();
-  console.log(sliderImages);
+  const [sliderImages, setSliderImages] = useState([
+    {
+      Id: "1",
+      image_path:
+        "https://craft-store.azurewebsites.net/static/1fc0d6100ba0492dbde1aa2c1ae2004e.png",
+      link: "google.com",
+    },
+    {
+      Id: "2",
+      image_path: "	https://craft-store.ly/wp-content/uploads/2021/11/sigma.png",
+      link: "google.com",
+    },
+    {
+      Id: "3",
+      image_path: "	https://craft-store.ly/wp-content/uploads/2021/09/sony.png",
+      link: "google.com",
+    },
+  ]);
+  //   console.log(sliderImages);
 
   const sliderImagesColAttributes = useMemo(() => {
     return [
@@ -32,26 +49,25 @@ function Web() {
       },
 
       {
-        field: "item_id",
-        caption: t("item_id"),
+        field: "link",
+        caption: t("Link"),
         alignment: "left",
       },
     ];
   }, [t]);
 
-  useEffect(() => {
-    // get slider images
-    let config = {
-      method: "GET",
-      url: `${ApiBaseUrl}/api/home_slider`,
-    };
+  //   useEffect(() => {
+  //     // get slider images
+  //     let config = {
+  //       method: "GET",
+  //       url: `${ApiBaseUrl}/api/home_slider`,
+  //     };
 
-    REQUEST(config).then((response) => {
-      setSliderImages([...response]);
-    });
-  }, []);
+  //     REQUEST(config).then((response) => {
+  //       setSliderImages([...response]);
+  //     });
+  //   }, []);
 
-  // Drag and Drop
   function onReorder(e) {
     const visibleRows = e.component.getVisibleRows();
     const sortedData = [...sliderImages];
@@ -80,7 +96,7 @@ function Web() {
     <div className="content" style={{ padding: 20 }}>
       <Card className="card-user">
         <CardHeader>
-          <h4>{t("Slider Images")}</h4>
+          <h4>{t("Home Slider Images")}</h4>
         </CardHeader>
         <CardBody>
           <AdminSection
@@ -95,11 +111,14 @@ function Web() {
             //////////////////
             data={sliderImages}
             component={WebForm}
-            colAttributes={sliderImagesColAttributes}
-            controller={ApiBaseUrl + "/api/home_slider"}
-            //////////////////
+            addInput={true}
+            // link={values["Link"]}
+            handleChange={handleChange}
             values={values}
             setvalues={setValues}
+            ///////////////////
+            colAttributes={sliderImagesColAttributes}
+            // controller={ApiBaseUrl + "/api/home_slider"}
           />
           <div style={{ marginTop: 40 }}>
             <ButtonComponent disable={editing} title={"Submit"} />
@@ -110,4 +129,4 @@ function Web() {
   );
 }
 
-export default Web;
+export default HomeSlider;
