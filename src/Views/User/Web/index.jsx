@@ -15,6 +15,7 @@ import DataGrid, {
   Sorting,
 } from "devextreme-react/data-grid";
 import ButtonComponent from "../../../Components/ButtonComponent";
+import AutomaticSlider from "../AutomaticSlider/AutomaticSlider";
 
 function Web() {
   const { t } = useTranslation();
@@ -77,36 +78,40 @@ function Web() {
   }, []);
 
   return (
-    <div className="content" style={{ padding: 20 }}>
-      <Card className="card-user">
-        <CardHeader>
-          <h4>{t("Slider Images")}</h4>
-        </CardHeader>
-        <CardBody>
-          <AdminSection
-            allowEdit="false"
-            // Drag and Drop
-            allowReordering={true}
-            showDragIcons={true}
-            onReorder={(e) => {
-              onReorder(e);
-              setEditing(false);
-            }}
-            //////////////////
-            data={sliderImages}
-            component={WebForm}
-            colAttributes={sliderImagesColAttributes}
-            controller={ApiBaseUrl + "/api/home_slider"}
-            //////////////////
-            values={values}
-            setvalues={setValues}
-          />
-          <div style={{ marginTop: 40 }}>
-            <ButtonComponent disable={editing} title={"Submit"} />
-          </div>
-        </CardBody>
-      </Card>
-    </div>
+    <>
+      <div className="content" style={{ padding: 20 }}>
+        <Card className="card-user">
+          <CardHeader>
+            <h4>{t("Home Slider Images")}</h4>
+          </CardHeader>
+          <CardBody>
+            <AdminSection
+              allowEdit="false"
+              // Drag and Drop
+              allowReordering={true}
+              showDragIcons={true}
+              onReorder={(e) => {
+                onReorder(e);
+                setEditing(false);
+              }}
+              //////////////////
+              data={sliderImages}
+              component={WebForm}
+              colAttributes={sliderImagesColAttributes}
+              controller={ApiBaseUrl + "/api/home_slider"}
+              //////////////////
+              handleChange={handleChange}
+              values={values}
+              setValues={setValues}
+            />
+            <div style={{ marginTop: 40 }}>
+              <ButtonComponent disable={editing} title={"Submit"} />
+            </div>
+          </CardBody>
+        </Card>
+      </div>
+      <AutomaticSlider />
+    </>
   );
 }
 

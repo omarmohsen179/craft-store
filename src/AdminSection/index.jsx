@@ -19,11 +19,12 @@ export default function AdminSection({
   onReorder,
   showDragIcons,
   addInput = false,
-  setvalues,
+  setValues,
   handleChange,
   values,
   defaultValues,
 }) {
+  console.log("admin values", values);
   let history = useHistory();
 
   const [status, setStatus] = useState("_status");
@@ -48,7 +49,10 @@ export default function AdminSection({
   const updateRowHandle = useCallback((e) => {
     // setItemToUpdate(e.data);
     setStatus("UPDATE");
-    setvalues(e.data);
+    setValues({
+      ...e.data,
+      image_path: e.data.image_path.replace(`${ApiBaseUrl}`, ""),
+    });
   }, []);
 
   const showForm = useMemo(() => {
@@ -86,10 +90,10 @@ export default function AdminSection({
 
   const saveForm = useCallback(
     (data) => {
-      console.log(status);
+      console.log(data);
       let formData = new FormData();
       if (data.image_path.toString().includes(ApiBaseUrl)) {
-        //formData.append("image_path", null);
+        // data.image_path = data.image_path.replace(`${ApiBaseUrl}`, "");
       } else {
         formData.append("image_path", data.image_path);
         delete data.image_path;
@@ -177,7 +181,7 @@ export default function AdminSection({
         dataSource={records}
         onAddButtonClicked={() => {
           setStatus("ADD");
-          setvalues(defaultValues);
+          setValues(defaultValues);
         }}
         onRowClick={allowEdit === "true" && updateRowHandle}
         onRowRemoving={deleteItem}
@@ -194,7 +198,7 @@ export default function AdminSection({
           onCancel={cancelForm}
           addInput={addInput}
           handleChange={handleChange}
-          setvalues={setvalues}
+          setValues={setValues}
           values={values}
         />
       )}

@@ -9,7 +9,7 @@ import "./index.scss";
 function Cart(props) {
   const { t, i18n } = useTranslation();
   useEffect(() => {}, []);
-  const [data, setdata] = useState([
+  const [data, setData] = useState([
     {
       id: 1,
       image: "https://designmodo.com/demo/shopping-cart/item-1.png",
@@ -46,8 +46,8 @@ function Cart(props) {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
 
-  const handleChangearray = useCallback((id, value) => {
-    setdata((prev) =>
+  const handleChangeArray = useCallback((id, value) => {
+    setData((prev) =>
       prev.map((ele) =>
         ele.id === id ? { ...ele, Quantity: value } : { ...ele }
       )
@@ -126,11 +126,11 @@ function Cart(props) {
                                   <IncrementInput
                                     value={el.Quantity}
                                     setValues={(e) =>
-                                      handleChangearray(el.id, e)
+                                      handleChangeArray(el.id, e)
                                     }
                                     name={"Quantity"}
                                     handleChange={(e) =>
-                                      handleChangearray(el.id, e.target.value)
+                                      handleChangeArray(el.id, e.target.value)
                                     }
                                   />
                                 </td>
@@ -138,12 +138,17 @@ function Cart(props) {
                                 <td>${el.Discount}</td>
                                 <td>${el.price - el.Discount}</td>
                                 <td>
-                                  <a href="#">
+                                  <button
+                                    style={{
+                                      border: "none",
+                                      backgroundColor: "transparent",
+                                    }}
+                                  >
                                     <i
                                       style={{ color: "red" }}
                                       class="fa fa-trash-o"
                                     ></i>
-                                  </a>
+                                  </button>
                                 </td>
                               </tr>
                             ))}

@@ -9,8 +9,9 @@ const Image = ({ src, className }) => {
     >
       <img
         className="img"
-        src={src.includes("static") ? ApiBaseUrl + src : src}
+        src={src && src.includes("static") ? ApiBaseUrl + src : src}
         style={{ width: "100%", height: "100%" }}
+        alt="pic"
       />
     </div>
   );

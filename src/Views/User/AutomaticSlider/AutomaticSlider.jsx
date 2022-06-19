@@ -78,7 +78,7 @@ function AutomaticSlider() {
     <div className="content" style={{ padding: 20 }}>
       <Card className="card-user">
         <CardHeader>
-          <h4>{t("Home Slider Images")}</h4>
+          <h4>{t("Automatic Slider Images")}</h4>
         </CardHeader>
         <CardBody>
           <AdminSection
@@ -94,10 +94,9 @@ function AutomaticSlider() {
             data={sliderImages}
             component={WebForm}
             addInput={true}
-            // link={values["Link"]}
             handleChange={handleChange}
             values={values}
-            setvalues={setValues}
+            setValues={setValues}
             defaultValues={defaultValues.current}
             ///////////////////
             colAttributes={sliderImagesColAttributes}

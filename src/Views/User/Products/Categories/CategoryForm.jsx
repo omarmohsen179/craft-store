@@ -60,13 +60,13 @@ const CategoryForm = ({ onSubmit, onCancel, data }) => {
   }, [category, onSubmit]);
   let handleGetImages = (event) => {
     let files = event.target.files;
-    setCategory({ ...category, image: files[0] });
+    setCategory({ ...category, image_path: files[0] });
   };
 
   let handleRemoveImage = useCallback(() => {
     setCategory((prev) => ({
       ...prev,
-      image: "",
+      image_path: "",
     }));
   }, []);
   return (
@@ -105,11 +105,11 @@ const CategoryForm = ({ onSubmit, onCancel, data }) => {
             handleGetImages={handleGetImages}
             handleRemoveImage={handleRemoveImage}
             imagesFiles={
-              category.image
+              category.image_path
                 ? [
-                    typeof category.image == "string"
-                      ? ApiBaseUrl + category.image
-                      : category.image,
+                    typeof category.image_path == "string"
+                      ? ApiBaseUrl + category.image_path
+                      : category.image_path,
                   ]
                 : []
             }
