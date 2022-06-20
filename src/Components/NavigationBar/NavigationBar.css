@@ -133,6 +133,11 @@
   background: white;
   min-width: 100vw;
 }
+
+.padding {
+  margin-top: 200px;
+}
+
 .active-page {
   color: red;
   /* color: #131f35; */
@@ -258,7 +263,8 @@
   transition: all 0.5s ease;
   background-color: #fff;
   z-index: -1;
-  overflow: hidden;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .mainclass {
