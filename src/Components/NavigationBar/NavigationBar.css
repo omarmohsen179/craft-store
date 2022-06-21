@@ -526,7 +526,7 @@
   color: white;
 }
 
-@media screen and (max-width: 405px) {
+@media screen and (max-width: 500px) {
   .hide-img {
     display: none;
   }

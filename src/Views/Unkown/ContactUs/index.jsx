@@ -29,7 +29,7 @@ function ContactUs() {
                 " rgba(0, 0, 0, 0.12) 0px 1px 3px, rgba(0, 0, 0, 0.24) 0px 1px 2px",
               backgroundImage: `url("https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fG5pa2V8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60")`,
               // backgroundRepeat: "no-repeat",
-              // backgroundSize: "cover",
+              backgroundSize: "auto",
             }}
             div
             class="col-md-3"

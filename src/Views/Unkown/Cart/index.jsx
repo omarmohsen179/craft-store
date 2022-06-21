@@ -6,7 +6,7 @@ import { useHistory } from "react-router-dom";
 import ButtonComponent from "../../../Components/ButtonComponent";
 import IncrementInput from "../../../Components/IncrementInput";
 import "./index.scss";
-function Cart(props) {
+function Cart() {
   const { t, i18n } = useTranslation();
   useEffect(() => {}, []);
   const [data, setData] = useState([
@@ -62,9 +62,13 @@ function Cart(props) {
   let shipping = 10;
   let tax = 0;
   let count = 0;
-  data?.map((el) => count++);
+  data.map((el) => count++);
 
   let history = useHistory();
+
+  ///////////////////////////////////
+
+  function handleDelete(e) {}
 
   return (
     <>
@@ -91,7 +95,7 @@ function Cart(props) {
               <div class="row">
                 <div id="basket" class="col-lg-9">
                   <div class="box">
-                    <form method="post" action="checkout1.html">
+                    <form onSubmit={(e) => e.preventDefault()}>
                       <h1>Shopping cart</h1>
                       <p class="text-muted">
                         You currently have {count} item(s) in your cart.
@@ -108,10 +112,10 @@ function Cart(props) {
                             </tr>
                           </thead>
                           <tbody>
-                            {data?.map((el) => (
+                            {data.map((el) => (
                               <tr>
                                 <td>
-                                  <a href="#">
+                                  <a href="/">
                                     <img
                                       style={{ width: "100%" }}
                                       src={el.image}
@@ -120,7 +124,7 @@ function Cart(props) {
                                   </a>
                                 </td>
                                 <td>
-                                  <a href="#">{el.name}</a>
+                                  <a href="/">{el.name}</a>
                                 </td>
                                 <td>
                                   <IncrementInput
@@ -139,6 +143,7 @@ function Cart(props) {
                                 <td>${el.price - el.Discount}</td>
                                 <td>
                                   <button
+                                    onClick={(e) => handleDelete(e)}
                                     style={{
                                       border: "none",
                                       backgroundColor: "transparent",
@@ -176,7 +181,6 @@ function Cart(props) {
                           </button>
                           <button
                             onClick={() => history.push("/check-out")}
-                            type="submit"
                             class="btn btn-primary"
                           >
                             Proceed to checkout{" "}

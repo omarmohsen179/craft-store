@@ -37,6 +37,7 @@ function Orders() {
                       <div class="row">
                         <div class="col-md-2">
                           <img
+                            style={{ cursor: "pointer" }}
                             src={el.image_path}
                             class="img-fluid"
                             alt="Phone"
