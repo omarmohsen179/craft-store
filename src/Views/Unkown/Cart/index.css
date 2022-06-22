@@ -1063,12 +1063,6 @@ STYLE SWITCHER FOR DEMO
   border-color: #012669;
 }
 
-.shopping-cart-cont .btn-primary:focus,
-.shopping-cart-cont .btn-primary.focus {
-  -webkit-box-shadow: 0 0 0 0.2rem #012669;
-  box-shadow: 0 0 0 0.2rem #012669;
-}
-
 .shopping-cart-cont .btn-primary.disabled,
 .shopping-cart-cont .btn-primary:disabled {
   color: #212529;
@@ -1864,22 +1858,8 @@ STYLE SWITCHER FOR DEMO
   background-color: #131f35 !important;
 }
 
-.shopping-cart-cont a.bg-primary:hover,
-.shopping-cart-cont a.bg-primary:focus,
-.shopping-cart-cont button.bg-primary:hover,
-.shopping-cart-cont button.bg-primary:focus {
-  background-color: #3aa18c !important;
-}
-
 .shopping-cart-cont .bg-secondary {
   background-color: #6c757d !important;
-}
-
-.shopping-cart-cont a.bg-secondary:hover,
-.shopping-cart-cont a.bg-secondary:focus,
-.shopping-cart-cont button.bg-secondary:hover,
-.shopping-cart-cont button.bg-secondary:focus {
-  background-color: #545b62 !important;
 }
 
 .shopping-cart-cont .bg-success {

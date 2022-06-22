@@ -16,22 +16,11 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import ButtonComponent from "../../../Components/ButtonComponent";
 
-function HomeSlider() {
+function AutomaticSlider() {
   const { t } = useTranslation();
 
-  const [sliderImages, setSliderImages] = useState([]);
-  //   console.log(sliderImages);
-  useEffect(() => {
-    // get slider images
-    let config = {
-      method: "GET",
-      url: `${ApiBaseUrl}/api/automatic_slider`,
-    };
+  const [sliderImages, setSliderImages] = useState();
 
-    REQUEST(config).then((response) => {
-      setSliderImages([...response]);
-    });
-  }, []);
   const sliderImagesColAttributes = useMemo(() => {
     return [
       {
@@ -48,6 +37,19 @@ function HomeSlider() {
       },
     ];
   }, [t]);
+
+  useEffect(() => {
+    // get slider images
+    let config = {
+      method: "GET",
+      url: `${ApiBaseUrl}/api/automatic_slider`,
+    };
+
+    REQUEST(config).then((response) => {
+      setSliderImages([...response]);
+    });
+  }, []);
+
   function onReorder(e) {
     const visibleRows = e.component.getVisibleRows();
     const sortedData = [...sliderImages];
@@ -77,11 +79,11 @@ function HomeSlider() {
     <div className="content" style={{ padding: 20 }}>
       <Card className="card-user">
         <CardHeader>
-          <h4>{t("Home Slider Images")}</h4>
+          <h4>{t("Automatic Slider Images")}</h4>
         </CardHeader>
         <CardBody>
           <AdminSection
-            allowEdit="false"
+            allowEdit="true"
             // Drag and Drop
             allowReordering={true}
             showDragIcons={true}
@@ -93,10 +95,10 @@ function HomeSlider() {
             data={sliderImages}
             component={WebForm}
             addInput={true}
-            // link={values["Link"]}
             handleChange={handleChange}
             values={values}
-            setvalues={setValues}
+            setValues={setValues}
+            defaultValues={defaultValues.current}
             ///////////////////
             colAttributes={sliderImagesColAttributes}
             controller={ApiBaseUrl + "/api/automatic_slider"}
@@ -110,4 +112,4 @@ function HomeSlider() {
   );
 }
 
-export default HomeSlider;
+export default AutomaticSlider;

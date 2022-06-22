@@ -11,7 +11,16 @@ import SquaredInput from "../../../Components/SquaredInput";
 import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
 import { ApiBaseUrl } from "../../../Service/config";
 
-const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
+const CategoryForm = ({
+  onSubmit,
+  onCancel,
+  setValues,
+  addInput,
+  values,
+  itemToUpdate,
+  handleChange,
+}) => {
+  console.log("web form values", values);
   const { t } = useTranslation();
 
   // const isNotValid = useMemo(() => {
@@ -36,27 +45,24 @@ const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
   // submit form
 
   const addHandle = useCallback(() => {
+    console.log("itemToUpdate", itemToUpdate);
     onSubmit(values);
-  }, [onSubmit, values]);
+  }, [onSubmit, values, itemToUpdate]);
 
   let handleGetImages = (event) => {
     let files = event.target.files;
-    setvalues((prev) => ({ ...prev, image_path: files[0] }));
+    setValues((prev) => ({ ...prev, image_path: files[0] }));
   };
   let handleRemoveImage = useCallback(() => {
-    setvalues((prev) => ({
+    setValues((prev) => ({
       ...prev,
       image_path: "",
     }));
   }, []);
 
-  // const defaultValues = useRef({
-  //   Link: "",
-  // });
-  // const [values, setValues] = useState(defaultValues.current);
-  const handleChange = useCallback((e) => {
-    setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  }, []);
+  // const handleChange = useCallback((e) => {
+  //   setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  // }, []);
 
   return (
     <>
@@ -69,7 +75,7 @@ const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
             handleGetImages={handleGetImages}
             handleRemoveImage={handleRemoveImage}
             imagesFiles={
-              values.image_path
+              values && values.image_path
                 ? [
                     typeof values.image_path == "string"
                       ? ApiBaseUrl + values.image_path

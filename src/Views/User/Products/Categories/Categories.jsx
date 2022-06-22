@@ -43,8 +43,8 @@ const Categories = () => {
     };
 
     REQUEST(config).then((response) => {
-      let _productsCategries = response;
-      setProductsCategories([..._productsCategries]);
+      let _productsCategories = response;
+      setProductsCategories([..._productsCategories]);
     });
   }, []);
   const [Auth, setAuth] = useState("SupperAdmin");

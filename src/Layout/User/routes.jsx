@@ -16,7 +16,8 @@ import EditPage from "../../Views/User/Products/EditProduct/EditProduct";
 import Categories from "../../Views/User/Products/Categories/Categories";
 
 import Product from "../../Views/Unkown/Product";
-import HomeSlider from "../../Views/User/HomeSlider/HomeSlider";
+import AutomaticSlider from "../../Views/User/AutomaticSlider/AutomaticSlider";
+import HomeProducts from "../../Views/User/HomeProducts/HomeProducts";
 const layoutPath = "/dashboard";
 export default [
   {
@@ -111,12 +112,21 @@ export default [
     htmlBefore: '<i class="material-icons">edit</i>',
     htmlAfter: "",
   },
+  // {
+  //   path: layoutPath + "/home-slider",
+  //   layout: DefaultLayout,
+  //   key: 3,
+  //   component: AutomaticSlider,
+  //   title: "automatic slider",
+  //   htmlBefore: '<i class="material-icons">edit</i>',
+  //   htmlAfter: "",
+  // },
   {
-    path: layoutPath + "/home-slider",
+    path: layoutPath + "/home-products",
     layout: DefaultLayout,
     key: 3,
-    component: HomeSlider,
-    title: "home slider",
+    component: HomeProducts,
+    title: "home products",
     htmlBefore: '<i class="material-icons">edit</i>',
     htmlAfter: "",
   },

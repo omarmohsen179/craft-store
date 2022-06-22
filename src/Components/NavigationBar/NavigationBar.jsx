@@ -13,7 +13,7 @@ import CategoriesSection from "../../Views/Unkown/Home/Components/CatgoriesSecti
 function NavigationBar() {
   const location = useLocation();
   let history = useHistory();
-  let [submenu, setsubmenu] = useState(true);
+  let [submenu, setSubMenu] = useState(true);
   let pages = useRef([
     {
       icon: "fas fa-house-chimney",
@@ -42,7 +42,10 @@ function NavigationBar() {
         <CategoriesSection
           style={{
             // card style
-            width: "12%",
+            width: "20%",
+            height: "100%",
+            boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px",
+            overFlow: "scroll",
           }}
         />
       ),
@@ -54,7 +57,7 @@ function NavigationBar() {
     dynamicWidth: window.innerWidth,
     dynamicHeight: window.innerHeight,
   });
-  const [list, setlist] = useState([
+  const [list, setList] = useState([
     {
       name: "steam card (UAS)",
       ImagePath: card,
@@ -79,17 +82,17 @@ function NavigationBar() {
       ImagePath: card,
       price: 1221,
     },*/
-  const [values, setvalues] = useState({});
+  const [values, setValues] = useState({});
   const handleChange = useCallback((e) => {
-    setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
   const openMenu = () => {
-    setsubmenu(false);
+    setSubMenu(false);
     document.getElementById("touch").classList.remove("collapsed");
     document.getElementById("mySidenav").style.width = "80%";
   };
   const closeMenu = () => {
-    setsubmenu(true);
+    setSubMenu(true);
     document.getElementById("touch")?.classList.add("collapsed");
     document.getElementById("mySidenav").style.width = "0";
   };

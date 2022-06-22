@@ -1,28 +1,36 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
 import Sliders from "../../../../Components/Slider/Sliders";
+import { GetCategories } from "../../../User/UsersAdmin/Api";
 
 function SideBar() {
   const { t, i18n } = useTranslation();
   let history = useHistory();
-  const data1 = [
-    {
-      name: "Windbreaker",
-    },
-    {
-      name: "Jumpsuit",
-    },
-    {
-      name: "Jumpsuit",
-    },
-    {
-      name: "Windbreaker",
-    },
-    {
-      name: "Coat",
-    },
-  ];
+  // const data1 = [
+  //   {
+  //     name: "Windbreaker",
+  //   },
+  //   {
+  //     name: "Jumpsuit",
+  //   },
+  //   {
+  //     name: "Jumpsuit",
+  //   },
+  //   {
+  //     name: "Windbreaker",
+  //   },
+  //   {
+  //     name: "Coat",
+  //   },
+  // ];
+
+  const [data1, setData1] = useState([]);
+  console.log(data1);
+
+  useEffect(() => {
+    GetCategories().then((res) => setData1(res));
+  }, []);
   const data2 = [
     {
       name: "Summer",
@@ -40,6 +48,36 @@ function SideBar() {
       name: "Coat",
     },
   ];
+
+  const [priceRange, setPriceRange] = useState([5000, 15000]);
+  console.log(priceRange);
+
+  // const [checked, setChecked] = useState(false);
+  const [isChecked, setIsChecked] = useState(false);
+
+  function handleChange(e) {
+    setPriceRange(e);
+
+    //////// API post price Range ////////
+  }
+
+  const handleCheck = (e) => {
+    // Destructuring
+    const { value, checked } = e.target;
+    const { languages } = isChecked;
+
+    console.log(`${value} is ${checked}`);
+
+    // Case 1 : The user checks the box
+    if (checked) {
+    }
+
+    // Case 2  : The user unchecks the box
+    else {
+      setIsChecked(value.filter((e) => e !== value));
+    }
+  };
+
   return (
     <div
       id="sidemenux"
@@ -60,68 +98,19 @@ function SideBar() {
           </button>
         </div>
         <div id="sort-by" className="collapse mt-2 mr-1">
-          {data1.map((ele) => (
-            <div className="my-1">
-              {" "}
-              <label className="tick">
-                {ele.name} <input type="checkbox" checked="checked" />{" "}
-                <span className="check"></span>{" "}
-              </label>{" "}
-            </div>
-          ))}
+          {data1 &&
+            data1.map((el) => (
+              <div className="my-1">
+                <label className="tick">
+                  {el.name_en}
+                  <input type="checkbox" onClick={() => console.log(el)} />
+                  <span className="check"></span>
+                </label>
+              </div>
+            ))}
         </div>
       </div>
-      <div className="box border-bottom">
-        <div className="box-label text-uppercase d-flex align-items-center">
-          Outerwear
-          <button
-            className="btn ml-auto"
-            type="button"
-            data-bs-toggle="collapse"
-            href="#inner-box"
-            aria-expanded="false"
-            aria-controls="inner-box"
-          >
-            <span className="fas fa-plus"></span>
-          </button>
-        </div>
-        <div id="inner-box" className="collapse mt-2 mr-1">
-          {data1.map((ele) => (
-            <div className="my-1">
-              <label className="tick">
-                {ele.name} <input type="checkbox" checked="checked" />
-                <span className="check"></span>
-              </label>{" "}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="box border-bottom">
-        <div className="box-label text-uppercase d-flex align-items-center">
-          season{" "}
-          <button
-            className="btn ml-auto"
-            type="button"
-            data-bs-toggle="collapse"
-            href="#inner-box2"
-            aria-expanded="false"
-            aria-controls="inner-box2"
-          >
-            <span className="fas fa-plus"></span>
-          </button>
-        </div>
-        <div id="inner-box2" className="collapse mt-2 mr-1">
-          {data2.map((ele) => (
-            <div className="my-1">
-              {" "}
-              <label className="tick">
-                {ele.name} <input type="checkbox" checked="checked" />{" "}
-                <span className="check"></span>{" "}
-              </label>{" "}
-            </div>
-          ))}
-        </div>
-      </div>
+
       <div className="box border-bottom">
         <div className="box-label text-uppercase d-flex align-items-center">
           price
@@ -137,7 +126,11 @@ function SideBar() {
           </button>
         </div>
         <div className="collapse" id="price">
-          <Sliders />
+          <Sliders
+            setPriceRange={setPriceRange}
+            priceRange={priceRange}
+            handleChange={handleChange}
+          />
         </div>
       </div>
     </div>

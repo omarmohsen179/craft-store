@@ -32,6 +32,8 @@ function Unknown({ match }) {
       var navbarin = document.getElementById("nav-up-container-id");
       var mybutton = document.getElementById("return-top-button");
       var content = document.getElementsByClassName("dropdown-content");
+      // var mainBody = document.getElementsByClassName("main_body");
+      var mainBody = document.getElementById("mbody");
       // var listElements = document.getElementsByClassName(
       //   "Horizontal-list  remove-dot"
       // );
@@ -41,6 +43,7 @@ function Unknown({ match }) {
       var sticky = navbar?.offsetTop;
       if (window.pageYOffset > sticky + 50) {
         navbar.classList.add("sticky");
+        mainBody.classList.add("padding");
 
         for (var i = 0; i < listElements.length; i++) {
           listElements[i].classList.add("white-color");
@@ -53,6 +56,8 @@ function Unknown({ match }) {
         navbarin.classList.remove("nav-up-container");
       } else {
         navbar.classList.remove("sticky");
+        mainBody.classList.remove("padding");
+
         for (var i = 0; i < listElements.length; i++) {
           listElements[i].classList.add("black-color");
           listElements[i].classList.remove("white-color");
@@ -73,7 +78,7 @@ function Unknown({ match }) {
       <div id="navbar">
         <NavigationBar />
       </div>
-      <div className="main_body">
+      <div id="mbody" className="main_body">
         <Switch>
           <Route exact path={`${match.url}`} component={Home} />
           <Route exact path={`${match.url}log-in`} component={Login} />

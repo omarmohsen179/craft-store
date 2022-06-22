@@ -1057,8 +1057,8 @@ STYLE SWITCHER FOR DEMO
 
   .btn-primary:focus,
   .btn-primary.focus {
-    -webkit-box-shadow: 0 0 0 0.2rem #012669;
-    box-shadow: 0 0 0 0.2rem #012669;
+    // -webkit-box-shadow: 0 0 0 0.2rem #012669;
+    // box-shadow: 0 0 0 0.2rem #012669;
   }
 
   .btn-primary.disabled,
@@ -1923,23 +1923,23 @@ STYLE SWITCHER FOR DEMO
     background-color: #131f35 !important;
   }
 
-  a.bg-primary:hover,
-  a.bg-primary:focus,
-  button.bg-primary:hover,
-  button.bg-primary:focus {
-    background-color: #3aa18c !important;
-  }
+  // a.bg-primary:hover,
+  // a.bg-primary:focus,
+  // button.bg-primary:hover,
+  // button.bg-primary:focus {
+  //   background-color: #3aa18c !important;
+  // }
 
   .bg-secondary {
     background-color: #6c757d !important;
   }
 
-  a.bg-secondary:hover,
-  a.bg-secondary:focus,
-  button.bg-secondary:hover,
-  button.bg-secondary:focus {
-    background-color: #545b62 !important;
-  }
+  // a.bg-secondary:hover,
+  // a.bg-secondary:focus,
+  // button.bg-secondary:hover,
+  // button.bg-secondary:focus {
+  //   background-color: #545b62 !important;
+  // }
 
   .bg-success {
     background-color: #28a745 !important;

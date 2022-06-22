@@ -6,10 +6,10 @@ import { useHistory } from "react-router-dom";
 import ButtonComponent from "../../../Components/ButtonComponent";
 import IncrementInput from "../../../Components/IncrementInput";
 import "./index.scss";
-function Cart(props) {
+function Cart() {
   const { t, i18n } = useTranslation();
   useEffect(() => {}, []);
-  const [data, setdata] = useState([
+  const [data, setData] = useState([
     {
       id: 1,
       image: "https://designmodo.com/demo/shopping-cart/item-1.png",
@@ -46,8 +46,8 @@ function Cart(props) {
     setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
 
-  const handleChangearray = useCallback((id, value) => {
-    setdata((prev) =>
+  const handleChangeArray = useCallback((id, value) => {
+    setData((prev) =>
       prev.map((ele) =>
         ele.id === id ? { ...ele, Quantity: value } : { ...ele }
       )
@@ -62,9 +62,13 @@ function Cart(props) {
   let shipping = 10;
   let tax = 0;
   let count = 0;
-  data?.map((el) => count++);
+  data.map((el) => count++);
 
   let history = useHistory();
+
+  ///////////////////////////////////
+
+  function handleDelete(e) {}
 
   return (
     <>
@@ -91,7 +95,7 @@ function Cart(props) {
               <div class="row">
                 <div id="basket" class="col-lg-9">
                   <div class="box">
-                    <form method="post" action="checkout1.html">
+                    <form onSubmit={(e) => e.preventDefault()}>
                       <h1>Shopping cart</h1>
                       <p class="text-muted">
                         You currently have {count} item(s) in your cart.
@@ -108,10 +112,10 @@ function Cart(props) {
                             </tr>
                           </thead>
                           <tbody>
-                            {data?.map((el) => (
+                            {data.map((el) => (
                               <tr>
                                 <td>
-                                  <a href="#">
+                                  <a href="/">
                                     <img
                                       style={{ width: "100%" }}
                                       src={el.image}
@@ -120,17 +124,17 @@ function Cart(props) {
                                   </a>
                                 </td>
                                 <td>
-                                  <a href="#">{el.name}</a>
+                                  <a href="/">{el.name}</a>
                                 </td>
                                 <td>
                                   <IncrementInput
                                     value={el.Quantity}
                                     setValues={(e) =>
-                                      handleChangearray(el.id, e)
+                                      handleChangeArray(el.id, e)
                                     }
                                     name={"Quantity"}
                                     handleChange={(e) =>
-                                      handleChangearray(el.id, e.target.value)
+                                      handleChangeArray(el.id, e.target.value)
                                     }
                                   />
                                 </td>
@@ -138,12 +142,18 @@ function Cart(props) {
                                 <td>${el.Discount}</td>
                                 <td>${el.price - el.Discount}</td>
                                 <td>
-                                  <a href="#">
+                                  <button
+                                    onClick={(e) => handleDelete(e)}
+                                    style={{
+                                      border: "none",
+                                      backgroundColor: "transparent",
+                                    }}
+                                  >
                                     <i
                                       style={{ color: "red" }}
                                       class="fa fa-trash-o"
                                     ></i>
-                                  </a>
+                                  </button>
                                 </td>
                               </tr>
                             ))}
@@ -171,7 +181,6 @@ function Cart(props) {
                           </button>
                           <button
                             onClick={() => history.push("/check-out")}
-                            type="submit"
                             class="btn btn-primary"
                           >
                             Proceed to checkout{" "}

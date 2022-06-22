@@ -11,6 +11,8 @@ function SquaredInput({
   errorMessage = "",
   onBlur,
   placeholder,
+  id,
+  onFocus,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -25,6 +27,8 @@ function SquaredInput({
           name={name}
           value={value}
           placeholder={placeholder}
+          id={id}
+          onFocus={onFocus}
         />
 
         {errorMessage ? (
