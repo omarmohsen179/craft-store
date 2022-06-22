@@ -1,3 +1,4 @@
+import { TextField } from "@mui/material";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import ButtonComponent from "../../../Components/ButtonComponent";
 import SquaredInput from "../../../Components/SquaredInput";
@@ -6,18 +7,34 @@ import ContactUsForm from "./Components/ContactUsForm";
 import ContactUslist from "./Components/ContactUslist";
 import Intro from "./Components/Intro";
 import "./ContactUs.scss";
+import { validate } from "react-email-validator";
+
+import PhoneInput from "react-phone-input-2";
+import "react-phone-input-2/lib/style.css";
+import { PostContactUs } from "./api";
+
 function ContactUs() {
   const defaultValues = useRef({
-    FirstName: "",
-    LastName: "",
-    Email: "",
-    Message: "",
+    first_name: "",
+    last_name: "",
+    email: "",
+    message: "",
+    phone_number: "",
   });
   const [values, setValues] = useState(defaultValues.current);
   console.log(values);
+
   const handleChange = useCallback((e) => {
-    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+    typeof e === "object"
+      ? setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }))
+      : setValues((prev) => ({ ...prev, phone_number: e }));
   }, []);
+
+  const [valid, setValid] = useState(true);
+
+  function handleSubmit() {
+    PostContactUs(values);
+  }
 
   return (
     <div className="contact-us-cont">
@@ -52,7 +69,7 @@ function ContactUs() {
           >
             <div class="contact-form">
               <div class="form-group">
-                <label class="control-label col-sm-2" for="fname">
+                <label class="control-label col-lg-5" for="fname">
                   First Name:
                 </label>
                 <div class="col-sm-10">
@@ -67,16 +84,16 @@ function ContactUs() {
                     // label={"E-mail"}
                     handleChange={handleChange}
                     placeholder={"First Name"}
-                    name="FirstName"
+                    name="first_name"
                     required
-                    value={values["FirstName"]}
-                    // errorMessage={error.Email}
-                    // onBlur={CheckEmail}
+                    value={values["first_name"]}
+                    // errorMessage={error.email}
+                    // onBlur={Checkemail}
                   />
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="lname">
+                <label class="control-label col-lg-5" for="lname">
                   Last Name:
                 </label>
                 <div class="col-sm-10">
@@ -84,16 +101,16 @@ function ContactUs() {
                     // label={"E-mail"}
                     handleChange={handleChange}
                     placeholder={"Last Name"}
-                    name="LastName"
+                    name="last_name"
                     required
-                    value={values["LastName"]}
-                    // errorMessage={error.Email}
-                    // onBlur={CheckEmail}
+                    value={values["last_name"]}
+                    // errorMessage={error.email}
+                    // onBlur={Checkemail}
                   />
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="email">
+                <label class="control-label col-lg-5" for="email">
                   E-Mail:
                 </label>
                 <div class="col-sm-10">
@@ -101,22 +118,58 @@ function ContactUs() {
                     // label={"E-mail"}
                     handleChange={handleChange}
                     placeholder={"E-Mail"}
-                    name="Email"
+                    name="email"
                     required
-                    value={values["Email"]}
-                    // errorMessage={error.Email}
-                    // onBlur={CheckEmail}
+                    value={values["email"]}
+                    // errorMessage={error.email}
+                    // onBlur={Checkemail}
+                    onBlur={() => setValid(validate(values["email"]))}
+                    onFocus={() => setValid(true)}
+                  />
+                  {!valid && <h5 style={{ color: "red" }}>Invalid E-Mail!</h5>}
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="control-label col-lg-5" for="email">
+                  Phone Number:
+                </label>
+                <div class="col-sm-10">
+                  <PhoneInput
+                    country={"eg"}
+                    value={values["phone_number"]}
+                    onChange={(e) => handleChange(e)}
+                    inputStyle={{
+                      display: "block",
+
+                      // padding: "10px",
+                      width: "100%",
+                      backgroundColor: "white",
+                      border: "1px solid #d7dbe0",
+                      borderRadius: "3px",
+                      color: " #5c5c5c",
+                      outline: 0,
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                      whiteSpace: "nowrap",
+                      verticalAlign: "top",
+                      fontSize: "1em",
+                      lineHeight: "1.25em",
+                    }}
+
+                    // inputProps={{
+                    //   name: "phone_number",
+                    // }}
                   />
                 </div>
               </div>
               <div class="form-group">
-                <label class="control-label col-sm-2" for="comment">
-                  Message:
+                <label class="control-label col-lg-5" for="comment">
+                  message:
                 </label>
                 <div class="col-sm-10">
                   <textarea
                     onChange={handleChange}
-                    name="Message"
+                    name="message"
                     class="country-input"
                     rows="5"
                     id="comment"
@@ -128,7 +181,7 @@ function ContactUs() {
                   {/* <button type="submit" class="btn btn-default">
                     Submit
                   </button> */}
-                  <ButtonComponent title="Submit" />
+                  <ButtonComponent title="Submit" onClick={handleSubmit} />
                 </div>
               </div>
             </div>
