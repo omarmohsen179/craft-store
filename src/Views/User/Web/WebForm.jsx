@@ -1,14 +1,18 @@
-import React, { useCallback, useEffect, useMemo, useState } from "react";
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { useTranslation } from "react-i18next";
 import { Button, Col, FormGroup, Input, Row } from "reactstrap";
+import SquaredInput from "../../../Components/SquaredInput";
 import UploadImageButton from "../../../Components/UploadImageButton/UploadImageButton";
 import { ApiBaseUrl } from "../../../Service/config";
 
-const CategoryForm = ({ onSubmit, onCancel, data }) => {
+const CategoryForm = ({ onSubmit, onCancel, setvalues, addInput, values }) => {
   const { t } = useTranslation();
-  const [imageValue, setImageValue] = useState({
-    image: "",
-  });
 
   // const isNotValid = useMemo(() => {
   //   let keysToCheck = ["Title"];
@@ -32,20 +36,28 @@ const CategoryForm = ({ onSubmit, onCancel, data }) => {
   // submit form
 
   const addHandle = useCallback(() => {
-    onSubmit(imageValue);
-  }, [imageValue, onSubmit]);
+    onSubmit(values);
+  }, [onSubmit, values]);
 
   let handleGetImages = (event) => {
     let files = event.target.files;
-    setImageValue({ ...imageValue, image: files[0] });
+    setvalues((prev) => ({ ...prev, image_path: files[0] }));
   };
-
   let handleRemoveImage = useCallback(() => {
-    setImageValue((prev) => ({
+    setvalues((prev) => ({
       ...prev,
-      image: "",
+      image_path: "",
     }));
   }, []);
+
+  // const defaultValues = useRef({
+  //   Link: "",
+  // });
+  // const [values, setValues] = useState(defaultValues.current);
+  const handleChange = useCallback((e) => {
+    setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
+
   return (
     <>
       <div className="mt-2">
@@ -57,15 +69,27 @@ const CategoryForm = ({ onSubmit, onCancel, data }) => {
             handleGetImages={handleGetImages}
             handleRemoveImage={handleRemoveImage}
             imagesFiles={
-              imageValue.image
+              values.image_path
                 ? [
-                    typeof imageValue.image == "string"
-                      ? ApiBaseUrl + imageValue.image
-                      : imageValue.image,
+                    typeof values.image_path == "string"
+                      ? ApiBaseUrl + values.image_path
+                      : values.image_path,
                   ]
                 : []
             }
           />
+          {addInput && (
+            <>
+              <label style={{ marginTop: 10 }}>{t("Add Link")}</label>
+              <SquaredInput
+                // label={"Add Link"}
+                handleChange={handleChange}
+                name="link"
+                value={values["link"]}
+                // required
+              />
+            </>
+          )}
         </FormGroup>
         {/* 
         <FormGroup>

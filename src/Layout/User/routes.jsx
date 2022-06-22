@@ -16,6 +16,7 @@ import EditPage from "../../Views/User/Products/EditProduct/EditProduct";
 import Categories from "../../Views/User/Products/Categories/Categories";
 
 import Product from "../../Views/Unkown/Product";
+import HomeSlider from "../../Views/User/HomeSlider/HomeSlider";
 const layoutPath = "/dashboard";
 export default [
   {
@@ -107,6 +108,15 @@ export default [
     key: 3,
     component: Web,
     title: "web",
+    htmlBefore: '<i class="material-icons">edit</i>',
+    htmlAfter: "",
+  },
+  {
+    path: layoutPath + "/home-slider",
+    layout: DefaultLayout,
+    key: 3,
+    component: HomeSlider,
+    title: "home slider",
     htmlBefore: '<i class="material-icons">edit</i>',
     htmlAfter: "",
   },

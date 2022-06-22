@@ -22,6 +22,7 @@ import EmailConfirmation from "../../Views/Auth/Confirm";
 import ContactUs from "../../Views/Unkown/ContactUs";
 import CheckOut from "../../Views/Unkown/Cart/CheckOut/CheckOut";
 import WhishList from "../../Views/Unkown/Cart/WhishList/WhishList";
+import Orders from "../../Views/Unkown/Cart/Orders/Orders";
 
 function Unknown({ match }) {
   useEffect(() => (window.onscroll = onScroll), []);
@@ -98,6 +99,7 @@ function Unknown({ match }) {
           <Route path={`${match.url}cart`} component={Cart} />
           <Route path={`${match.url}check-out`} component={CheckOut} />
           <Route path={`${match.url}whish-list`} component={WhishList} />
+          <Route path={`${match.url}orders`} component={Orders} />
           <Route
             path={`${match.url}create-account`}
             component={CreateAccount}

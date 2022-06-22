@@ -18,6 +18,10 @@ export default function AdminSection({
   onDragChange,
   onReorder,
   showDragIcons,
+  addInput = false,
+  setvalues,
+  handleChange,
+  values,
 }) {
   let history = useHistory();
 
@@ -29,7 +33,7 @@ export default function AdminSection({
 
   useEffect(() => {
     if (data) {
-      data.map((item) => {
+      data?.map((item) => {
         if (item["image_path"] && !item["image_path"].includes(ApiBaseUrl)) {
           item["image_path"] = `${ApiBaseUrl}${item["image_path"]}`;
         }
@@ -79,29 +83,19 @@ export default function AdminSection({
   );
 
   const saveForm = useCallback(
-    (data, images = []) => {
-      console.log("data", data);
-      data.ProductId = productId;
-
+    (data) => {
       if (
-        typeof data.Image === "string" &&
-        data.Image &&
-        data.Image.includes(ApiBaseUrl)
+        typeof data.image_path === "string" &&
+        data.image_path &&
+        data.image_path.includes(ApiBaseUrl)
       ) {
-        data.Image = data.Image.replace(ApiBaseUrl, "");
+        data.image_path = data.image_path.replace(ApiBaseUrl, "");
       }
-      let formData = new FormData();
 
-      for (let [key, value] of Object.entries(data)) {
-        formData.append(key.toString(), value);
-      }
-      if (images && images.length > 0) {
-        for (var i = 0; i < images.length; i++) {
-          formData.append("imagelist", images[i]);
-        }
-      }
-      formData = new FormData();
-      formData.append("image", data.image);
+      let formData = new FormData();
+      formData.append("image_path", data.image_path);
+      delete data.image_path;
+      formData.append("data", JSON.stringify(data));
       let config = {
         // method: status === "ADD" ? "POST" : "PUT",
         method: status === "ADD" ? "POST" : "POST",
@@ -163,32 +157,14 @@ export default function AdminSection({
   }, []);
   let checkusertype = useCallback(async function () {
     let item = JSON.parse(localStorage.getItem("user") || "{}");
-    // history.push("/")
-    // !item || !item.type
-    //   ?
-    //   : await axios
-    //       .get(ApiBaseUrl + "/api/check-type", {
-    //         headers: {
-    //           ...axios.defaults.headers,
-    //           Authorization: `bearer ${
-    //             JSON.parse(localStorage.getItem("user") || "{}").token
-    //           }`,
-    //         },
-    //       })
-    //       .then((res) => {
-    //         return res[0] ? res[0] : "";
-    //       })
-    //       .catch((err) => {
-    //         // history.push("/log-in");
-    //         // localStorage.removeItem("user");
-    //         return "";
-    //       });
     return item?.type ? item?.type[0] : "";
   }, []);
   const cancelForm = useCallback(() => {
     setStatus("IDLE");
     setItemToUpdate(undefined);
   }, []);
+
+  console.log(values);
 
   return (
     <>
@@ -210,6 +186,10 @@ export default function AdminSection({
           productId={productId}
           onSubmit={saveForm}
           onCancel={cancelForm}
+          addInput={addInput}
+          handleChange={handleChange}
+          setvalues={setvalues}
+          values={values}
         />
       )}
     </>
