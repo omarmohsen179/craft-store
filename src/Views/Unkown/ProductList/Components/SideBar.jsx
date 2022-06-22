@@ -60,23 +60,12 @@ function SideBar() {
 
     //////// API post price Range ////////
   }
+  const [array, setArray] = useState([]);
+  console.log(array);
 
-  const handleCheck = (e) => {
-    // Destructuring
-    const { value, checked } = e.target;
-    const { languages } = isChecked;
-
-    console.log(`${value} is ${checked}`);
-
-    // Case 1 : The user checks the box
-    if (checked) {
-    }
-
-    // Case 2  : The user unchecks the box
-    else {
-      setIsChecked(value.filter((e) => e !== value));
-    }
-  };
+  useEffect(() => {
+    //////  API send request ///////
+  }, [array]);
 
   return (
     <div
@@ -103,7 +92,16 @@ function SideBar() {
               <div className="my-1">
                 <label className="tick">
                   {el.name_en}
-                  <input type="checkbox" onClick={() => console.log(el)} />
+                  <input
+                    type="checkbox"
+                    onClick={() => {
+                      if (array.includes(el.Id)) {
+                        array.splice(array.indexOf(el.Id), 1);
+                      } else {
+                        setArray((prev) => [...prev, el.Id]);
+                      }
+                    }}
+                  />
                   <span className="check"></span>
                 </label>
               </div>
