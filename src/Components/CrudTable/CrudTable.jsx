@@ -24,12 +24,14 @@ function CrudTable({
   FormComponent,
   onRowRemoving,
   allowEdit = false,
+  handleCellColor,
+  allowDelete,
 }) {
   const [clicked, setClicked] = useState(false);
   const [dataRow, setDataRow] = useState(null);
 
   const handleChange = useCallback((e) => {
-    setDataRow(e.row.data);
+    setDataRow(e.row.data.roles);
     setClicked(true);
   }, []);
 
@@ -57,11 +59,12 @@ function CrudTable({
       <DataGrid
         onRowRemoved={handleDelete}
         onRowRemoving={onRowRemoving}
-        id="gridContainer"
+        id="id"
         dataSource={data}
         showBorders={true}
         rowAlternationEnabled
         showRowLines
+        onCellPrepared={(e) => handleCellColor(e)}
       >
         <Paging defaultPageSize={10} pageSize={10} />
         <Pager showNavigationButtons={true} displayMode />
@@ -86,7 +89,21 @@ function CrudTable({
             dataField={el.field}
             caption={el.caption}
             cellRender={el.dataType === "Picture" ? cellRender : undefined}
-          />
+            width={el.width}
+            type={el.type}
+            alignment={el.alignment}
+            cellComponent={el.comp}
+          >
+            {/* {el.type === "buttons" && (
+              <Button
+                hint="Clone"
+                icon="bulletlist"
+                visible={true}
+                disabled={false}
+                onClick={(e) => handleChange(e.row.data.roles)}
+              />
+            )} */}
+          </Column>
         ))}
         <Column type="buttons" width={110}>
           {allowEdit && (
@@ -98,7 +115,7 @@ function CrudTable({
               onClick={(e) => handleChange(e)}
             />
           )}
-          <Button name="delete" />
+          {allowDelete && <Button name="delete" />}
         </Column>
       </DataGrid>
     </div>

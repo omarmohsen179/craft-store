@@ -39,7 +39,7 @@ function ContactUs() {
   return (
     <div className="contact-us-cont">
       <div class="container contact">
-        <div class="row">
+        <div style={{ height: "120vh" }} class="row">
           <div
             style={{
               boxShadow:
@@ -189,6 +189,94 @@ function ContactUs() {
         </div>
       </div>
     </div>
+
+    // <div className="form-cont">
+    //   <div className="picture">
+    //     <img src="https://image.ibb.co/kUASdV/contact-image.png" alt="pic" />
+    //     <h2>Contact Us</h2>
+    //     <h4>We would love to hear from you !</h4>
+    //   </div>
+    //   <div className="form-inputs">
+    //     <div className="form-section">
+    //       <SquaredInput
+    //         label={"First Name"}
+    //         handleChange={handleChange}
+    //         placeholder={"First Name"}
+    //         name="first_name"
+    //         required
+    //         value={values["first_name"]}
+    //         // errorMessage={error.email}
+    //         // onBlur={Checkemail}
+    //       />
+    //     </div>
+    //     <div className="form-section">
+    //       <SquaredInput
+    //         label={"Last Name"}
+    //         handleChange={handleChange}
+    //         placeholder={"Last Name"}
+    //         name="last_name"
+    //         required
+    //         value={values["last_name"]}
+    //         // errorMessage={error.email}
+    //         // onBlur={Checkemail}
+    //       />
+    //     </div>
+
+    //     <div className="form-section">
+    //       <SquaredInput
+    //         label={"E-mail"}
+    //         handleChange={handleChange}
+    //         placeholder={"First Name"}
+    //         name="first_name"
+    //         required
+    //         value={values["first_name"]}
+    //         // errorMessage={error.email}
+    //         // onBlur={Checkemail}
+    //       />
+    //     </div>
+    //     <div className="form-section">
+    //       <label>Phone Number</label>
+
+    //       <PhoneInput
+    //         country={"eg"}
+    //         value={values["phone_number"]}
+    //         onChange={(e) => handleChange(e)}
+    //         inputStyle={{
+    //           display: "block",
+
+    //           // padding: "10px",
+    //           width: "100%",
+    //           backgroundColor: "white",
+    //           border: "1px solid #d7dbe0",
+    //           borderRadius: "3px",
+    //           color: " #5c5c5c",
+    //           outline: 0,
+    //           overflow: "hidden",
+    //           textOverflow: "ellipsis",
+    //           whiteSpace: "nowrap",
+    //           verticalAlign: "top",
+    //           fontSize: "1em",
+    //           lineHeight: "1.25em",
+    //         }}
+
+    //         // inputProps={{
+    //         //   name: "phone_number",
+    //         // }}
+    //       />
+    //     </div>
+    //     <div className="form-section">
+    //       <label>message:</label>
+    //       <textarea
+    //         onChange={handleChange}
+    //         name="message"
+    //         class="country-input"
+    //         rows="5"
+    //         id="comment"
+    //       />
+    //     </div>
+    //     <ButtonComponent title="Submit" onClick={handleSubmit} />
+    //   </div>
+    // </div>
   );
 }
 

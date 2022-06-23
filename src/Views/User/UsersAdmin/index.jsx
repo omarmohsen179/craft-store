@@ -207,7 +207,7 @@ function UsersAdmin() {
           <div style={{ marginTop: 40 }}>
             <ButtonComponent
               onClick={(e) => handleClick(e)}
-              loading={editing}
+              disable={editing}
               title={"Submit"}
             />
           </div>
