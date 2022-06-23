@@ -9,7 +9,7 @@ function LangueNavBar() {
       style={{
         height: 38,
         // backgroundColor: "#5ba8dc",
-        backgroundColor: "#131f35",
+        backgroundColor: "#597ec3",
         color: "white",
         padding: "8px 0",
         direction: i18n.language === "en" ? "ltr" : "rtl",

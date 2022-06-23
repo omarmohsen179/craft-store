@@ -1,13 +1,9 @@
-import { TextField } from "@mui/material";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useRef, useState } from "react";
 import ButtonComponent from "../../../Components/ButtonComponent";
 import SquaredInput from "../../../Components/SquaredInput";
 // import UpperPage from "../../../Components/UpperPage";
-import ContactUsForm from "./Components/ContactUsForm";
-import ContactUslist from "./Components/ContactUslist";
-import Intro from "./Components/Intro";
-import "./ContactUs.scss";
 import { validate } from "react-email-validator";
+import "./ContactUs.scss";
 
 import PhoneInput from "react-phone-input-2";
 import "react-phone-input-2/lib/style.css";

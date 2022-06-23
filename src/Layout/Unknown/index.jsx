@@ -28,56 +28,14 @@ function Unknown({ match }) {
   useEffect(() => (window.onscroll = onScroll), []);
   const onScroll = () => {
     try {
-      var navbar = document.getElementById("navbar");
-      var navbarin = document.getElementById("nav-up-container-id");
-      var mybutton = document.getElementById("return-top-button");
-      var content = document.getElementsByClassName("dropdown-content");
-      // var mainBody = document.getElementsByClassName("main_body");
-      var mainBody = document.getElementById("mbody");
-      // var listElements = document.getElementsByClassName(
-      //   "Horizontal-list  remove-dot"
-      // );
-      var listElements = document.getElementsByClassName(
-        "Horizontal-list-elements"
-      );
-      var sticky = navbar?.offsetTop;
-      if (window.pageYOffset > sticky + 50) {
-        navbar.classList.add("sticky");
-        mainBody.classList.add("padding");
-
-        for (var i = 0; i < listElements.length; i++) {
-          listElements[i].classList.add("white-color");
-          listElements[i].classList.remove("black-color");
-        }
-        for (var i = 0; i < content.length; i++) {
-          content[i].classList.add("down-nav");
-        }
-        mybutton.style.display = "block";
-        navbarin.classList.remove("nav-up-container");
-      } else {
-        navbar.classList.remove("sticky");
-        mainBody.classList.remove("padding");
-
-        for (var i = 0; i < listElements.length; i++) {
-          listElements[i].classList.add("black-color");
-          listElements[i].classList.remove("white-color");
-        }
-        mybutton.style.display = "none";
-        for (var i = 0; i < content.length; i++) {
-          content[i].classList.remove("down-nav");
-        }
-        navbarin.classList.add("nav-up-container");
-      }
     } catch (err) {}
   };
   return (
     <div>
       <ScrollTop />
 
-      <div className="header">{/* <LangueNavBar /> */}</div>
-      <div id="navbar">
-        <NavigationBar />
-      </div>
+      <NavigationBar />
+
       <div id="mbody" className="main_body">
         <Switch>
           <Route exact path={`${match.url}`} component={Home} />

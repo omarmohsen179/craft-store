@@ -16,6 +16,7 @@ import DataGrid, {
 } from "devextreme-react/data-grid";
 import ButtonComponent from "../../../Components/ButtonComponent";
 import AutomaticSlider from "../AutomaticSlider/AutomaticSlider";
+import HomeProducts from "../HomeProducts/HomeProducts";
 
 function Web() {
   const { t } = useTranslation();
@@ -95,7 +96,7 @@ function Web() {
               colAttributes={sliderImagesColAttributes}
               controller={ApiBaseUrl + "/api/home_slider"}
               //////////////////
-              handleChange={handleChange}
+
               values={values}
               setValues={setValues}
             />
@@ -106,6 +107,7 @@ function Web() {
         </Card>
       </div>
       <AutomaticSlider />
+      <HomeProducts />
     </>
   );
 }

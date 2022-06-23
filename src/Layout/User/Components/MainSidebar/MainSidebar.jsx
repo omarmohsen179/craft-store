@@ -26,7 +26,7 @@ const MainSidebar = () => {
       lg={{ size: 2 }}
       md={{ size: 3 }}
     >
-      <SidebarMainNavbar />
+      <SidebarMainNavbar image={false} />
       <SidebarNavItems />
     </Col>
   );

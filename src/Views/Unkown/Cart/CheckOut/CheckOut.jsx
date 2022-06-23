@@ -186,7 +186,7 @@ function CheckOut() {
                 </div>
 
                 <div class="single-widget get-button">
-                  {/* <div style={{ backgroundColor: "#131f35" }} class="content">
+                  {/* <div style={{ backgroundColor: "#597ec3" }} class="content">
                     <div class="button">
                       <a href="" class="btn">
                         proceed to checkout

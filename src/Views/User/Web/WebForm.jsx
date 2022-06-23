@@ -18,7 +18,6 @@ const CategoryForm = ({
   addInput,
   values,
   itemToUpdate,
-  handleChange,
 }) => {
   console.log("web form values", values);
   const { t } = useTranslation();
@@ -60,9 +59,9 @@ const CategoryForm = ({
     }));
   }, []);
 
-  // const handleChange = useCallback((e) => {
-  //   setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
-  // }, []);
+  const handleChange = useCallback((e) => {
+    setValues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  }, []);
 
   return (
     <>

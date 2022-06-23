@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import "./SocialMediaAuth.scss";
 
-import FacebookLogin from "react-facebook-login";
-import {
-  GoogleLogin,
-  MyCustomButton,
-  useGoogleLogin,
-} from "@react-oauth/google";
+import FacebookLogin from "react-facebook-login/dist/facebook-login-render-props";
 
-// import GoogleLogin from "react-google-login";
+import { refreshTokenSetup } from "./refreshToken";
 
-function SocialMediaAuth() {
+import GoogleLogin from "react-google-login";
+import ButtonComponent from "../ButtonComponent";
+
+function SocialMediaAuth({ loading = false }) {
   const [accessToken, setAccessToken] = useState("");
 
   function responseFacebook(response) {
@@ -20,38 +18,59 @@ function SocialMediaAuth() {
   function componentClicked(data) {
     console.log("data", data);
   }
+  const onSuccess = (res) => {
+    console.log("Login Success: currentUser:", res.profileObj);
+    // refreshTokenSetup(res);
+  };
 
-  function handleLogout() {
-    window.FB.logout();
-  }
-
-  // Facebook:  App Secret : eeeaf9798ec0a41dc05bb4a4d165f1b8
-
-  // Google: Client ID: 1065784582815-2fgc88hkgbbnvvoejgpfi95haks23tos.apps.googleusercontent.com
-  // Google: Client secret: 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
-
-  const login = useGoogleLogin({
-    onSuccess: (tokenResponse) => console.log(tokenResponse),
-  });
-
+  const onFailure = (res) => {
+    console.log("Login failed: res:", res);
+  };
   return (
-    <div>
-      <div>
-        <FacebookLogin
-          appId="1059560821346768"
-          autoLoad={true}
-          fields="name,email,picture"
-          onClick={componentClicked}
-          callback={responseFacebook}
-          cssClass="loginBtn loginBtn--facebook"
-        />
+    <>
+      <div>Or</div>
+
+      <div style={{ display: "flex", marginTop: "11px" }}>
+        <div>
+          <FacebookLogin
+            appId="1088597931155576"
+            autoLoad={false}
+            callback={responseFacebook}
+            render={(renderProps) => (
+              <ButtonComponent
+                onClick={renderProps.onClick}
+                color="#2d86ff"
+                title="Log In Facebook"
+                type={"button"}
+                icon="fab fa-facebook"
+              />
+            )}
+          />
+        </div>
+        <div>
+          <GoogleLogin
+            clientId={
+              "451993375040-ef7jm6f7uv38hbu17de96mt9sufmu57n.apps.googleusercontent.com"
+            }
+            buttonText="Login"
+            render={(renderProps) => (
+              <ButtonComponent
+                onClick={renderProps.onClick}
+                color="#e94235"
+                title="Log In Google"
+                type={"button"}
+                icon="fab fa-google"
+              />
+            )}
+            onSuccess={onSuccess}
+            onFailure={onFailure}
+            cookiePolicy={"single_host_origin"}
+            isSignedIn={true}
+            style={{ width: "100%", backgroundColor: "red" }}
+          />
+        </div>
       </div>
-      <div>
-        <button className="loginBtn loginBtn--google" onClick={() => login()}>
-          Login in with Google
-        </button>
-      </div>
-    </div>
+    </>
   );
 }
 

@@ -10,19 +10,19 @@ const { Link } = Anchor;
 const AppHero = ({ t, i18n = {} }) => {
   const dataa = [
     {
-      ImagePath:
+      image_path:
         "https://craft-store.ly/wp-content/uploads/2022/04/Artboard-1-8.png",
       Title: "here",
       Description: "here1",
     },
     {
-      ImagePath:
+      image_path:
         "	https://craft-store.ly/wp-content/uploads/2022/04/Artboard-1-copy-4-8.png",
       Title: "here1",
       Description: "here1",
     },
     {
-      ImagePath:
+      image_path:
         "	https://craft-store.ly/wp-content/uploads/2022/04/Artboard-1-copy-2-8.png",
       Title: "here1",
       Description: "here",

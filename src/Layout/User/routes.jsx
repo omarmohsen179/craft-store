@@ -121,15 +121,7 @@ export default [
   //   htmlBefore: '<i class="material-icons">edit</i>',
   //   htmlAfter: "",
   // },
-  {
-    path: layoutPath + "/home-products",
-    layout: DefaultLayout,
-    key: 3,
-    component: HomeProducts,
-    title: "home products",
-    htmlBefore: '<i class="material-icons">edit</i>',
-    htmlAfter: "",
-  },
+
   {
     path: layoutPath + "/users-admin",
     layout: DefaultLayout,

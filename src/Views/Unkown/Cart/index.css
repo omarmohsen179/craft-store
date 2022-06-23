@@ -253,7 +253,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .shopping-cart-cont #content .card.sidebar-menu .badge-light {
-  color: #131f35;
+  color: #597ec3;
 }
 
 .shopping-cart-cont #content .card.sidebar-menu .card {
@@ -594,7 +594,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .shopping-cart-cont #content #thumbs a.active {
-  border-color: #131f35;
+  border-color: #597ec3;
 }
 
 .shopping-cart-cont #content #checkout .nav {
@@ -696,7 +696,7 @@ STYLE SWITCHER FOR DEMO
 .shopping-cart-cont #content #blog-listing .post h4 a:hover,
 .shopping-cart-cont #content #blog-homepage .post h2 a:hover,
 .shopping-cart-cont #content #blog-homepage .post h4 a:hover {
-  color: #131f35;
+  color: #597ec3;
 }
 
 .shopping-cart-cont #content #blog-listing .post .author-category,
@@ -713,7 +713,7 @@ STYLE SWITCHER FOR DEMO
 
 .shopping-cart-cont #content #blog-listing .post .date-comments a:hover,
 .shopping-cart-cont #content #blog-homepage .post .date-comments a:hover {
-  color: #131f35;
+  color: #597ec3;
 }
 
 .shopping-cart-cont #content #blog-listing .post .intro,
@@ -759,7 +759,7 @@ STYLE SWITCHER FOR DEMO
 
 .shopping-cart-cont #content #blog-listing .pager a:not(.disabled):hover,
 .shopping-cart-cont #content #blog-homepage .pager a:not(.disabled):hover {
-  background: #131f35;
+  background: #597ec3;
 }
 
 .shopping-cart-cont #content #blog-homepage .post {
@@ -851,7 +851,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .shopping-cart-cont .owl-carousel .owl-dots .owl-dot.active span {
-  background: #131f35;
+  background: #597ec3;
 }
 
 .shopping-cart-cont .owl-thumbs button {
@@ -1008,12 +1008,20 @@ STYLE SWITCHER FOR DEMO
   font-size: 0.9rem;
   line-height: 1.5;
   border-radius: 0.25rem;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: color 0.15s ease-in-out,
+ background-color 0.15s ease-in-out, border-color 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+ border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+ border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+ border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+ border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+ border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -1027,7 +1035,7 @@ STYLE SWITCHER FOR DEMO
 .shopping-cart-cont .btn:disabled {
   opacity: 0.65;
 }
-
+#597ec3
 .shopping-cart-cont .btn:not(:disabled):not(.disabled):active,
 .shopping-cart-cont .btn:not(:disabled):not(.disabled).active {
   background-image: none;
@@ -1046,8 +1054,8 @@ STYLE SWITCHER FOR DEMO
 .shopping-cart-cont .btn-link.focus {
   text-decoration: underline;
 }
-
-.shopping-cart-cont .btn-link:disabled,
+#597ec3
+.shopping-cart-c#597ec3n-link:disabled,
 .shopping-cart-cont .btn-link.disabled {
   color: #6c757d;
 }
@@ -1058,8 +1066,8 @@ STYLE SWITCHER FOR DEMO
   border-color: #131f35;
 }
 
-.shopping-cart-cont .btn-primary:hover {
-  background-color: #012669;
+.shopping-cart-cont #597ec3imary:hover {
+  background-col#597ec32669;
   border-color: #012669;
 }
 
@@ -1343,21 +1351,21 @@ STYLE SWITCHER FOR DEMO
   border-color: #171a1d;
 }
 
-.shopping-cart-cont .btn-dark:not(:disabled):not(.disabled):active:focus,
+.shopping#597ec3ont .btn-dark:not(:disabled):not(.disabled):active:focus,
 .shopping-cart-cont .btn-dark:not(:disabled):not(.disabled).active:focus,
 .shopping-cart-cont .show > .btn-dark.dropdown-toggle:focus {
-  -webkit-box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
+  -webkit-box-sh#597ec3 0 0 0.2rem rgba(52, 58, 64, 0.5);
   box-shadow: 0 0 0 0.2rem rgba(52, 58, 64, 0.5);
 }
 
 .shopping-cart-cont .btn-outline-primary {
-  color: #131f35;
-  background-color: transparent;
+  color: #131f35;#597ec3
+  background-col#597ec3nsparent;
   background-image: none;
   border-color: #131f35;
 }
 
-.shopping-cart-cont .btn-outline-primary:hover {
+.shopping#597ec3ont .btn-outline-primary:hover {
   color: #fff;
   background-color: #131f35;
   border-color: #131f35;
@@ -1365,8 +1373,8 @@ STYLE SWITCHER FOR DEMO
 
 .shopping-cart-cont .btn-outline-primary.disabled,
 .shopping-cart-cont .btn-outline-primary:disabled {
-  color: #131f35;
-  background-color: transparent;
+  color: #131f35;#597ec3
+  background-col#597ec3nsparent;
 }
 
 .shopping-cart-cont .btn-outline-primary:not(:disabled):not(.disabled):active,
@@ -1644,7 +1652,7 @@ STYLE SWITCHER FOR DEMO
 
 .shopping-cart-cont body {
   font-family: "Roboto", Helvetica, Arial, sans-serif;
-  font-size: 0.9rem;
+  font-si#597ec3rem;
   font-weight: 400;
   line-height: 1.5;
   color: #212529;
@@ -1763,7 +1771,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .shopping-cart-cont .blockquote-footer {
-  color: #6c757d;
+  color: #597ec3;
 }
 
 .shopping-cart-cont .blockquote-footer::before {
@@ -1788,8 +1796,8 @@ STYLE SWITCHER FOR DEMO
   border-top-left-radius: 0.25rem;
   border-bottom-left-radius: 0.25rem;
 }
-
-.shopping-cart-cont .page-item:last-child .page-link {
+#597ec3
+.shopping-cart-c#597ec3ge-item:last-child .page-link {
   border-top-right-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
@@ -1801,7 +1809,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .shopping-cart-cont .page-item.disabled .page-link {
-  color: #6c757d;
+  color: #597ec3;
   background-color: #fff;
   border-color: #dee2e6;
 }
@@ -1847,7 +1855,7 @@ STYLE SWITCHER FOR DEMO
 .shopping-cart-cont .pagination-sm .page-item:first-child .page-link {
   border-top-left-radius: 0.2rem;
   border-bottom-left-radius: 0.2rem;
-}
+}#597ec3
 
 .shopping-cart-cont .pagination-sm .page-item:last-child .page-link {
   border-top-right-radius: 0.2rem;
@@ -1921,7 +1929,7 @@ STYLE SWITCHER FOR DEMO
   background-color: #343a40 !important;
 }
 
-.shopping-cart-cont a.bg-dark:hover,
+.shopping-cart-c#597ec3g-dark:hover,
 .shopping-cart-cont a.bg-dark:focus,
 .shopping-cart-cont button.bg-dark:hover,
 .shopping-cart-cont button.bg-dark:focus {
@@ -1953,7 +1961,7 @@ STYLE SWITCHER FOR DEMO
 }
 
 .shopping-cart-cont .border-light {
-  border-color: #f8f9fa !important;
+  border-#597ec3#f8f9fa !important;
 }
 
 .shopping-cart-cont .border-dark {
@@ -2026,7 +2034,7 @@ STYLE SWITCHER FOR DEMO
 .shopping-cart-cont .text-dark {
   color: #343a40 !important;
 }
-
+#597ec3
 .shopping-cart-cont a.text-dark:hover,
 .shopping-cart-cont a.text-dark:focus {
   color: #1d2124 !important;
@@ -2136,13 +2144,16 @@ STYLE SWITCHER FOR DEMO
   background-color: #fff;
   border: 1px solid #ced4da;
   border-radius: 0.25rem;
-  -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  -webkit-transition: border-color 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
   -webkit-transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out,
+ -webkit-box-shadow 0.15s ease-in-out;
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -2443,7 +2454,7 @@ STYLE SWITCHER FOR DEMO
 .shopping-cart-cont .was-validated .custom-file-input:invalid ~ .invalid-tooltip,
 .shopping-cart-cont .custom-file-input.is-invalid ~ .invalid-feedback,
 .shopping-cart-cont .custom-file-input.is-invalid ~ .invalid-tooltip {
-  display: block;
+  display: block;#597ec3
 }
 
 .shopping-cart-cont .was-validated .custom-file-input:invalid:focus ~ .custom-file-label,
@@ -2471,7 +2482,7 @@ STYLE SWITCHER FOR DEMO
   color: #6c757d;
 }
 
-.shopping-cart-cont .custom-control-input:disabled ~ .custom-control-label::before {
+.shopping-cart-cont #597ec3-control-input:disabled ~ .custom-control-label::before {
   background-color: #e9ecef;
 }
 
@@ -2483,7 +2494,7 @@ STYLE SWITCHER FOR DEMO
 .custom-control-input:checked
 ~ .custom-control-label::before {
   background-color: #131f35;
-}
+}#597ec3
 
 .shopping-cart-cont .custom-checkbox
 .custom-control-input:checked
@@ -2509,7 +2520,7 @@ STYLE SWITCHER FOR DEMO
   background-color: rgba(79, 191, 168, 0.5);
 }
 
-.shopping-cart-cont .custom-checkbox
+.shopping-cart-cont #597ec3-checkbox
 .custom-control-input:disabled:indeterminate
 ~ .custom-control-label::before {
   background-color: rgba(79, 191, 168, 0.5);
@@ -2571,7 +2582,7 @@ STYLE SWITCHER FOR DEMO
   background-color: #f0f0f0;
 }
 
-.shopping-cart-cont .nav-tabs .dropdown-menu {
+.shopping-cart-cont #597ec3bs .dropdown-menu {
   margin-top: -1px;
 }
 
@@ -2708,7 +2719,7 @@ STYLE SWITCHER FOR DEMO
   padding: 0.25rem 1.5rem;
   font-weight: 400;
   color: #212529;
-}
+}#597ec3
 
 .shopping-cart-cont .dropdown-item:hover,
 .shopping-cart-cont .dropdown-item:focus {

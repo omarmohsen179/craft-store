@@ -9,16 +9,19 @@ const ButtonComponent = ({
   onClick,
   loading = false,
   disable,
+  icon,
+  color = theme,
 }) => {
   const { t, i18n } = useTranslation();
   return (
     <button
       type={type}
       onClick={onClick}
-      style={{ backgroundColor: theme, borderRadius: 5 }}
+      style={{ backgroundColor: color, borderRadius: 5 }}
       className="site-button-component"
       disabled={disable || loading}
     >
+      <i className={icon}></i>{" "}
       {!loading ? t(title) : <TailSpin color="white" height={20} width={20} />}
     </button>
   );

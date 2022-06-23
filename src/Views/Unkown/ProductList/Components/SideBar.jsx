@@ -81,7 +81,7 @@ function SideBar() {
   return (
     <div
       id="sidemenux"
-      className={"product-dilter-side-menu col-lg-2 col-md-12 col-sm-12 "}
+      className={"product-dilter-side-menu col-lg-2 col-md-12 col-sm-12"}
     >
       <div className="box border-bottom">
         <div className="box-label text-uppercase d-flex align-items-center">

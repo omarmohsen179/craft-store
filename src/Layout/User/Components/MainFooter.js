@@ -24,17 +24,8 @@ const MainFooter = ({ contained, menuItems, copyright }) => (
 );
 
 MainFooter.propTypes = {
-  /**
-   * Whether the content is contained, or not.
-   */
   contained: PropTypes.bool,
-  /**
-   * The menu items array.
-   */
   menuItems: PropTypes.array,
-  /**
-   * The copyright info.
-   */
   copyright: PropTypes.string,
 };
 

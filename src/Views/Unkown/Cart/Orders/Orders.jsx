@@ -79,7 +79,7 @@ function Orders() {
                                 width:
                                   el.status === "delivered" ? "100%" : "30%",
                                 borderRadius: "16px",
-                                backgroundColor: "#131f35",
+                                backgroundColor: "#597ec3",
                               }}
                               aria-valuenow="20"
                               aria-valuemin="0"

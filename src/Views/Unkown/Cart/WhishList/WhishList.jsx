@@ -81,7 +81,7 @@ function WhishList() {
                       <button
                         type="button"
                         class="btn btn-warning mt-4 text-white"
-                        style={{ backgroundColor: "#131f35", fontSize: "13px" }}
+                        style={{ backgroundColor: "#597ec3", fontSize: "13px" }}
                       >
                         Add to cart
                         <i

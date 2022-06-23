@@ -44,7 +44,6 @@ export default function AdminSection({
       setRecords([...data]);
     }
   }, [data]);
-  console.log(records);
   // Internal Updates
   const updateRowHandle = useCallback((e) => {
     // setItemToUpdate(e.data);
@@ -196,7 +195,6 @@ export default function AdminSection({
           onSubmit={saveForm}
           onCancel={cancelForm}
           addInput={addInput}
-          handleChange={handleChange}
           setValues={setValues}
           values={values}
         />
