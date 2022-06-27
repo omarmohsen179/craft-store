@@ -12,6 +12,7 @@ function SquaredInput({
   onBlur,
   placeholder,
   id,
+  disabled = false,
   onFocus,
 }) {
   const { t, i18n } = useTranslation();
@@ -28,6 +29,7 @@ function SquaredInput({
           value={value}
           placeholder={placeholder}
           id={id}
+          disabled={disabled}
           onFocus={onFocus}
         />
 

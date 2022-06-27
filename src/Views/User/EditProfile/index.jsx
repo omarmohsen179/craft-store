@@ -5,6 +5,7 @@ import PageTitle from "../../../Components/User/common/PageTitle";
 import UserDetails from "./Components/UserDetails";
 import UserAccountDetails from "./Components/UserAccountDetails";
 import "./index.css";
+import ChangePassword from "./Components/ChangePassword";
 const EditProfile = () => (
   <Container fluid className="main-content-container px-4">
     <Row noGutters className="page-header py-4">
@@ -16,9 +17,11 @@ const EditProfile = () => (
       />
     </Row>
     <Row className={"main-container "}>
-      <Col lg="4">
-        <UserDetails />
-      </Col>
+      {
+        <Col lg="4">
+          <ChangePassword />
+        </Col>
+      }
       <Col lg="8">
         <UserAccountDetails />
       </Col>

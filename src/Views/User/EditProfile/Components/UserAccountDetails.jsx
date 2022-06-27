@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import PropTypes from "prop-types";
 import {
   Card,
@@ -10,10 +10,12 @@ import {
   Form,
   FormGroup,
 } from "shards-react";
+import "react-phone-number-input/style.css";
 import SquaredInput from "../../../../Components/SquaredInput";
 import ButtonComponent from "../../../../Components/ButtonComponent";
 
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import PhoneInput from "react-phone-number-input";
 
 const UserAccountDetails = ({ title }) => {
   const defualtvalues = useRef({
@@ -36,8 +38,6 @@ const UserAccountDetails = ({ title }) => {
   const handleChange = useCallback((e) => {
     setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
-
-  console.log(values);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -72,8 +72,8 @@ const UserAccountDetails = ({ title }) => {
                         <SquaredInput
                           label={"First Name"}
                           handleChange={handleChange}
-                          name="FirstName"
-                          value={values["FirstName"]}
+                          name="first_name"
+                          value={values["first_name"]}
                           required
                           errorMessage={error.FullName}
                           // onBlur={CheckInputs(values, error)}
@@ -83,8 +83,8 @@ const UserAccountDetails = ({ title }) => {
                         <SquaredInput
                           label={"Last Name"}
                           handleChange={handleChange}
-                          name="LastName"
-                          value={values["LastName"]}
+                          name="last_name"
+                          value={values["last_name"]}
                           required
                           errorMessage={error.FullName}
                           // onBlur={CheckInputs(values, error)}
@@ -102,53 +102,29 @@ const UserAccountDetails = ({ title }) => {
                     <SquaredInput
                       label={"E-Mail"}
                       handleChange={handleChange}
-                      name="Email"
-                      value={values["Email"]}
+                      name="email"
+                      value={values["email"]}
                       required
                       errorMessage={error.FullName}
                       // onBlur={CheckInputs(values, error)}
                     />
                   </Col>
+                  <Col md="12" lg={"12"} className="form-group">
+                    <PhoneInput
+                      placeholder="Enter phone number"
+                      value={values["phone_number"]}
+                      onChange={(e) =>
+                        handleChange({
+                          target: { name: "phone_number", value: e },
+                        })
+                      }
+                    />
+                  </Col>
+
                   {/* Password */}
-                  <Col md="122" lg={"12"} className="form-group">
-                    {/* <label htmlFor="fePassword">Password</label> */}
-                    <SquaredInput
-                      label={"Password"}
-                      handleChange={handleChange}
-                      name="Password"
-                      value={values["Password"]}
-                      required
-                      errorMessage={error.FullName}
-                      // onBlur={CheckInputs(values, error)}
-                    />
-                  </Col>
                 </Row>
-                <FormGroup>
-                  {/* <label htmlFor="feAddress">Address</label> */}
-                  <SquaredInput
-                    label={"Address"}
-                    handleChange={handleChange}
-                    name="Address"
-                    value={values["Address"]}
-                    required
-                    errorMessage={error.FullName}
-                    // onBlur={CheckInputs(values, error)}
-                  />
-                </FormGroup>
                 <Row form>
                   {/* City */}
-                  <Col md="12" lg={"12"} className="form-group">
-                    {/* <label htmlFor="feCity">City</label> */}
-                    {/* <SquaredInput
-                      label={"City"}
-                      handleChange={handleChange}
-                      name="City"
-                      value={values["City"]}
-                      required
-                      errorMessage={error.FullName}
-                      // onBlur={CheckInputs(values, error)}
-                    /> */}
-                  </Col>
                   {/* State */}
                   <Col md="12" lg={"12"} className="form-group ">
                     <label htmlFor="feInputState">Country / Region</label>
@@ -185,43 +161,25 @@ const UserAccountDetails = ({ title }) => {
                       </div>
                     </div>
                   </Col>
-                  {/* Zip Code */}
-                  <Col md="12" lg={"12"} className="form-group">
-                    {/* <label htmlFor="feZipCode">Zip</label> */}
+                  <Col md="122" lg={"12"} className="form-group">
+                    {/* <label htmlFor="fePassword">Password</label> */}
                     <SquaredInput
-                      label={"Zip"}
+                      label={"Password"}
                       handleChange={handleChange}
-                      name="Zip"
-                      value={values["Zip"]}
+                      name="password"
+                      value={values["password"]}
                       required
-                      errorMessage={error.FullName}
+                      errorMessage={error.password}
                       // onBlur={CheckInputs(values, error)}
                     />
                   </Col>
+                  {/* <button style={{border:"1px solid black", borderRadius:"5px",backgroundColor:"blue", color:"white"}}>Update Account</button> */}
+                  <ButtonComponent
+                    onClick={handleSubmit}
+                    type="submit"
+                    title={"Update Profile"}
+                  />
                 </Row>
-                <Row form>
-                  {/* Description */}
-                  <Col md="12" className="form-group">
-                    <label htmlFor="feDescription">Description</label>
-                    <textarea
-                      onChange={handleChange}
-                      name="Description"
-                      className="country-input"
-                      value={values["Description"]}
-                      style={{
-                        width: "100%",
-                        height: "15vh",
-                        marginTop: "5px",
-                      }}
-                    />
-                  </Col>
-                </Row>
-                {/* <button style={{border:"1px solid black", borderRadius:"5px",backgroundColor:"blue", color:"white"}}>Update Account</button> */}
-                <ButtonComponent
-                  onClick={handleSubmit}
-                  type="submit"
-                  title={"Update Profile"}
-                />
               </Form>
             </Col>
           </Row>

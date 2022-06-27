@@ -1,15 +1,14 @@
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Redirect, Route, Switch } from "react-router-dom";
 
-import routes from "./routes";
-import withTracker from "./withTracker";
+import { routes } from "./routes";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { user_selector } from "../../Store/AuthReducer";
 import { SetSidebarData, side_menu_data } from "../../Store/SidebarReducer";
 import "../../styles/shards-dashboards.1.1.0.css";
 import DefaultLayout from "./layout";
-import { user_selector } from "../../Store/AuthReducer";
 export default function User({ match }) {
   let [Routes, setRoutes] = useState([]);
   let dispatch = useDispatch();
@@ -23,9 +22,8 @@ export default function User({ match }) {
       routes[1],
       ...routes.filter((ele) => selectoruser?.roles?.includes(ele.key)),
     ];
-    console.log(routes);
-    setRoutes(routes);
-    dispatch(SetSidebarData(routes));
+    setRoutes(routes_data);
+    dispatch(SetSidebarData(routes_data));
   }, [selectoruser]);
   return Routes.length > 0 ? (
     <div>

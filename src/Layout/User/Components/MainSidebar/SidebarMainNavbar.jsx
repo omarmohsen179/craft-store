@@ -16,7 +16,6 @@ const SidebarMainNavbar = ({ image = true }) => {
   const [state, setstate] = useState();
   let selector = useSelector(side_menu_status);
   useEffect(() => {
-    console.log(selector);
     setstate(selector);
   }, [selector]);
   function handleClick(e) {

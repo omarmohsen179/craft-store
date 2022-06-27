@@ -116,7 +116,6 @@ function NavigationBar() {
   }, [window]);
 
   const getRoutes = useCallback(() => {
-    // console.log(location.pathname);
     return pages.current.filter((ele) => location.pathname === ele.route)[0];
   }, [location.pathname]);
   useEffect(() => {

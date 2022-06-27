@@ -18,7 +18,6 @@ function ContactUs() {
     phone_number: "",
   });
   const [values, setValues] = useState(defaultValues.current);
-  console.log(values);
 
   const handleChange = useCallback((e) => {
     typeof e === "object"

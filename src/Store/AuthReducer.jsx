@@ -1,3 +1,4 @@
+import { ShuffleOnOutlined } from "@mui/icons-material";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 import axios, { AxiosError } from "axios";
@@ -9,8 +10,8 @@ import { ClearData, StoreUserData } from "../Service/LocalStorage/LocalStorage";
 export const userLogin = createAsyncThunk(
   "auth/userLogin",
   async (arg, { dispatch, getState }) => {
-    return axios({
-      url: `${ApiBaseUrl}api/auth/login`,
+    return await axios({
+      url: ApiBaseUrl + "/api/auth/login",
       method: "POST",
       data: arg,
     })
@@ -21,6 +22,7 @@ export const userLogin = createAsyncThunk(
       })
       .catch((error) => {
         const err = error;
+        console.log(err);
         alert(
           err?.response?.data?.detail
             ? err?.response?.data?.detail

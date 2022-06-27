@@ -1,20 +1,13 @@
 import { React, useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import { ApiBaseUrl } from "../../../../Service/config";
-import { getSliderData } from "./Api";
+import { getSliderData, GET_SLIDER_DATA } from "./Api";
 
 function MarqueeSlider() {
-  // const images = [
-  //   "https://craft-store.ly/wp-content/uploads/2021/11/sigma.png",
-  //   "https://craft-store.ly/wp-content/uploads/2021/09/sony.png",
-  //   "https://craft-store.ly/wp-content/uploads/2021/09/zhi.png",
-  // ];
-
   const [images, setImages] = useState();
-  console.log(images);
 
   useEffect(() => {
-    getSliderData().then((res) => setImages(res));
+    GET_SLIDER_DATA().then((res) => setImages(res));
   }, []);
 
   return (

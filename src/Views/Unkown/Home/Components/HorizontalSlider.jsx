@@ -3,51 +3,11 @@ import { useTranslation } from "react-i18next";
 import OwlCarousel from "react-owl-carousel";
 import ProductCard from "../../../../Components/ProductCard";
 import TitleHeader from "../../../../Components/TitleHeader";
-import { ITEMS } from "../../../User/UsersAdmin/Api";
+import { ITEMS } from "../../../User/Categories/api";
 
 function HorizontalSlider() {
-  // const data = [
-  //   {
-  //     image:
-  //       "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/catalog/product/cache/7948183ab8341f894cfbbb22f78ef56d/n/i/nintendo_eshop_card_us_.jpg",
-  //     title: "Apple (iTunes ) USA",
-  //     price: 1234,
-  //   },
-  //   {
-  //     image:
-  //       "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/catalog/product/cache/7948183ab8341f894cfbbb22f78ef56d/m/i/microsoftteams-image_10_1_.png",
-  //     title: "Apple (iTunes ) USA",
-  //     price: 1234,
-  //   },
-  //   {
-  //     image:
-  //       "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/catalog/product/cache/7948183ab8341f894cfbbb22f78ef56d/f/i/file_4.png",
-  //     title: "Apple (iTunes ) USA",
-  //     price: 1234,
-  //   },
-  //   {
-  //     image:
-  //       "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/catalog/product/cache/7948183ab8341f894cfbbb22f78ef56d/m/i/microsoftteams-image_10_1_.png",
-  //     title: "Apple (iTunes ) USA",
-  //     price: 1234,
-  //   },
-
-  //   {
-  //     image:
-  //       "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/catalog/product/cache/7948183ab8341f894cfbbb22f78ef56d/f/i/file_4.png",
-  //     title: "Apple (iTunes ) USA",
-  //     price: 1234,
-  //   },
-  //   {
-  //     image:
-  //       "https://183152-537558-raikfcquaxqncofqfm.stackpathdns.com/pub/media/catalog/product/cache/7948183ab8341f894cfbbb22f78ef56d/f/i/file_4.png",
-  //     title: "Apple (iTunes ) USA",
-  //     price: 1234,
-  //   },
-  // ];
-
   const [data, setData] = useState();
-  console.log(data);
+
   useEffect(() => {
     // Get items
     ITEMS().then((res) => setData(res.data));

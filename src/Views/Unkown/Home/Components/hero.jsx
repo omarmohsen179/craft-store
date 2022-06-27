@@ -30,7 +30,6 @@ const AppHero = ({ t, i18n = {} }) => {
   ];
 
   const [data, setData] = useState();
-  console.log(data);
 
   useEffect(() => {
     let config = {

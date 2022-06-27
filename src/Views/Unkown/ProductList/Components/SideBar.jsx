@@ -1,67 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { useTranslation } from "react-i18next";
-import { useHistory } from "react-router-dom";
+
 import Sliders from "../../../../Components/Slider/Sliders";
-import { GetCategories } from "../../../User/UsersAdmin/Api";
+import { GET_CATEGORIES } from "../../../User/Categories/api";
 
 function SideBar() {
-  const { t, i18n } = useTranslation();
-  let history = useHistory();
-  // const data1 = [
-  //   {
-  //     name: "Windbreaker",
-  //   },
-  //   {
-  //     name: "Jumpsuit",
-  //   },
-  //   {
-  //     name: "Jumpsuit",
-  //   },
-  //   {
-  //     name: "Windbreaker",
-  //   },
-  //   {
-  //     name: "Coat",
-  //   },
-  // ];
-
   const [data1, setData1] = useState([]);
-  console.log(data1);
 
   useEffect(() => {
-    GetCategories().then((res) => setData1(res));
+    GET_CATEGORIES().then((res) => setData1(res));
   }, []);
-  const data2 = [
-    {
-      name: "Summer",
-    },
-    {
-      name: "Autumn",
-    },
-    {
-      name: "Jumpsuit",
-    },
-    {
-      name: "Windbreaker",
-    },
-    {
-      name: "Coat",
-    },
-  ];
 
   const [priceRange, setPriceRange] = useState([5000, 15000]);
   console.log(priceRange);
 
   // const [checked, setChecked] = useState(false);
-  const [isChecked, setIsChecked] = useState(false);
-
   function handleChange(e) {
     setPriceRange(e);
 
     //////// API post price Range ////////
   }
   const [array, setArray] = useState([]);
-  console.log(array);
 
   useEffect(() => {
     //////  API send request ///////

@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useHistory } from "react-router-dom";
-import { getCategories } from "../../Views/Unkown/Home/Components/Api";
+import {
+  getCategories,
+  GET_CATEGORIES_HEAD,
+} from "../../Views/Unkown/Home/Components/Api";
 import Image from "../Image";
 import TitleHeader from "../TitleHeader";
 import "./index.css";
@@ -90,10 +93,9 @@ function CategoryList({ data = [], style, title }) {
   // ];
 
   const [datax, setData] = useState();
-  console.log(datax);
 
   useEffect(() => {
-    getCategories().then((res) => setData(res));
+    GET_CATEGORIES_HEAD().then((res) => setData(res));
   }, []);
   let history = useHistory();
   const { t, i18n } = useTranslation();

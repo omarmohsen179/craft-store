@@ -27,6 +27,7 @@ function Login() {
   let selector_user = useSelector(auth_loggedin);
   useEffect(() => setloading(selector), [selector]);
   useEffect(() => {
+    console.log(selector_user);
     selector_user && history.push("/dashboard");
   }, [selector_user]);
 
@@ -96,6 +97,7 @@ function Login() {
             loading={loading}
           />
         </form>
+
         <SocialMediaAuth />
       </div>
     </LoginTemplate>
