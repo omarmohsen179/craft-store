@@ -1,11 +1,9 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import NavigationBar from "../../Components/NavigationBar/NavigationBar";
 
 import { Redirect, Route, Switch, useHistory } from "react-router-dom";
 import Home from "../../Views/Unkown/Home";
 
-import Footer from "../../Components/Footer/index2";
-import LangueNavBar from "../../Components/LangueNavBar";
 import ScrollTop from "../../Components/ScrollTop";
 
 import Login from "../../Views/Auth/Login";
@@ -23,6 +21,9 @@ import ContactUs from "../../Views/Unkown/ContactUs";
 import CheckOut from "../../Views/Unkown/Cart/CheckOut/CheckOut";
 import WhishList from "../../Views/Unkown/Cart/WhishList/WhishList";
 import Orders from "../../Views/Unkown/Cart/Orders/Orders";
+import Footer from "./Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { auth_loggedin } from "../../Store/AuthReducer";
 
 function Unknown({ match }) {
   useEffect(() => (window.onscroll = onScroll), []);
@@ -30,13 +31,13 @@ function Unknown({ match }) {
     try {
     } catch (err) {}
   };
+
   return (
     <div>
-      <ScrollTop />
-
       <NavigationBar />
 
       <div id="mbody" className="main_body">
+        <ScrollTop />
         <Switch>
           <Route exact path={`${match.url}`} component={Home} />
           <Route exact path={`${match.url}log-in`} component={Login} />

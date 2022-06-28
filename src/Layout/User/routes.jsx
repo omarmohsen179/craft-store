@@ -1,5 +1,5 @@
 // Layout Types
-import DefaultLayout from "./layout";
+import DefaultLayout from "./Components/layout";
 import Orders from "../../Views/User/Orders";
 import Web from "../../Views/User/Web";
 import EditProfile from "../../Views/User/EditProfile";

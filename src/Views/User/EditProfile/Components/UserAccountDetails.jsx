@@ -10,12 +10,13 @@ import {
   Form,
   FormGroup,
 } from "shards-react";
+import PhoneInput from "react-phone-input-2";
 import "react-phone-number-input/style.css";
 import SquaredInput from "../../../../Components/SquaredInput";
 import ButtonComponent from "../../../../Components/ButtonComponent";
 
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
-import PhoneInput from "react-phone-number-input";
+//import PhoneInput from "react-phone-number-input";
 
 const UserAccountDetails = ({ title }) => {
   const defualtvalues = useRef({
@@ -32,9 +33,7 @@ const UserAccountDetails = ({ title }) => {
   const [loading, setloading] = useState(false);
   const [error, seterror] = useState({});
   const [values, setvalues] = useState(defualtvalues.current);
-  // const [values, setvalues] = useState(
-  //   JSON.parse(localStorage.getItem("inputs"))
-  // );
+
   const handleChange = useCallback((e) => {
     setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
@@ -42,9 +41,6 @@ const UserAccountDetails = ({ title }) => {
   function handleSubmit(e) {
     e.preventDefault();
   }
-
-  // localStorage.setItem("inputs", JSON.stringify(values));
-
   const [country, setCountry] = useState();
   const [region, setRegion] = useState();
 
@@ -111,13 +107,16 @@ const UserAccountDetails = ({ title }) => {
                   </Col>
                   <Col md="12" lg={"12"} className="form-group">
                     <PhoneInput
-                      placeholder="Enter phone number"
+                      country={"eg"}
+                      placeholder={"Phone Number"}
                       value={values["phone_number"]}
                       onChange={(e) =>
                         handleChange({
                           target: { name: "phone_number", value: e },
                         })
                       }
+                      containerStyle={"PhoneInputInput-2"}
+                      style={{ marginRight: "0em" }}
                     />
                   </Col>
 

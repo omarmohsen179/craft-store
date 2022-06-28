@@ -1,27 +1,37 @@
-import React, { useCallback, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import "./Footer2.css";
 import "./Footer.css";
-import back from "../../Assets/Homebackground.webp";
-import { text } from "../../styles/constant";
+import { text } from "../../../styles/constant";
 import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom/cjs/react-router-dom.min";
-function Footer2() {
+import { useDispatch, useSelector } from "react-redux";
+import { auth_loggedin, user_selector } from "../../../Store/AuthReducer";
+import { routes } from "../../User/routes";
+
+function Footer() {
   const { t, i18n } = useTranslation();
+  const [login, setlogin] = useState();
+  let selector_user = useSelector(auth_loggedin);
+  useEffect(() => setlogin(selector_user), [selector_user]);
   let pages = useRef([
     {
       icon: "fas fa-house-chimney",
       name: "Home",
       route: "/",
     },
-
-    // {
-    //   icon: "fas fa-newspaper",
-    //   name: "Blogs ",
-    //   route: "/blogs",
-    // },
-
     { icon: "fas fa-address-card", name: "Contact Us", route: "/contact-us" },
   ]);
+  let [Routes, setRoutes] = useState([]);
+  let selector = useSelector(user_selector);
+  useEffect(() => {
+    const routes_data = [
+      routes[0],
+      routes[1],
+      ...routes.filter((ele) => selector?.roles?.includes(ele.key)),
+    ];
+    setRoutes(routes_data);
+    //dispatch(SetSidebarData(routes_data));
+  }, [selector]);
   let social = useRef([
     { type: "facebook" },
     { type: "twitter" },
@@ -73,92 +83,53 @@ function Footer2() {
         <div className="container bottom_border">
           <div className="row">
             <div className=" col-sm-4 col-md col-sm-4  col-12 col">
-              <h5 className="headin5_amrc col_white_amrc pt2">Find us</h5>
-
-              <p className="mb10">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry. Lorem Ipsum has been the industry's standard dummy
-                text ever since the 1500s
+              <h5 className="headin5_amrc col_white_amrc pt2">Contact Us </h5>
+              <p>
+                <i className="fas fa-location-dot"></i> Misrata , Libya – The
+                third road
               </p>
               <p>
-                <i style={{ color: "red" }} className="fas fa-location-dot"></i>{" "}
-                Misrata , Libya – The third road{" "}
+                <i className="fa fa-phone"></i> Line 1: (+218) 91 5787875
               </p>
               <p>
-                <i style={{ color: "red" }} className="fa fa-phone"></i> Line 1:
-                (+218) 91 5787875{" "}
-              </p>
-              <p>
-                <i style={{ color: "red" }} className="fa fa fa-envelope"></i>{" "}
-                info@craft-store.ly{" "}
+                <i className="fa fa fa-envelope"></i> info@craft-store.ly
               </p>
             </div>
 
             <div className=" col-sm-4 col-md  col-6 col">
-              <h5 className="headin5_amrc col_white_amrc pt2">Quick links</h5>
+              <h5 className="headin5_amrc col_white_amrc pt2">Pages</h5>
 
               <ul className="footer_ul_amrc">
-                <li>
-                  <a href="http://webenlance.com">Image Rectoucing</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Clipping Path</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Hollow Man Montage</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Ebay & Amazon</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Hair Masking/Clipping</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Image Cropping</a>
-                </li>
+                {pages.current.map((ele, index) => (
+                  <li key={index}>
+                    <Link to={ele.route}>{t(ele.name)}</Link>
+                  </li>
+                ))}
               </ul>
             </div>
 
             <div className=" col-sm-4 col-md  col-6 col">
-              <h5 className="headin5_amrc col_white_amrc pt2">Quick links</h5>
-
+              <h5 className="headin5_amrc col_white_amrc pt2">User Pages</h5>
               <ul className="footer_ul_amrc">
-                <li>
-                  <a href="http://webenlance.com">Remove Background</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">
-                    Shadows & Mirror Reflection
-                  </a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Logo Design</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Vectorization</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Hair Masking/Clipping</a>
-                </li>
-                <li>
-                  <a href="http://webenlance.com">Image Cropping</a>
-                </li>
+                {login ? (
+                  Routes.map((ele, index) => (
+                    <li key={index}>
+                      <Link to={ele.path}>{t(ele.title)}</Link>
+                    </li>
+                  ))
+                ) : (
+                  <li>
+                    <Link to={"log-in"}> {t("Log In / Register")}</Link>
+                  </li>
+                )}
               </ul>
             </div>
           </div>
         </div>
 
         <div className="container">
-          <ul className="foote_bottom_ul_amrc">
-            {pages.current.map((ele, index) => (
-              <li key={index}>
-                <Link to={ele.route}>{t(ele.name)}</Link>
-              </li>
-            ))}
-          </ul>
           <p className="text-center">
-            © <span style={{ color: "red" }}>Craft-store</span> – All Rights
-            Reserved 2021
+            © <span>Craft-store</span> – All Rights Reserved 2021
           </p>
 
           <ul className="social_footer_ul">
@@ -189,4 +160,4 @@ function Footer2() {
   );
 }
 
-export default Footer2;
+export default Footer;

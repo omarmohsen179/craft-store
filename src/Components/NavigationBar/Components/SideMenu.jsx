@@ -41,7 +41,7 @@ function SideMenu({ pages, navigation, submenu, openMenu, closeMenu }) {
               }
             >
               <i style={{ padding: "3px" }} className={ele.icon}></i>
-              {ele.name}
+              {t(ele.name)}
             </div>
             {ele?.dropdown ? (
               <div id={"dropdown" + index} className=" collapsiblecontent">
@@ -63,7 +63,7 @@ function SideMenu({ pages, navigation, submenu, openMenu, closeMenu }) {
             className="uncollapsible"
             style={{ display: "flex", justifyContent: "space-between" }}
           >
-            <div>Sign / Register</div>
+            <div>{t("Log In / Register")}</div>
             <div>
               <i className=" fas fa-user"></i>
             </div>

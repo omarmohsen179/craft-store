@@ -6,11 +6,9 @@ import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { side_menu_data } from "../../../../Store/SidebarReducer";
-import {
-  userLoginLocalStorage,
-  userLogOut,
-} from "../../../../Store/AuthReducer";
+
+import { userLogOut } from "../../../Store/AuthReducer";
+import { side_menu_data } from "../../../Store/SidebarReducer";
 const SidebarNavItem = ({ item, OnClick = () => {} }) => (
   <div onClick={OnClick}>
     <NavItem>

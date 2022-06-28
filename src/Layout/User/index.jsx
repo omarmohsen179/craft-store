@@ -8,14 +8,17 @@ import { useDispatch, useSelector } from "react-redux";
 import { user_selector } from "../../Store/AuthReducer";
 import { SetSidebarData, side_menu_data } from "../../Store/SidebarReducer";
 import "../../styles/shards-dashboards.1.1.0.css";
-import DefaultLayout from "./layout";
+import DefaultLayout from "./Components/layout";
+
 export default function User({ match }) {
   let [Routes, setRoutes] = useState([]);
   let dispatch = useDispatch();
 
   let selector = useSelector(side_menu_data);
-  let selectoruser = useSelector(user_selector);
+
   useEffect(() => setRoutes(selector), [selector]);
+
+  let selectoruser = useSelector(user_selector);
   useEffect(() => {
     const routes_data = [
       routes[0],
@@ -23,7 +26,7 @@ export default function User({ match }) {
       ...routes.filter((ele) => selectoruser?.roles?.includes(ele.key)),
     ];
     setRoutes(routes_data);
-    dispatch(SetSidebarData(routes_data));
+    //dispatch(SetSidebarData(routes_data));
   }, [selectoruser]);
   return Routes.length > 0 ? (
     <div>

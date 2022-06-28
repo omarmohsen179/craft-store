@@ -202,7 +202,7 @@
   }
 
   #content .card.sidebar-menu .badge-light {
-    color: #597ec3;
+    color: rgb(102 33 33);
   }
 
   #content .card.sidebar-menu .card {
@@ -543,7 +543,7 @@
   }
 
   #content #thumbs a.active {
-    border-color: #597ec3;
+    border-color: rgb(102 33 33);
   }
 
   #content #checkout .nav {
@@ -645,7 +645,7 @@
   #content #blog-listing .post h4 a:hover,
   #content #blog-homepage .post h2 a:hover,
   #content #blog-homepage .post h4 a:hover {
-    color: #597ec3;
+    color: rgb(102 33 33);
   }
 
   #content #blog-listing .post .author-category,
@@ -662,7 +662,7 @@
 
   #content #blog-listing .post .date-comments a:hover,
   #content #blog-homepage .post .date-comments a:hover {
-    color: #597ec3;
+    color: rgb(102 33 33);
   }
 
   #content #blog-listing .post .intro,
@@ -708,7 +708,7 @@
 
   #content #blog-listing .pager a:not(.disabled):hover,
   #content #blog-homepage .pager a:not(.disabled):hover {
-    background: #597ec3;
+    background: rgb(102 33 33);
   }
 
   #content #blog-homepage .post {
@@ -800,7 +800,7 @@
   }
 
   .owl-carousel .owl-dots .owl-dot.active span {
-    background: #597ec3;
+    background: rgb(102 33 33);
   }
 
   .owl-thumbs button {
@@ -1025,7 +1025,7 @@ STYLE SWITCHER FOR DEMO
 
   .btn-link {
     font-weight: 400;
-    color: #597ec3;
+    color: rgb(102 33 33);
   }
 
   .btn-link:hover {
@@ -1045,8 +1045,8 @@ STYLE SWITCHER FOR DEMO
 
   .btn-primary {
     color: #212529;
-    background-color: #597ec3;
-    border-color: #597ec3;
+    background-color: rgb(102 33 33);
+    border-color: rgb(102 33 33);
   }
 
   .btn-primary:hover {
@@ -1064,8 +1064,8 @@ STYLE SWITCHER FOR DEMO
   .btn-primary.disabled,
   .btn-primary:disabled {
     color: #212529;
-    background-color: #597ec3;
-    border-color: #597ec3;
+    background-color: rgb(102 33 33);
+    border-color: rgb(102 33 33);
   }
 
   .btn-primary:not(:disabled):not(.disabled):active,
@@ -1364,16 +1364,16 @@ STYLE SWITCHER FOR DEMO
   }
 
   .btn-outline-primary {
-    color: #597ec3;
+    color: rgb(102 33 33);
     background-color: transparent;
     background-image: none;
-    border-color: #597ec3;
+    border-color: rgb(102 33 33);
   }
 
   .btn-outline-primary:hover {
     color: #fff;
-    background-color: #597ec3;
-    border-color: #597ec3;
+    background-color: rgb(102 33 33);
+    border-color: rgb(102 33 33);
   }
 
   .btn-outline-primary:focus,
@@ -1384,7 +1384,7 @@ STYLE SWITCHER FOR DEMO
 
   .btn-outline-primary.disabled,
   .btn-outline-primary:disabled {
-    color: #597ec3;
+    color: rgb(102 33 33);
     background-color: transparent;
   }
 
@@ -1392,8 +1392,8 @@ STYLE SWITCHER FOR DEMO
   .btn-outline-primary:not(:disabled):not(.disabled).active,
   .show > .btn-outline-primary.dropdown-toggle {
     color: #212529;
-    background-color: #597ec3;
-    border-color: #597ec3;
+    background-color: rgb(102 33 33);
+    border-color: rgb(102 33 33);
   }
 
   .btn-outline-primary:not(:disabled):not(.disabled):active:focus,
@@ -1710,7 +1710,7 @@ STYLE SWITCHER FOR DEMO
   }
 
   a {
-    color: #597ec3;
+    color: rgb(102 33 33);
     text-decoration: none;
   }
 
@@ -1830,7 +1830,7 @@ STYLE SWITCHER FOR DEMO
   }
 
   .text-primary {
-    color: #597ec3 !important;
+    color: rgb(102 33 33) !important;
   }
 
   a.text-primary:hover,
@@ -1858,8 +1858,8 @@ STYLE SWITCHER FOR DEMO
 
   .page-item.active .page-link {
     color: #fff;
-    background-color: #597ec3;
-    border-color: #597ec3;
+    background-color: rgb(102 33 33);
+    border-color: rgb(102 33 33);
   }
 
   .page-item.disabled .page-link {
@@ -1871,7 +1871,7 @@ STYLE SWITCHER FOR DEMO
   .page-link {
     padding: 0.5rem 0.75rem;
     line-height: 1.25;
-    color: #597ec3;
+    color: rgb(102 33 33);
     background-color: #fff;
     border: 1px solid #dee2e6;
   }
@@ -1920,7 +1920,7 @@ STYLE SWITCHER FOR DEMO
 * 5. UTILITIES
 */
   .bg-primary {
-    background-color: #597ec3 !important;
+    background-color: rgb(102 33 33) !important;
   }
 
   // a.bg-primary:hover,
@@ -2008,7 +2008,7 @@ STYLE SWITCHER FOR DEMO
   }
 
   .border-primary {
-    border-color: #597ec3 !important;
+    border-color: rgb(102 33 33) !important;
   }
 
   .border-secondary {
@@ -2040,7 +2040,7 @@ STYLE SWITCHER FOR DEMO
   }
 
   .text-primary {
-    color: #597ec3 !important;
+    color: rgb(102 33 33) !important;
   }
 
   a.text-primary:hover,
@@ -2113,7 +2113,7 @@ STYLE SWITCHER FOR DEMO
 
   .badge-primary {
     color: #212529;
-    background-color: #597ec3;
+    background-color: rgb(102 33 33);
   }
 
   .badge-primary[href]:hover,
@@ -2536,7 +2536,7 @@ STYLE SWITCHER FOR DEMO
 
   .custom-control-input:checked ~ .custom-control-label::before {
     color: #fff;
-    background-color: #597ec3;
+    background-color: rgb(102 33 33);
   }
 
   .custom-control-input:focus ~ .custom-control-label::before {
@@ -2564,7 +2564,7 @@ STYLE SWITCHER FOR DEMO
   .custom-checkbox
     .custom-control-input:checked
     ~ .custom-control-label::before {
-    background-color: #597ec3;
+    background-color: rgb(102 33 33);
   }
 
   .custom-checkbox
@@ -2576,7 +2576,7 @@ STYLE SWITCHER FOR DEMO
   .custom-checkbox
     .custom-control-input:indeterminate
     ~ .custom-control-label::before {
-    background-color: #597ec3;
+    background-color: rgb(102 33 33);
   }
 
   .custom-checkbox
@@ -2602,7 +2602,7 @@ STYLE SWITCHER FOR DEMO
   }
 
   .custom-radio .custom-control-input:checked ~ .custom-control-label::before {
-    background-color: #597ec3;
+    background-color: rgb(102 33 33);
   }
 
   .custom-radio .custom-control-input:checked ~ .custom-control-label::after {
@@ -2670,7 +2670,7 @@ STYLE SWITCHER FOR DEMO
   .nav-pills .nav-link.active,
   .nav-pills .show > .nav-link {
     color: #fff;
-    background-color: #597ec3;
+    background-color: rgb(102 33 33);
   }
 
   /*
@@ -2813,7 +2813,7 @@ STYLE SWITCHER FOR DEMO
   .dropdown-item.active,
   .dropdown-item:active {
     color: #fff;
-    background-color: #597ec3;
+    background-color: rgb(102 33 33);
   }
 
   .dropdown-item.disabled,

@@ -16,44 +16,44 @@ function NavigationBar() {
   const location = useLocation();
   let history = useHistory();
   let [submenu, setSubMenu] = useState(true);
+  const { t, i18n } = useTranslation();
   let pages = useRef([
     {
       icon: "fas fa-house-chimney",
       name: "Home",
       route: "/",
     },
-
-    // {
-    //   icon: "fas fa-newspaper",
-    //   name: "Blogs",
-    //   route: "/blogs",
-    // },
     {
       icon: "fas fa-code-branch",
       name: "Categories",
       route: "/#cat",
       dropdown: () => (
-        // <CategoryList
-        //   style={{
-        //     width: "100%",
-        //     height: "100%",
-        //     padding: "20px",
-        //     backgroundColor: "white",
-        //   }}
-        // />
-        <CategoriesSection
-          style={{
-            // card style
-            width: "20%",
-            height: "100%",
-            boxShadow: " rgba(0, 0, 0, 0.24) 0px 3px 8px",
-            overFlow: "scroll",
-          }}
-        />
+        <div className="dropdown-content">
+          <CategoryList
+            style={{
+              width: "100%",
+              height: "100%",
+              padding: "20px",
+              backgroundColor: "white",
+            }}
+          />
+        </div>
       ),
     },
-    { icon: "fa-solid fa-phone", name: "Contact-Us", route: "/contact-us" },
-    // { icon: "fas fa-address-card", name: "About", route: "/gallery" },
+    { icon: "fa-solid fa-phone", name: "Contact Us", route: "/contact-us" },
+    {
+      icon: "fas fa-language",
+      name: "Language",
+      route: "",
+      dropdown: () => (
+        <div className="dropdown-content-langue">
+          <ul>
+            <li>العربية {}</li>
+            <li>English</li>
+          </ul>
+        </div>
+      ),
+    },
   ]);
   const [screenSize, getDimension] = useState({
     dynamicWidth: window.innerWidth,
@@ -148,12 +148,10 @@ function NavigationBar() {
     );
   };
 
-  const { t, i18n } = useTranslation();
   useEffect(() => {
     if (i18n.language === "en") {
       document.getElementById("mySidenav").classList.add("direction-left");
       document.getElementById("mySidenav").classList.remove("direction-right");
-      var xx = document.querySelectorAll(".collapsible");
     } else {
       document.getElementById("mySidenav").classList.remove("direction-left");
       document.getElementById("mySidenav").classList.add("direction-right");
@@ -167,7 +165,7 @@ function NavigationBar() {
       <nav
         style={{
           direction: i18n.language === "en" ? "ltr" : "rtl",
-          backgroundColor: "#131f35",
+          backgroundColor: "rgb(102 33 33)",
         }}
       >
         <div id="mynav" style={{}}>
@@ -200,11 +198,9 @@ function NavigationBar() {
                     value={values.searchinput}
                   ></input>
                   <div
-                    onClick={() => {
-                      history.push(
-                        "/list?q=" + values.searchinput + "&c=Category"
-                      );
-                    }}
+                    onClick={() =>
+                      history.push("/list?q=" + values.searchinput + "&c=0")
+                    }
                     style={{
                       margin: "auto 15px",
                       cursor: "pointer",
@@ -217,7 +213,10 @@ function NavigationBar() {
                 <SearchFormPopup list={list} />
               </div>
               <div className="main-section-navigation ">
-                <div className="Logo-size " style={{ cursor: "pointer" }}>
+                <div
+                  className="Logo-size "
+                  style={{ cursor: "pointer", color: "white" }}
+                >
                   <div className="hide-web">
                     <input
                       style={{ display: "none" }}
@@ -309,9 +308,9 @@ function NavigationBar() {
                       onClick={() => history.push("/dashboard")}
                       className=" padding-icons-class  text-color-hover fas fa-circle-user"
                     ></i>
-                    <span className="badge" style={{ backgroundColor: "red" }}>
+                    {/* <span className="badge" style={{ backgroundColor: "red" }}>
                       3
-                    </span>
+                </span>*/}
                   </a>
                 ) : (
                   <div
@@ -341,19 +340,6 @@ function NavigationBar() {
                     3
                   </span>
                 </a>
-
-                {/*<a className="notification">
-                  <i
-                    onClick={() => history.push("/whish-list")}
-                    className=" padding-icons-class  text-color-hover fas fa-heart"
-                  ></i>
-                </a>
-                <a className="notification">
-                  <i
-                    onClick={() => history.push("/orders")}
-                    className=" padding-icons-class  text-color-hover fas fa-cart-flatbed"
-                  ></i>
-              </a>*/}
               </div>
             </div>
           </div>
@@ -395,11 +381,7 @@ function NavigationBar() {
                 {t(ele.name)}
               </Link>
 
-              {ele?.dropdown ? (
-                <div className="dropdown-content">
-                  <ele.dropdown />
-                </div>
-              ) : null}
+              {ele?.dropdown ? <ele.dropdown /> : null}
             </li>
           ))}
         </ul>

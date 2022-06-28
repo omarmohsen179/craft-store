@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import {
   side_menu_status,
   ToggleSideMenu,
-} from "../../../../Store/SidebarReducer";
+} from "../../../Store/SidebarReducer";
 import { useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { useEffect } from "react";

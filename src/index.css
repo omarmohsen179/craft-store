@@ -31,7 +31,7 @@ a {
                                   supported by Chrome, Edge, Opera and Firefox */
 }
 .notification:hover {
-  color: #597ec3;
+  color: rgb(102 33 33);
 }
 body {
   background: #f9f9f9;
