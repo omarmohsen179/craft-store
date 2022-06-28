@@ -103,10 +103,10 @@ function ListForm({
       height={"80%"}
       columnChooser={false}
       showCheckBoxesMode={"always"}
-      onSelectionChanged={(e) => setSelectedItems(e.selectedRowsData)}
+      // onSelectionChanged={(e) => setSelectedItems(e.selectedRowsData)}
       // onSelectionChanged={(e) => console.log(e)}
       keyExpr="id"
-      selectedRowKeys={alreadySelectedItems}
+      // selectedRowKeys={alreadySelectedItems}
     >
       <Column width={200} type="buttons" caption="Upload Images">
         <Button
