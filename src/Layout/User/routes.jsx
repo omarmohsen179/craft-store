@@ -7,6 +7,10 @@ import Home from "../../Views/User/Home";
 import Products from "../../Views/User/Products/Products";
 import Categories from "../../Views/User/Categories";
 
+import Product from "../../Views/Unkown/Product";
+import AutomaticSlider from "../../Views/User/AutomaticSlider/AutomaticSlider";
+import HomeProducts from "../../Views/User/HomeProducts/HomeProducts";
+import UsersTable from "../../Views/User/UsersTable/UsersTable";
 const layoutPath = "/dashboard";
 export const routes = [
   {
@@ -77,7 +81,7 @@ export const routes = [
     path: layoutPath + "/users-admin",
     layout: DefaultLayout,
     key: 4,
-    // component: UsersAdmin,
+    component: UsersTable,
     title: "user admin",
     htmlBefore: '<i class="material-icons">vertical_split</i>',
     htmlAfter: "",
