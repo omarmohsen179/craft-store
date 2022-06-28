@@ -12,7 +12,9 @@ import { useDispatch, useSelector } from "react-redux";
 import SearchFormPopup from "./Components/SearchFormPopup";
 import CategoriesSection from "../../Views/Unkown/Home/Components/CatgoriesSection";
 import { auth_loggedin } from "../../Store/AuthReducer";
-function NavigationBar() {
+import { useScroll } from "./Components/UseScrollHook";
+
+function NavigationBar({ onScroll }) {
   const location = useLocation();
   let history = useHistory();
   let [submenu, setSubMenu] = useState(true);
@@ -160,13 +162,59 @@ function NavigationBar() {
   const [login, setlogin] = useState();
   let selector_user = useSelector(auth_loggedin);
   useEffect(() => setlogin(selector_user), [selector_user]);
+
+  const { y, x, scrollDirection } = useScroll();
+
+  const styles = {
+    active: {
+      visibility: "visible",
+      transition: "all 0.5s",
+      position: "fixed",
+      zIndex: "10",
+      backgroundColor: "rgb(102 33 33)",
+      direction: i18n.language === "en" ? "ltr" : "rtl",
+      width: "100%",
+    },
+    hidden: {
+      visibility: "hidden",
+      transition: "all 0.5s",
+      transform: "translateY(-100%)",
+    },
+    def: {
+      direction: i18n.language === "en" ? "ltr" : "rtl",
+      backgroundColor: "rgb(102 33 33)",
+      transition: "all 0.5s",
+    },
+  };
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+  const handleScroll = () => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+  };
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   return (
     <div>
       <nav
-        style={{
-          direction: i18n.language === "en" ? "ltr" : "rtl",
-          backgroundColor: "rgb(102 33 33)",
-        }}
+        // style={{
+        //   direction: i18n.language === "en" ? "ltr" : "rtl",
+        //   backgroundColor: "rgb(102 33 33)",
+        // }}
+        style={
+          scrollPosition > 140
+            ? scrollDirection === "down"
+              ? styles.active
+              : styles.hidden
+            : styles.def
+        }
       >
         <div id="mynav" style={{}}>
           <div className="row nav-up-container" id={"nav-up-container-id"}>
