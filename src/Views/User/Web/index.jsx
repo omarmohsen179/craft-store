@@ -16,7 +16,7 @@ function Web() {
           class="col-5"
           style={{ backgroundColor: "transparent", width: "100%" }}
         >
-          <div class="card mt-3 tab-card">
+          <div class="card mt-3 tab-card" style={{ margin: 20 }}>
             <div class="card-header tab-card-header">
               <ul
                 class="nav nav-tabs card-header-tabs"

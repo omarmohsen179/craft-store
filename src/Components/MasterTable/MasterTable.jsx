@@ -109,7 +109,7 @@ function MasterTable({
   searchPanel = true,
   children,
   keyExpr,
-  selectedRowKeys,
+  selectedRowKeys = "none",
 }) {
   const { t, i18n } = useTranslation();
 
@@ -208,7 +208,6 @@ function MasterTable({
         //   mode: selectionMode,
         //   allowSelectAll: allowSelectAllMode,
         // }}
-        onSelectionChanged={onSelectionChanged}
         onRowRemoving={onRowRemoving}
         onRowRemoved={onRowRemoved}
         onRowInserting={onRowInserting}
@@ -219,6 +218,7 @@ function MasterTable({
         remoteOperations={remoteOperations}
         sorting={remoteOperations ? false : true}
         keyExpr={keyExpr}
+        onSelectionChanged={onSelectionChanged}
         selectedRowKeys={selectedRowKeys}
       >
         <Selection mode="multiple" showCheckBoxesMode={showCheckBoxesMode} />

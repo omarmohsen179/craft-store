@@ -1,6 +1,6 @@
 :root {
   --main: rgb(102 33 33);
-  --light: #1e3255;
+  --light: rgb(110, 53, 53);
 }
 
 @-webkit-keyframes ring-of-dots {

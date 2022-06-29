@@ -16,6 +16,7 @@ import SquaredInput from "../../../../Components/SquaredInput";
 import ButtonComponent from "../../../../Components/ButtonComponent";
 
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
+import { useTranslation } from "react-i18next";
 //import PhoneInput from "react-phone-number-input";
 
 const UserAccountDetails = ({ title }) => {
@@ -43,6 +44,8 @@ const UserAccountDetails = ({ title }) => {
   }
   const [country, setCountry] = useState();
   const [region, setRegion] = useState();
+
+  const { t } = useTranslation();
 
   return (
     <Card small className="mb-4">
@@ -106,6 +109,10 @@ const UserAccountDetails = ({ title }) => {
                     />
                   </Col>
                   <Col md="12" lg={"12"} className="form-group">
+                    <label style={{ marginBottom: 10 }} id="domain-label">
+                      {t("Phone Number")}
+                    </label>
+
                     <PhoneInput
                       country={"eg"}
                       placeholder={"Phone Number"}

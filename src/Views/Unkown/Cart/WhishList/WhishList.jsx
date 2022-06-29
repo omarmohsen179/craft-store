@@ -29,7 +29,10 @@ function WhishList() {
           <div class="col-md-10">
             {data.map((el) => (
               <div class="card card-body mt-4">
-                <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
+                <div
+                  style={{ display: "flex" }}
+                  class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row"
+                >
                   <div class="mr-2 mb-3 mb-lg-0">
                     <img
                       src="https://i.imgur.com/5Aqgz7o.jpg"

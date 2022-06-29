@@ -1,6 +1,6 @@
 // Layout Types
 import DefaultLayout from "./Components/layout";
-import Orders from "../../Views/User/Orders";
+// import Orders from "../../Views/User/Orders";
 import Web from "../../Views/User/Web";
 import EditProfile from "../../Views/User/EditProfile";
 import Home from "../../Views/User/Home";
@@ -8,9 +8,11 @@ import Products from "../../Views/User/Products/Products";
 import Categories from "../../Views/User/Categories";
 
 import Product from "../../Views/Unkown/Product";
-import AutomaticSlider from "../../Views/User/AutomaticSlider/AutomaticSlider";
-import HomeProducts from "../../Views/User/HomeProducts/HomeProducts";
+// import AutomaticSlider from "../../Views/User/AutomaticSlider/AutomaticSlider";
+// import HomeProducts from "../../Views/User/HomeProducts/HomeProducts";
 import UsersTable from "../../Views/User/UsersTable/UsersTable";
+import WhishList from "../../Views/Unkown/Cart/WhishList/WhishList";
+import Orders from "../../Views/Unkown/Cart/Orders/Orders";
 const layoutPath = "/dashboard";
 export const routes = [
   {
@@ -37,7 +39,7 @@ export const routes = [
     layout: DefaultLayout,
     key: 2,
     component: Orders,
-    title: "order",
+    title: "orders",
     htmlBefore: '<i class="material-icons">note_add</i>',
     htmlAfter: "",
   },
@@ -86,4 +88,22 @@ export const routes = [
     htmlBefore: '<i class="material-icons">vertical_split</i>',
     htmlAfter: "",
   },
+  {
+    path: layoutPath + "/whish-list",
+    layout: DefaultLayout,
+    key: 4,
+    component: WhishList,
+    title: "Whish List",
+    htmlBefore: '<i class="material-icons">vertical_split</i>',
+    htmlAfter: "",
+  },
+  // {
+  //   path: layoutPath + "/orders",
+  //   layout: DefaultLayout,
+  //   key: 4,
+  //   component: Orders,
+  //   title: "Orders",
+  //   htmlBefore: '<i class="material-icons">vertical_split</i>',
+  //   htmlAfter: "",
+  // },
 ];
