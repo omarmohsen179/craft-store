@@ -16,37 +16,52 @@ import ButtonComponent from "../../../../Components/ButtonComponent";
 
 import { CountryDropdown, RegionDropdown } from "react-country-region-selector";
 import PhoneInput from "react-phone-number-input";
+import { useTranslation } from "react-i18next";
+import { CHANGE_PASSWORD } from "../api";
 
-const ChangePassword = ({ title }) => {
+const ChangePassword = ({ title, setloading }) => {
   const defualtvalues = useRef({
-    FirstName: "",
-    LastName: "",
-    Email: "",
-    Password: "",
-    Address: "",
-    City: "",
-    State: "",
-    Zip: "",
-    Description: "",
+    password: "",
+    current_password: "",
+    confirm_password: "",
   });
-  const [loading, setloading] = useState(false);
+
   const [error, seterror] = useState({});
   const [values, setvalues] = useState(defualtvalues.current);
-  // const [values, setvalues] = useState(
-  //   JSON.parse(localStorage.getItem("inputs"))
-  // );
   const handleChange = useCallback((e) => {
     setvalues((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   }, []);
 
   function handleSubmit(e) {
-    e.preventDefault();
+    if (
+      !values.password ||
+      !values.confirm_password ||
+      !values.current_password
+    ) {
+      alert(t("Fill the inputs"));
+      return;
+    }
+    if (values.password !== values.confirm_password) {
+      alert(t("Password Does not match"));
+      return;
+    }
+    if (values.password === values.current_password) {
+      alert(t("old password and new password can't be the same"));
+      return;
+    }
+    CHANGE_PASSWORD(values)
+      .then(() => {
+        alert(t("Saved Successfully"));
+        setvalues({ ...defualtvalues.current });
+      })
+      .catch((error) => alert(t(error.detail)))
+      .finally(() => setloading(false));
   }
-
+  const { t, i18n } = useTranslation();
   return (
     <Card small className="mb-4">
       <CardHeader className="border-bottom">
-        <h6 className="m-0">{"Change Password"}</h6>
+        <h6 className="m-0">{t("Change Password")}</h6>
       </CardHeader>
       <ListGroup flush>
         <ListGroupItem className="p-3">
@@ -56,7 +71,7 @@ const ChangePassword = ({ title }) => {
               label={"Current Password"}
               handleChange={handleChange}
               name="current_password"
-              value={values["password"]}
+              value={values["current_password"]}
               required
               errorMessage={error.password}
               // onBlur={CheckInputs(values, error)}
@@ -76,8 +91,8 @@ const ChangePassword = ({ title }) => {
             <SquaredInput
               label={"Confirm Password"}
               handleChange={handleChange}
-              name="password"
-              value={values["password"]}
+              name="confirm_password"
+              value={values["confirm_password"]}
               required
               errorMessage={error.password}
               // onBlur={CheckInputs(values, error)}
@@ -87,7 +102,7 @@ const ChangePassword = ({ title }) => {
           <ButtonComponent
             onClick={handleSubmit}
             type="submit"
-            title={"Update Profile"}
+            title={"Save"}
           />
         </ListGroupItem>
       </ListGroup>

@@ -55,7 +55,7 @@ export const userLogOut = createAsyncThunk(
 );
 export const userLoginLocalStorage = createAsyncThunk(
   "auth/userLogin",
-  async (arg, { dispatch, getState }) => {
+  (arg, { dispatch, getState }) => {
     return { ...arg };
   }
 );

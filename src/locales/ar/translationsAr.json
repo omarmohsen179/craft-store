@@ -189,5 +189,14 @@
   "Home": "الرئيسية",
   "Blogs": "أخبار",
   "Categories": "الفئات",
-  "Log In / Register": "تسجيل الدخول  / انشئ حساب"
+  "Log In / Register": "تسجيل الدخول  / انشئ حساب",
+  "Language": "لغة",
+
+  "Current Password": "كلمة المرور الحالية",
+  "Country / Region": "البلد / المنطقة",
+  "Account Details": "تفاصيل الحساب",
+  "Change Password": "غير كلمة السر",
+  "User Profile": "ملف تعريفي للمستخدم",
+  "Incorrect password": "كلمة سر خاطئة",
+  "old password and new password can't be the same": "كلمة المرور القديمة وكلمة المرور الجديدة لا يمكن أن تكون متطابقة"
 }

@@ -11,7 +11,7 @@ import { HOME_SLIDER } from "../api";
 import AdminSection from "../../../../Components/AdminSection";
 import ButtonComponent from "../../../../Components/ButtonComponent";
 
-function HomeSlider() {
+function HomeSlider({ setloading }) {
   const { t } = useTranslation();
   const [sliderImages, setSliderImages] = useState();
   const sliderImagesColAttributes = useMemo(() => {
@@ -32,9 +32,12 @@ function HomeSlider() {
   }, [t]);
 
   useEffect(() => {
-    HOME_SLIDER().then((response) => {
-      setSliderImages([...response]);
-    });
+    setloading(true);
+    HOME_SLIDER()
+      .then((response) => {
+        setSliderImages([...response]);
+      })
+      .finally(() => setloading(false));
   }, []);
 
   // Drag and Drop
@@ -62,20 +65,16 @@ function HomeSlider() {
       <div className="content" style={{ padding: 20 }}>
         <AdminSection
           allowEdit="false"
-          // Drag and Drop
           allowReordering={true}
           showDragIcons={true}
           onReorder={(e) => {
             onReorder(e);
             setEditing(false);
           }}
-          //////////////////
           data={sliderImages}
           component={WebForm}
           colAttributes={sliderImagesColAttributes}
           controller={ApiBaseUrl + "/api/home_slider"}
-          //////////////////
-
           values={values}
           setValues={setValues}
         />

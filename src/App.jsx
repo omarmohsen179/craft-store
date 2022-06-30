@@ -12,7 +12,7 @@ import { useDispatch } from "react-redux";
 import { userLoginLocalStorage } from "./Store/AuthReducer";
 import { RetrieveUserData } from "./Service/LocalStorage/LocalStorage";
 import ErrorBoundary from "antd/lib/alert/ErrorBoundary";
-
+import axios from "axios";
 function App() {
   let dispatch = useDispatch();
   const { i18n } = useTranslation();
@@ -22,9 +22,10 @@ function App() {
     i18n.changeLanguage("en");
   }
   useEffect(() => {
-    const data = async () =>
-      (await RetrieveUserData()) &&
-      dispatch(await userLoginLocalStorage(await RetrieveUserData()));
+    const data = async () => {
+      const dat_x = await RetrieveUserData();
+      if (dat_x) dispatch(userLoginLocalStorage(dat_x));
+    };
     data();
   }, []);
   return (

@@ -8,7 +8,11 @@ import { useEffect } from "react";
 import { useSelector } from "react-redux";
 
 import { userLogOut } from "../../../Store/AuthReducer";
-import { side_menu_data } from "../../../Store/SidebarReducer";
+import {
+  CloseSideMenu,
+  side_menu_data,
+  ToggleSideMenu,
+} from "../../../Store/SidebarReducer";
 const SidebarNavItem = ({ item, OnClick = () => {} }) => (
   <div onClick={OnClick}>
     <NavItem>
@@ -43,12 +47,18 @@ const SidebarNavItems = (props) => {
     <div className="nav-wrapper">
       <Nav className="nav--no-borders flex-column">
         {navItems.map((item, idx) => (
-          <SidebarNavItem key={idx} item={item} />
+          <SidebarNavItem
+            OnClick={() => {
+              dispatch(CloseSideMenu());
+            }}
+            key={idx}
+            item={item}
+          />
         ))}
         <SidebarNavItem
           OnClick={() => {
-            console.log("logout");
             dispatch(userLogOut());
+            dispatch(CloseSideMenu());
           }}
           item={{
             title: "log out",

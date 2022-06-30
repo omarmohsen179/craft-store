@@ -19,7 +19,7 @@ function Description({ values, HandleChange }) {
         id="description"
         label={t("Description")}
         value={values.description}
-        valueEn={values.descriptionEn}
+        valueEn={values.description_en}
         onValueChange={HandleChange}
       />
     </div>

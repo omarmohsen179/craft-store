@@ -47,9 +47,23 @@ function NavigationBar() {
       route: "",
       dropdown: () => (
         <div className="dropdown-content-langue">
-          <ul>
-            <li>العربية {}</li>
-            <li>English</li>
+          <ul style={{ listStyle: "none", padding: "8px", cursor: "pointer" }}>
+            <li
+              onClick={() =>
+                i18n.language !== "ar" && i18n.changeLanguage("ar")
+              }
+            >
+              العربية{" "}
+              {i18n.language === "ar" && <i className="fas fa-check"></i>}
+            </li>
+            <li
+              onClick={() =>
+                i18n.language !== "en" && i18n.changeLanguage("en")
+              }
+            >
+              English{" "}
+              {i18n.language === "en" && <i className="fas fa-check"></i>}
+            </li>
           </ul>
         </div>
       ),
@@ -355,12 +369,17 @@ function NavigationBar() {
           </div>
         </div>
       </nav>
-      <div className="max-width" style={{ height: "70px" }}>
+      <div
+        className="max-width"
+        style={{ height: "70px", display: "flex", justifyContent: "center" }}
+      >
         <ul
           style={{
-            float: i18n.language === "en" ? "left" : "right",
+            direction: i18n.language === "en" ? "ltr" : "rtl",
             width: "100%",
             fontFamily: "'Almarai'",
+            display: "flex",
+            justifyContent: "center",
           }}
           className="Horizontal-list  remove-dot container"
         >

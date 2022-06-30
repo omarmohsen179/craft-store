@@ -5519,6 +5519,7 @@ i.material-icons {
   padding: 1.25rem;
   font-size: 1.25rem;
   border-left: 1px solid #e1e5eb;
+  color: #662121;
 }
 .main-sidebar .toggle-sidebar:hover {
   cursor: pointer;

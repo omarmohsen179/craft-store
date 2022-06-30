@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
+import { useTranslation } from "react-i18next";
 import ButtonComponent from "../../../../Components/ButtonComponent";
-import { ITEM_ID } from "./api";
+import { ITEM_ID, SUBMIT_ITEM } from "./api";
 import BasicInfo from "./component/BasicInfo";
 import Description from "./component/Description";
 import ItemImages from "./component/ItemImages";
 import "./ProductForm.css";
 
-function ProductForm({ intial_data, isClicked, hide, setHide }) {
+function ProductForm({ intial_data, setloading, hide, setHide }) {
   const tabs = useRef([
     { id: "one-tab", href: "#one", label: "Basic Info" },
     { id: "two-tab", href: "#two", label: "Description" },
@@ -24,11 +25,14 @@ function ProductForm({ intial_data, isClicked, hide, setHide }) {
     short_description: "",
     short_description_en: "",
   });
+  const { t, i18n } = useTranslation();
   const [values, setValues] = useState(defualtValues.current);
   useEffect(() => {
+    setloading(true);
     ITEM_ID(intial_data.id)
       .then((res) => {
         setValues({ ...res, ...intial_data });
+        setloading(false);
       })
       .catch(() => {});
   }, [intial_data.id]);
@@ -41,7 +45,26 @@ function ProductForm({ intial_data, isClicked, hide, setHide }) {
       [id]: value,
     }));
   }, []);
-  const Submit = () => {};
+  const Submit = () => {
+    let formData = new FormData();
+    var image_array = [];
+    for (var i = 0; i < values.images.length; i++) {
+      if (!values.images[i].image_path) {
+        formData.append("image_path", values.images[i]);
+      } else {
+        image_array.push(values.images[i]);
+      }
+    }
+    formData.append("data", JSON.stringify({ ...values, images: image_array }));
+    setloading(true);
+    SUBMIT_ITEM(formData)
+      .then((res) => {
+        setValues(res);
+        alert(t("Saved Successfully"));
+      })
+      .catch((error) => alert(t(error.detail)))
+      .finally(() => setloading(false));
+  };
   return (
     <div className={!hide ? "add-product-form" : "hidden"}>
       <div class="row">
@@ -109,7 +132,9 @@ function ProductForm({ intial_data, isClicked, hide, setHide }) {
                 />
               </div>
             </div>
-            <ButtonComponent title="Submit" onClick={Submit} />
+            <div style={{ padding: "20px" }}>
+              <ButtonComponent title="Submit" onClick={Submit} />
+            </div>
           </div>
         </div>
       </div>

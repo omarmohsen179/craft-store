@@ -18,3 +18,10 @@ export const AUTOMATIC_SLIDERS = async (e) => {
     url: "automatic_slider",
   });
 };
+export const SUBMIT_HOME_ITEMS = async (e) => {
+  return await REQUEST({
+    method: "post",
+    url: "home_items",
+    data: e,
+  });
+};

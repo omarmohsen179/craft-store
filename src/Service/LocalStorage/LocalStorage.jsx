@@ -13,7 +13,7 @@ const TimeOutLocalStorage = async (time, data) => {
 export const RetrieveUserData = async () => {
   try {
     const data = await localStorage.getItem("UserInfo");
-    axios.defaults.headers.Authorization = `bearer ${JSON.parse(data)?.Token}`;
+    axios.defaults.headers.Authorization = `bearer ${JSON.parse(data)?.token}`;
     return data ? JSON.parse(data) : null;
   } catch (error) {
     return null;
@@ -22,7 +22,7 @@ export const RetrieveUserData = async () => {
 export const StoreUserData = async (indata) => {
   //data.EnterData = new Date();
   // const maindata = await EncryptAES256(data);
-  axios.defaults.headers.Authorization = `bearer ${indata?.Token}`;
+  axios.defaults.headers.Authorization = `bearer ${indata?.token}`;
   return await localStorage.setItem("UserInfo", JSON.stringify(indata));
 };
 export const ClearData = async () => {

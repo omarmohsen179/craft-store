@@ -17,7 +17,7 @@ const REQUEST = function (options) {
     return response.data;
   };
   const onError = function (error) {
-    console.error("Request Failed:", error.config);
+    console.error(error);
 
     if (error.response) {
       // Request was made but server responded with something
@@ -28,14 +28,8 @@ const REQUEST = function (options) {
         //  localStorage.removeItem("user");
         //window.location.reload();
       }
-      // console.error('Data:', error.response.data);
-      // console.error('Headers:', error.response.headers);
-    } else {
-      // Something else happened while setting up the REQUEST
-      // triggered the error
-      // console.error('Error Message:', error.message);
+      return Promise.reject(error.response.data);
     }
-
     return Promise.reject(error);
   };
 

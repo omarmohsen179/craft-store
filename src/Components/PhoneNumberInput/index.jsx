@@ -12,13 +12,13 @@ const PhoneNumberInput = ({
   const { t, i18n } = useTranslation();
   return (
     <>
-      <div style={{ direction: i18n.language === "en" ? "ltr" : "rtl" }}>
+      <div style={{ direction: "ltr" }}>
         <div className="squared-input-container">
           <label id="domain-label">{t(label)}</label>
           <PhoneInput
             country={"eg"}
             placeholder={placeholder}
-            value={value}
+            value={value ? value : ""}
             onChange={(e) =>
               handleChange({
                 target: { name, value: e },

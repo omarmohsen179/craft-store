@@ -8,7 +8,7 @@ import { AUTOMATIC_SLIDERS } from "../api";
 import ButtonComponent from "../../../../Components/ButtonComponent";
 import WebForm from "../../../../Components/WebForm/WebForm";
 
-function AutomaticSlider() {
+function AutomaticSlider({ setloading }) {
   const { t } = useTranslation();
 
   const [sliderImages, setSliderImages] = useState();
@@ -32,10 +32,10 @@ function AutomaticSlider() {
 
   useEffect(() => {
     // get slider images
-
-    AUTOMATIC_SLIDERS().then((response) => {
-      setSliderImages([...response]);
-    });
+    setloading(true);
+    AUTOMATIC_SLIDERS()
+      .then((response) => setSliderImages(response))
+      .finally(() => setloading(false));
   }, []);
 
   function onReorder(e) {

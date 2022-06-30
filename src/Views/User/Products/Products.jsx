@@ -16,6 +16,8 @@ import "devextreme/dist/css/dx.light.css";
 import ProductForm from "./ProductForm/ProductForm";
 import REQUEST from "../../../Service/Request";
 import ControlsTable from "../../../Components/ControlsTable/ControlsTable";
+import LoadingPanel from "../../../Components/LoadingPanel";
+import { ITEMS } from "./ProductForm/api";
 function Products() {
   const { t, i18n } = useTranslation();
   const productsItemColAttributes = useMemo(() => {
@@ -44,44 +46,38 @@ function Products() {
 
   const [products, setProducts] = useState();
 
-  const history = useHistory();
-
   const showForm = useMemo(() => {
     return status === "ADD" || status === "UPDATE";
   }, [status]);
 
   useEffect(() => {
-    let config = {
-      method: "GET",
-      url: "items",
-    };
-
-    REQUEST(config).then((response) => {
-      setProducts(response);
-    });
+    setloading(true);
+    ITEMS()
+      .then((res) => setProducts(res))
+      .catch(() => alert(t("Error! Try Again later")))
+      .finally(() => setloading(false));
   }, []);
 
   let redirectAdd = useCallback(() => {
     setselectedItem(0);
-    setIsClicked(true);
     setHide(false);
   }, []);
 
   let redirectEdit = useCallback((event) => {
-    console.log("double click");
     if (event.data) {
       setselectedItem(event.data);
-      setIsClicked(true);
+
       setHide(false);
     }
   }, []);
-  const [isClicked, setIsClicked] = useState(false);
-  const [selectedItem, setselectedItem] = useState(-1);
 
+  const [selectedItem, setselectedItem] = useState(-1);
+  const [loading, setloading] = useState(false);
   const [hide, setHide] = useState(false);
   return (
     <Form style={{ padding: 20 }}>
       <Card className="card-user">
+        <LoadingPanel loading={loading} onHiding={() => setloading(false)} />
         <CardHeader>
           <h4>{t("Products")}</h4>
         </CardHeader>
@@ -93,7 +89,6 @@ function Products() {
             onAddButtonClicked={redirectAdd}
             onRowDoubleClick={redirectEdit}
             allowDelete={false}
-            // onRowRemoving={removeProduct}
             allowAdd={false}
             allowDropInsideItem={false}
           />
@@ -102,8 +97,8 @@ function Products() {
       {selectedItem.id > 0 && (
         <ProductForm
           hide={hide}
+          setloading={setloading}
           setHide={setHide}
-          isClicked={isClicked}
           intial_data={selectedItem}
         />
       )}

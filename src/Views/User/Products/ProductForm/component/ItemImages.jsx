@@ -11,8 +11,11 @@ function ItemImages({ images = [], HandleChange }) {
   };
 
   let handleRemoveImage = (element) => {
+    console.log(element);
     HandleChange(
-      images.filter((ele) => ele !== element),
+      images.filter(
+        (ele) => ele !== element && ApiBaseUrl + ele?.image_path !== element
+      ),
       "images"
     );
   };
@@ -28,7 +31,9 @@ function ItemImages({ images = [], HandleChange }) {
         handleRemoveImage={handleRemoveImage}
         handleRemoveAllImages={handleRemoveAllImages}
         imagesFiles={images.map((ele) =>
-          ele instanceof String ? ele + ApiBaseUrl : ele
+          ele.image_path || ele?.image_path?.length > -1
+            ? ApiBaseUrl + ele.image_path
+            : ele
         )}
       />
     </div>

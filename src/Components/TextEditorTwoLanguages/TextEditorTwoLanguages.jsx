@@ -22,7 +22,7 @@ const TextEditorTwoLanguages = ({
       <FormGroup>
         <label>{label} English</label>
         <TextEditor
-          id={id + "En"}
+          id={id + "_en"}
           value={valueEn}
           onSaveHandle={(value, id) => onValueChange(value, id)}
         />

@@ -12,6 +12,12 @@ export const ToggleSideMenu = createAsyncThunk(
     return {};
   }
 );
+export const CloseSideMenu = createAsyncThunk(
+  "sidemenu/CloseSideMenu",
+  async (arg, { dispatch, getState }) => {
+    return {};
+  }
+);
 export const ResetSidebarData = createAsyncThunk(
   "sidemenu/ResetSidebarData",
   async (arg, { dispatch, getState }) => {
@@ -71,6 +77,17 @@ const SideMenuReducer = createSlice({
       state.loading = false;
     },
     [ToggleSideMenu.rejected](state, action) {
+      state.status = false;
+      state.loading = false;
+    },
+    [CloseSideMenu.pending](state, action) {
+      state.loading = true;
+    },
+    [CloseSideMenu.fulfilled](state, { payload }) {
+      state.status = false;
+      state.loading = false;
+    },
+    [CloseSideMenu.rejected](state, action) {
       state.status = false;
       state.loading = false;
     },
