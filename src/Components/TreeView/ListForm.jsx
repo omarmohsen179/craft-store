@@ -34,7 +34,7 @@ function ListForm({
     },
   ];
 
-  return dataSource ? (
+  return (
     <MasterTable
       dataSource={dataSource}
       colAttributes={colAttributes}
@@ -45,8 +45,6 @@ function ListForm({
       keyExpr="id"
       selectedRowKeys={alreadySelectedItems}
     />
-  ) : (
-    <LoadingAnimation />
   );
 }
 
