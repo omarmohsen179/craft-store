@@ -29,6 +29,7 @@ export const userLogin = createAsyncThunk(
             : "Error! Try Again later"
         );
         dispatch(userLogin.rejected(err?.response?.data.massege ?? error));
+        return null;
       });
   }
 );
@@ -83,8 +84,8 @@ const AuthReducer = createSlice({
     },
     [userLogin.fulfilled](state, { payload }) {
       state.user = payload ? payload : null;
+      state.loggedIn = payload ? true : false;
       state.loading = false;
-      state.loggedIn = true;
     },
     [userLogin.rejected](state, action) {
       state.loading = false;

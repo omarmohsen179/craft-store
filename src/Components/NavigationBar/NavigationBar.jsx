@@ -129,9 +129,12 @@ function NavigationBar() {
     });
   }, [window]);
 
-  const getRoutes = useCallback(() => {
-    return pages.current.filter((ele) => location.pathname === ele.route)[0];
-  }, [location.pathname]);
+  const getRoutes = useCallback(
+    (curr) => {
+      return location.pathname[0] === curr;
+    },
+    [location.pathname]
+  );
   useEffect(() => {
     window.addEventListener("resize", setDimension);
 
@@ -387,9 +390,7 @@ function NavigationBar() {
             <li
               key={index}
               className={
-                getRoutes()?.route === ele?.route
-                  ? "active-page allnav"
-                  : " allnav"
+                getRoutes(ele?.route) ? "active-page allnav" : " allnav"
               }
             >
               <Link

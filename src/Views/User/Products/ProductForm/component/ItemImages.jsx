@@ -6,12 +6,10 @@ import { ApiBaseUrl } from "../../../../../Service/config";
 function ItemImages({ images = [], HandleChange }) {
   let handleGetImages = (event) => {
     let files = event.target.files;
-    console.log([...images, ...files]);
     HandleChange([...images, ...files], "images");
   };
 
   let handleRemoveImage = (element) => {
-    console.log(element);
     HandleChange(
       images.filter(
         (ele) => ele !== element && ApiBaseUrl + ele?.image_path !== element

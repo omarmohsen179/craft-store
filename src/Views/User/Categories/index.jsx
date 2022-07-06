@@ -104,7 +104,6 @@ function Categories() {
       setCategoryData([...response]);
     });
   }, []);
-
   return (
     <div className="content" style={{ padding: 20 }}>
       <Card className="card-user">
